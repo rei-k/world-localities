@@ -7,6 +7,7 @@
 | 地域 | 行政区画・地名 | 別出典の公式対応表 | 取得日 |
 |---|---:|---:|---|
 | [ヨーロッパ](europe-registry/README.md) | 57か国・地域、1,161,589件 | Eurostat LAU: 32か国、104,687行 | 2026-09-29 |
+| [オセアニア](oceania-registry/README.md) | 29か国・地域、46,594件 | AU ABS公式コード567件。GeoNames直接ID郵便対応262行は別レイヤー | 2026-09-26～29 |
 | [アジア＋ロシア全域補足](asia-registry/README.md) | 52国・地域、3,277,921件 | [JP・TWの公式名称・郵便対応](official-registry/README.md)を追加。全面対応は未完了 | 国別メタデータ参照 |
 
 地域台帳間にも同じ `gn:` IDの重複があります。アジアと欧州、GeoNamesとEurostatの件数を単純に合算しません。
@@ -55,3 +56,5 @@ python asia-registry/package.py unpack --country JP
 python asia-registry/build.py verify --country JP
 python -m unittest discover -s tests -p 'test_asia_package.py' -v
 ```
+
+オセアニアは国別62分割パックに、言語付き名称37,236件と限定的な郵便番号対応を収録しました。地域IDを保持した名称選択と国別展開に対応します。全公用語・郵便番号の完全網羅ではありません。原典と検証結果は [オセアニア台帳](oceania-registry/README.md) を参照してください。
