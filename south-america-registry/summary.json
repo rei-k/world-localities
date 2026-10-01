@@ -1,0 +1,43 @@
+{
+  "country_area_count": 14,
+  "m49_country_area_count": 16,
+  "pending_country_codes": [
+    "AR",
+    "PY"
+  ],
+  "entity_rows": 241514,
+  "alternate_value_rows": 289202,
+  "admin_rows": 12419,
+  "locality_rows": 228964,
+  "other_admin_rows": 131,
+  "unresolved_parents": 553,
+  "address_candidates": 228688,
+  "country_scope_only": 283,
+  "localities_without_adm1": 283,
+  "label_coverage": {
+    "current_country_language_name_entities": 93990,
+    "current_english_name_entities": 5123,
+    "language_tagged_name_entities": 98087,
+    "missing_country_language_name_entities": 147524,
+    "missing_english_name_entities": 236391
+  },
+  "source_postal_value_rows": 94,
+  "tests": {
+    "unit_tests": 21,
+    "result": "passed",
+    "all_entity_replay": "exact",
+    "full_subset_integrity": "passed",
+    "query_smoke": [
+      "BR ADM1",
+      "UY Montevideo"
+    ]
+  },
+  "limitations": [
+    "Only fourteen of sixteen M49 South America countries/areas are published; Argentina and Paraguay remain pending",
+    "Source A/P selection is not independently verified official municipality completeness",
+    "553 unresolved exact-code parent references are retained",
+    "Labels materially incomplete; ASCII is not English",
+    "Source-tagged postal values do not certify delivery coverage",
+    "BR GeoNames and official IBGE counts must not be summed as unique real-world places"
+  ]
+}
