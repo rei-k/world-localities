@@ -23,9 +23,9 @@ class AmericasSnapshotTests(unittest.TestCase):
     def test_byte_corruption_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            mapping = validator.read_json(ROOT/'official-registry/americas-provenance/source-map.json')
+            mapping = validator.read_json(ROOT/'regions/americas/official/provenance/source-map.json')
             first = mapping['files'][0]
-            metadata = root/'official-registry/americas-provenance/source-map.json'
+            metadata = root/'regions/americas/official/provenance/source-map.json'
             metadata.parent.mkdir(parents=True)
             metadata.write_text(json.dumps(mapping), encoding='utf-8')
             path = root/first['destination_path']
@@ -36,8 +36,8 @@ class AmericasSnapshotTests(unittest.TestCase):
 
     def test_incorrect_parent_rejected_even_with_updated_file_hash(self):
         with tempfile.TemporaryDirectory() as tmp:
-            registry = Path(tmp)/'official-registry'
-            shutil.copytree(ROOT/'official-registry/BR', registry/'BR')
+            registry = Path(tmp)/'fixture'
+            shutil.copytree(ROOT/'regions/americas/southern/official/BR', registry/'BR')
             path = registry/'BR/BR-DF.csv'
             with path.open(encoding='utf-8', newline='') as handle:
                 reader = csv.DictReader(handle)
@@ -50,19 +50,19 @@ class AmericasSnapshotTests(unittest.TestCase):
             manifest = validator.read_json(manifest_path)
             manifest['sha256']['BR-DF.csv'] = hashlib.sha256(path.read_bytes()).hexdigest()
             manifest_path.write_text(json.dumps(manifest), encoding='utf-8')
-            schema = validator.read_json(ROOT/'official-registry/americas-snapshot-schema.json')
+            schema = validator.read_json(ROOT/'regions/americas/official/schema.json')
             with self.assertRaisesRegex(ValueError, 'BR: wrong parent'):
                 validator.verify_country(registry, 'BR', schema)
 
     def test_completeness_claim_regression_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
-            registry = Path(tmp)/'official-registry'
-            shutil.copytree(ROOT/'official-registry/CA', registry/'CA')
+            registry = Path(tmp)/'fixture'
+            shutil.copytree(ROOT/'regions/americas/northern/official/CA', registry/'CA')
             path = registry/'CA/manifest.json'
             manifest = validator.read_json(path)
             manifest['claims']['deliverability_verified'] = True
             path.write_text(json.dumps(manifest), encoding='utf-8')
-            schema = validator.read_json(ROOT/'official-registry/americas-snapshot-schema.json')
+            schema = validator.read_json(ROOT/'regions/americas/official/schema.json')
             with self.assertRaisesRegex(ValueError, 'unexpected completeness claim'):
                 validator.verify_country(registry, 'CA', schema)
 

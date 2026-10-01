@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "base_commit": "a7439bc1c89ad2ea1d2405031b7d33be667c3b2e",
+  "status": "passed_for_available_local_inputs",
+  "unit_and_regression_tests": 123,
+  "test_counts": {
+    "africa-regression": 8,
+    "layout-regression": 8,
+    "caribbean-regression": 25,
+    "oceania-regression": 20,
+    "central-regression": 19,
+    "americas-snapshot-regression": 4,
+    "southern-regression": 21,
+    "europe": 13,
+    "asia_package": 5
+  },
+  "additional_official_checks": [
+    "join qualifiers",
+    "TW prefix handling",
+    "bilingual labels",
+    "romanization source precedence"
+  ],
+  "full_package_validation": [
+    "Africa 56 countries/areas",
+    "Oceania 29 country packs",
+    "Central America 6 countries",
+    "Caribbean 27 countries/areas after exact DO materialization",
+    "South America 14 countries/areas after exact split reconstruction",
+    "Americas official 151 preserved source files, 81,847 locality rows and 3,640 anchors"
+  ],
+  "selected_validation": [
+    "Europe AT 23,601 rows",
+    "Eurostat AT 2,093 LAU rows and 47 statistical-region rows",
+    "Asia BH 138 rows",
+    "TW official checksums"
+  ],
+  "working_directory_equivalence": [
+    "KE",
+    "AT",
+    "BH unpack and verify",
+    "NZ label",
+    "TW postal prefix",
+    "BZ",
+    "AG",
+    "UY"
+  ],
+  "payload_preservation": "Publication reuses the existing Git blob SHA of every data/archive/source/licence payload. No archive is re-encoded. Live cross-package paths, docs and path-dependent code/tests are changed separately.",
+  "not_run": [
+    {
+      "check": "Full JP official-postal replay/tests and Asia JP unpack smoke",
+      "reason": "Four existing JP binary files are not materialized locally because available connector reads returned empty content or rejected binary decoding. The remote payload SHAs are preserved unchanged."
+    },
+    {
+      "check": "Full Europe GeoNames/Eurostat and full Asia dataset replay",
+      "reason": "Only selected AT and BH immutable payloads are available locally; moved payload SHA references are preserved for the rest."
+    }
+  ],
+  "safety": "Existing archive traversal, symlink, corruption and conflicting-output rejection tests remain passing. No generic path safety rule was relaxed.",
+  "historical_links": "The immutable Africa upstream/README.md has three pre-existing links to files absent from its preserved upstream/ subfolder. Current navigation links have no new missing targets."
+}

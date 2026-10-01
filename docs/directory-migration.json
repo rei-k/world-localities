@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "base_commit": "a7439bc1c89ad2ea1d2405031b7d33be667c3b2e",
+  "base_tree": "d6771d6f04d048576f4c7a97692f17ef344452f5",
+  "rules": "Apply the first matching exact path or directory-prefix rule. Unlisted paths stay unchanged.",
+  "path_mappings": [
+    {
+      "from": "official-registry/AMERICAS_SNAPSHOTS.md",
+      "to": "regions/americas/official/README.md"
+    },
+    {
+      "from": "official-registry/americas-provenance",
+      "to": "regions/americas/official/provenance"
+    },
+    {
+      "from": "official-registry/americas-snapshot-schema.json",
+      "to": "regions/americas/official/schema.json"
+    },
+    {
+      "from": "official-registry/US",
+      "to": "regions/americas/northern/official/US"
+    },
+    {
+      "from": "official-registry/CA",
+      "to": "regions/americas/northern/official/CA"
+    },
+    {
+      "from": "official-registry/MX",
+      "to": "regions/americas/central/official/MX"
+    },
+    {
+      "from": "official-registry/BR",
+      "to": "regions/americas/southern/official/BR"
+    },
+    {
+      "from": "official-registry",
+      "to": "regions/asia/official"
+    },
+    {
+      "from": "europe-registry/eurostat-lau",
+      "to": "regions/europe/official/eurostat-lau"
+    },
+    {
+      "from": "europe-registry/eurostat.py",
+      "to": "regions/europe/official/eurostat.py"
+    },
+    {
+      "from": "europe-registry/requirements-build.txt",
+      "to": "regions/europe/official/requirements-build.txt"
+    },
+    {
+      "from": "africa-registry",
+      "to": "regions/africa/gazetteer"
+    },
+    {
+      "from": "asia-registry",
+      "to": "regions/asia/gazetteer"
+    },
+    {
+      "from": "europe-registry",
+      "to": "regions/europe/gazetteer"
+    },
+    {
+      "from": "oceania-registry",
+      "to": "regions/oceania/gazetteer"
+    },
+    {
+      "from": "central-america-registry",
+      "to": "regions/americas/central/gazetteer"
+    },
+    {
+      "from": "caribbean-registry",
+      "to": "regions/americas/caribbean/gazetteer"
+    },
+    {
+      "from": "south-america-registry",
+      "to": "regions/americas/southern/gazetteer"
+    }
+  ],
+  "payload_policy": "Every data/archive/source/notice payload retains its original Git blob SHA. Only navigation, live destination paths, and path-dependent code/tests change.",
+  "historical_records": "Existing migration/upstream reports retain historical source and destination paths; this document describes the later directory relocation. Source URLs and source paths remain unchanged."
+}

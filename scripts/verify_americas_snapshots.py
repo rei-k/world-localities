@@ -43,8 +43,15 @@ def read_csv(path, columns):
     return rows
 
 
+SUBREGIONS = {'US': 'northern', 'CA': 'northern', 'MX': 'central', 'BR': 'southern'}
+
+
+def country_directory(root, country):
+    return Path(root) / 'regions' / 'americas' / SUBREGIONS[country] / 'official' / country
+
+
 def verify_source_map(root):
-    mapping = read_json(root/'official-registry/americas-provenance/source-map.json')
+    mapping = read_json(root/'regions/americas/official/provenance/source-map.json')
     require(mapping['source_commit'] == SOURCE_COMMIT, 'source commit mismatch')
     require(set(mapping['countries']) == set(COUNTRIES), 'source-map country scope mismatch')
     seen = set()
@@ -60,15 +67,15 @@ def verify_source_map(root):
         git_sha = hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
         require(git_sha == entry['source_git_blob_sha1'], f'{rel}: Git blob SHA-1 mismatch')
     for cc in COUNTRIES:
-        actual = {str(p.relative_to(root)) for p in (root/'official-registry'/cc).iterdir() if p.is_file()}
-        expected = {p for p in seen if p.startswith(f'official-registry/{cc}/')}
+        actual = {str(p.relative_to(root)) for p in country_directory(root, cc).iterdir() if p.is_file()}
+        expected = {p for p in seen if p.startswith(str(country_directory(Path(), cc)) + '/')}
         require(actual == expected, f'{cc}: missing or unexpected country files')
     require(len(mapping['files']) == 151, 'expected 140 country and 11 provenance files')
     return {'files': len(seen), 'bytes': sum(x['bytes'] for x in mapping['files']),
             'git_blob_sha1_and_sha256': 'passed'}
 
 
-def verify_country(registry, cc, schema):
+def verify_country(registry, cc, schema, provenance=None):
     path = registry/cc
     index, manifest = read_json(path/'index.json'), read_json(path/'manifest.json')
     require(index['country'] == manifest['country'] == cc, f'{cc}: country mismatch')
@@ -157,7 +164,7 @@ def verify_country(registry, cc, schema):
         require(Counter(r['source_type'] for r in localities.values()) == {'place': 32363, 'cousub': 36381}, 'US: source-role count mismatch')
         require(categories['fictitious_census_entity'] == 4830, 'US: fictitious role count mismatch')
     require(read_json(path/'unmatched-source-rows.json') == [], f'{cc}: unexpected unmatched rows')
-    world = registry/'americas-provenance/registry/countries'/f'{cc}.json'
+    world = (provenance if provenance is not None else registry/'provenance') / 'registry/countries' / f'{cc}.json'
     require(digest(world.read_bytes()) == manifest['source_manifest']['world_registry_sha256'], f'{cc}: original world-anchor hash mismatch')
     return {'regions':len(region_ids), 'anchors':len(anchors), 'localities':len(localities),
             'address_candidates':total_candidates, 'categories':categories, 'vintage':index['vintage'],
@@ -166,11 +173,11 @@ def verify_country(registry, cc, schema):
 
 
 def verify(root):
-    registry = root/'official-registry'
-    schema = read_json(registry/'americas-snapshot-schema.json')
+    registry = root/'regions/americas/official'
+    schema = read_json(registry/'schema.json')
     require(all(not value for value in schema['snapshot_claims'].values()), 'schema completeness claims changed')
     source = verify_source_map(root)
-    countries = {cc:verify_country(registry, cc, schema) for cc in COUNTRIES}
+    countries = {cc:verify_country(country_directory(root, cc).parent, cc, schema, registry/'provenance') for cc in COUNTRIES}
     return {'status':'passed','source_repository':'rei-k/world-address','source_commit':SOURCE_COMMIT,
             'verification_scope':'Offline preserved-byte and snapshot-integrity checks only; no upstream refresh or raw-source rebuild',
             'source_files':source,'countries':countries,
