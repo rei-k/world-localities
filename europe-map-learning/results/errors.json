@@ -1,0 +1,58 @@
+[
+  {
+    "locality_id": "gn:3333508",
+    "name": "Schöpfleithnersiedlung",
+    "country": "AT",
+    "latitude": 48.25,
+    "longitude": 16.55,
+    "registry_region": "AT-9",
+    "registry_state_id": "gn:2761367",
+    "map_regions": [
+      "AT-3"
+    ],
+    "boundary_distance_m": 535.851,
+    "boundary_year": "2017",
+    "tile": "193:66",
+    "split": "test",
+    "claimed_region": "AT-9",
+    "assumed_radius_m": 100.0,
+    "task_id": "gn:3333508:original_claim_assumed_100m",
+    "variant": "original_claim_assumed_100m",
+    "radius_is_synthetic": true,
+    "gold": "REVIEW",
+    "prediction": "CONFLICT",
+    "probabilities": {
+      "MATCH": 0.0010439970039745946,
+      "CONFLICT": 0.9989420504569653,
+      "REVIEW": 1.3952539060161798e-05
+    }
+  },
+  {
+    "locality_id": "gn:3333508",
+    "name": "Schöpfleithnersiedlung",
+    "country": "AT",
+    "latitude": 48.25,
+    "longitude": 16.55,
+    "registry_region": "AT-9",
+    "registry_state_id": "gn:2761367",
+    "map_regions": [
+      "AT-3"
+    ],
+    "boundary_distance_m": 535.851,
+    "boundary_year": "2017",
+    "tile": "193:66",
+    "split": "test",
+    "claimed_region": "AT-6",
+    "assumed_radius_m": 100.0,
+    "task_id": "gn:3333508:synthetic_wrong_region",
+    "variant": "synthetic_wrong_region",
+    "radius_is_synthetic": true,
+    "gold": "REVIEW",
+    "prediction": "CONFLICT",
+    "probabilities": {
+      "MATCH": 0.0010439970039745946,
+      "CONFLICT": 0.9989420504569653,
+      "REVIEW": 1.3952539060161798e-05
+    }
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "completed_at": "2026-10-01T01:53:01.299241+00:00",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "shapely": "2.1.2",
+  "pyproj": "3.8.0",
+  "device": "CPU",
+  "training_algorithm": "one-step contextual bandit; sampled-action REINFORCE",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps_each": 2500,
+  "tests_passed": 6,
+  "map_checks": "51 regions and 4,899 points parsed; point display bounds valid; JavaScript syntax passed; SVG rendered and visually inspected",
+  "cloud_llm_job_submitted": false,
+  "cloud_storage_attempt": "Authorization error when proposing an isolated experiment README to the connected private Hugging Face archive. No successful upload or training job confirmed.",
+  "base_repository_commit": "44e77ee9d5e4089da549367cd2134f76bef38bdf"
+}

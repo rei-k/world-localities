@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>欧州地図と学習結果 | World Localities</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f7f6;color:#193444;font:14px/1.6 system-ui,sans-serif}header{padding:22px 30px;border-bottom:1px solid #d5e1e2;background:#fff}header small{letter-spacing:.16em;font-weight:700;color:#4e7779}h1{font-size:25px;margin:3px 0 7px}p{margin:7px 0}.layout{display:grid;grid-template-columns:320px 1fr;min-height:760px}aside{padding:24px;background:#fff;border-right:1px solid #d5e1e2}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}.metric{background:#f1f6f5;padding:12px;border-radius:8px}.metric strong{display:block;font-size:24px;color:#176760}.muted{font-size:12px;color:#526e7c}select,button{font:inherit;padding:8px;border:1px solid #bbcfd1;border-radius:6px;background:white;color:#193444;width:100%;margin:5px 0 14px}button{cursor:pointer}.legend{display:flex;gap:16px;font-size:12px;margin:16px 0}.dot{width:9px;height:9px;display:inline-block;border-radius:100%;margin-right:4px}.mapbox{position:relative;overflow:hidden;min-height:750px}svg{width:100%;height:85vh;min-height:750px;touch-action:none;cursor:grab}.region{fill:#e3ecee;stroke:#718b96;stroke-width:.65;vector-effect:non-scaling-stroke}.region:hover{fill:#d6e5e4}.point{cursor:pointer;stroke:#fff;stroke-width:.3}.point:hover{stroke:#182f3e;stroke-width:2}.point:focus{outline:none;stroke:#182f3e;stroke-width:2}.detail{border-top:1px solid #d5e1e2;padding-top:16px;margin-top:16px}.detail h2{font-size:18px;overflow-wrap:anywhere;margin:0 0 10px}dl{display:grid;grid-template-columns:80px 1fr;gap:5px;font-size:12px}dt{color:#5d7580}dd{margin:0;overflow-wrap:anywhere}a{color:#146c72}footer{padding:18px 30px;background:#fff;border-top:1px solid #d5e1e2;font-size:11px;color:#53707a}.hint{position:absolute;right:20px;bottom:18px;background:#fff;padding:8px 12px;border-radius:5px;pointer-events:none}.status{font-size:12px;color:#53707a}@media(max-width:780px){.layout{grid-template-columns:1fr}aside{border-right:0}.mapbox,svg{min-height:570px;height:70vh}.metrics{margin:8px 0}header{padding:18px}h1{font-size:22px}}
+</style>
+<header><small>WORLD LOCALITIES / EXPERIMENT 01</small><h1>実際の地図で、所属地域を確かめる</h1><p>オーストリア・ドイツ・スイスの行政境界と地名台帳を接続した、小型モデルの強化学習実験。</p></header>
+<div class="layout"><aside>
+<div class="metrics"><div class="metric"><strong>__COUNT__</strong>実座標の地点</div><div class="metric"><strong>51</strong>州・州相当区域</div></div>
+<p>学習問題 __TASKS__ 件。評価問題の正解率 <b>__ACCURACY__</b>。これは定義した照合ルールを再現する精度で、住所の正確さを示す数値ではありません。</p>
+<p class="muted">モデル単体は要確認の2問を誤判定しました。表示する「確認後」は境界・出典の検査を優先し、不一致を保留します。学習は一段階の報酬学習で、LLMの追加学習ではありません。</p>
+<label for="country">国</label><select id="country"><option value="">3か国</option value="AT">オーストリア</option><option value="DE">ドイツ</option><option value="CH">スイス</option></select>
+<label for="filter">表示する地点</label><select id="filter"><option value="test">未学習の評価地点</option value="review">台帳・境界の要確認地点</option><option value="errors">評価地点のモデル誤判定</option><option value="all">全地点</option></select>
+<div class="legend"><span><i class="dot" style="background:#247c78"></i>照合一致</span><span><i class="dot" style="background:#c15327"></i>要確認</span></div>
+<div id="status" class="status"></div><button id="reset">地図を全体表示に戻す</button>
+<div id="detail" class="detail"><h2>地点を選択</h2><p class="muted">地図の点を選ぶと、地名、台帳と地図の所属、モデル判定を表示します。</p></div>
+</aside><main class="mapbox"><svg id="map" viewBox="0 -50 850 1050" aria-label="ドイツ・オーストリア・スイスの行政境界と学習地点"><g>__PATHS__</g><g id="points"></g></svg><div class="hint">ホイールで拡大・ドラッグで移動</div></main></div>
+<footer>点: <a href="https://www.geonames.org/">GeoNames</a> CC BY 4.0 / 2026-09-29。境界: <a href="https://www.geoboundaries.org/">geoBoundaries</a> 経由。
+AT: Federal Office for Metrology and Survey, Austria, 2017 / <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>（本図のAT境界の加工にも適用）。
+DE: Federal Agency for Cartography and Geodesy, 2021 / <a href="https://www.govdata.de/dl-de/by-2-0">Data licence Germany – Attribution 2.0</a>。
+CH: Federal Office of Topography swisstopo, 2022 / <a href="https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices">OGD利用条件</a>。
+地図は300mで簡略化した表示専用。判定には原解像度の境界を使用。100mの座標誤差は実験上の仮定です。現在の法定境界・配達可能性を保証するものではありません。外部の地図タイルは自動取得しません。</footer>
+<script type="application/json" id="records">__POINTS__</script>
+<script>
+const records=JSON.parse(document.getElementById('records').textContent),svg=document.getElementById('map'),layer=document.getElementById('points');
+const country=document.getElementById('country'),filter=document.getElementById('filter'),detail=document.getElementById('detail');
+const labels={MATCH:'一致',CONFLICT:'所属に矛盾',REVIEW:'要確認'};
+function add(parent,tag,text){const e=document.createElement(tag);e.textContent=text;parent.append(e);return e}
+function show(r){detail.replaceChildren();add(detail,'h2',r.name);const dl=add(detail,'dl','');
+ const entries=[['ID',r.locality_id],['座標',`${r.latitude}, ${r.longitude}`],['台帳',r.registry_region||'未確定'],['地図',r.map_regions.join(', ')||'該当なし'],['境界まで',r.boundary_distance_m===null?'未算定':`${Math.round(r.boundary_distance_m)} m`],['データ区分',r.split],['照合ルール',labels[r.snapshot_verdict]],['モデル単体',labels[r.learned_prediction]],['確認後',labels[r.guarded_prediction]]];
+ for(const [k,v] of entries){add(dl,'dt',k);add(dl,'dd',v)}
+ const a=add(detail,'a','OpenStreetMapで現在の周辺図を開く');a.href=`https://www.openstreetmap.org/?mlat=${r.latitude}&mlon=${r.longitude}#map=15/${r.latitude}/${r.longitude}`;a.target='_blank';a.rel='noopener noreferrer';
+ add(detail,'p','境界の基準年: '+r.boundary_year+'。周辺図の道路・建物は学習データに含めていません。').className='muted';}
+function render(){layer.replaceChildren();let visible=records.filter(r=>(!country.value||r.country===country.value)&&(filter.value==='all'||filter.value==='test'&&r.split==='test'||filter.value==='review'&&r.snapshot_verdict==='REVIEW'||filter.value==='errors'&&r.split==='test'&&r.learned_prediction!==r.snapshot_verdict));
+ for(const r of visible){const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',r.x);c.setAttribute('cy',r.y);c.setAttribute('r',r.snapshot_verdict==='REVIEW'?3.2:2);c.setAttribute('fill',r.snapshot_verdict==='REVIEW'?'#c15327':'#247c78');c.setAttribute('class','point');c.setAttribute('tabindex','0');c.setAttribute('role','button');c.setAttribute('aria-label',r.name+' '+labels[r.snapshot_verdict]);c.addEventListener('click',()=>show(r));c.addEventListener('keydown',e=>{if(e.key==='Enter')show(r)});layer.append(c)}
+ document.getElementById('status').textContent=visible.length.toLocaleString()+'地点を表示。色は照合ルールによる分類。';}
+let box=[0,-50,850,1050],drag=null;function update(){svg.setAttribute('viewBox',box.join(' '))}
+svg.addEventListener('wheel',e=>{e.preventDefault();const rect=svg.getBoundingClientRect(),scale=e.deltaY>0?1.15:.87,nw=box[2]*scale,nh=box[3]*scale;if(nw<40||nw>2500)return;box[0]+=(box[2]-nw)*(e.clientX-rect.left)/rect.width;box[1]+=(box[3]-nh)*(e.clientY-rect.top)/rect.height;box[2]=nw;box[3]=nh;update()},{passive:false});
+svg.addEventListener('pointerdown',e=>{if(e.target.classList.contains('point'))return;drag=[e.clientX,e.clientY,...box];svg.setPointerCapture(e.pointerId)});
+svg.addEventListener('pointermove',e=>{if(!drag)return;const r=svg.getBoundingClientRect(),scale=Math.max(box[2]/r.width,box[3]/r.height);box[0]=drag[2]-(e.clientX-drag[0])*scale;box[1]=drag[3]-(e.clientY-drag[1])*scale;update()});svg.addEventListener('pointerup',()=>drag=null);svg.addEventListener('pointercancel',()=>drag=null);
+document.getElementById('reset').onclick=()=>{box=[0,-50,850,1050];update()};country.onchange=render;filter.onchange=render;render();
+</script></html>

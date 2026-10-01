@@ -1,0 +1,52 @@
+country,map_iso,map_name,shape_id,geonames_id,geonames_name,geonames_admin1_code,method
+AT,AT-1,Burgenland,97560089B12055607938436,gn:2781194,Burgenland,01,unique_normalized_name_or_alias
+AT,AT-2,Kärnten,97560089B55365172259742,gn:2774686,Kärnten,02,unique_normalized_name_or_alias
+AT,AT-3,Niederösterreich,97560089B30234814950985,gn:2770542,Niederösterreich,03,unique_normalized_name_or_alias
+AT,AT-4,Oberösterreich,97560089B86772589826985,gn:2769848,Oberösterreich,04,unique_normalized_name_or_alias
+AT,AT-5,Salzburg,97560089B65158936715310,gn:2766823,Salzburg,05,unique_normalized_name_or_alias
+AT,AT-6,Steiermark,97560089B87855108402029,gn:2764581,Steiermark,06,unique_normalized_name_or_alias
+AT,AT-7,Tirol,97560089B46292059412713,gn:2763586,Tirol,07,unique_normalized_name_or_alias
+AT,AT-8,Vorarlberg,97560089B20931628540879,gn:2762300,Vorarlberg,08,unique_normalized_name_or_alias
+AT,AT-9,Wien,97560089B24691553772644,gn:2761367,Wien,09,unique_normalized_name_or_alias
+DE,DE-BW,Baden-Württemberg,10402087B60055985875400,gn:2953481,Baden-Württemberg,01,unique_normalized_name_or_alias
+DE,DE-BY,Bayern,10402087B60477050509260,gn:2951839,Bavaria,02,unique_normalized_name_or_alias
+DE,DE-BE,Berlin,10402087B20892132820961,gn:2950157,Land Berlin,16,unique_normalized_name_or_alias
+DE,DE-BB,Brandenburg,10402087B40185768535592,gn:2945356,Brandenburg,11,unique_normalized_name_or_alias
+DE,DE-HB,Bremen,10402087B44391416804171,gn:2944387,Bremen,03,unique_normalized_name_or_alias
+DE,DE-HH,Hamburg,10402087B45896528657515,gn:2911297,Free and Hanseatic City of Hamburg,04,unique_normalized_name_or_alias
+DE,DE-HE,Hessen,10402087B85226028911536,gn:2905330,Hessen,05,unique_normalized_name_or_alias
+DE,DE-MV,Mecklenburg-Vorpommern,10402087B60782008682549,gn:2872567,Mecklenburg-Western Pomerania,12,unique_normalized_name_or_alias
+DE,DE-NI,Niedersachsen,10402087B38053019909436,gn:2862926,Lower Saxony,06,unique_normalized_name_or_alias
+DE,DE-NW,Nordrhein-Westfalen,10402087B86022102756745,gn:2861876,Nordrhein-Westfalen,07,unique_normalized_name_or_alias
+DE,DE-RP,Rheinland-Pfalz,10402087B42728698084544,gn:2847618,Rheinland-Pfalz,08,unique_normalized_name_or_alias
+DE,DE-SL,Saarland,10402087B83775792336645,gn:2842635,Saarland,09,unique_normalized_name_or_alias
+DE,DE-SN,Sachsen,10402087B89016843004490,gn:2842566,Saxony,13,unique_normalized_name_or_alias
+DE,DE-ST,Sachsen-Anhalt,10402087B23625801106445,gn:2842565,Saxony-Anhalt,14,unique_normalized_name_or_alias
+DE,DE-SH,Schleswig-Holstein,10402087B46069870964378,gn:2838632,Schleswig-Holstein,10,unique_normalized_name_or_alias
+DE,DE-TH,Thüringen,10402087B67217417145666,gn:2822542,Thuringia,15,unique_normalized_name_or_alias
+CH,CH-AG,Aargau,70761945B11338788345342,gn:2661876,Kanton Aargau,AG,verified_canton_code_equal
+CH,CH-AR,Appenzell Ausserrhoden,70761945B71472094577065,gn:2661739,Kanton Appenzell Ausserrhoden,AR,verified_canton_code_equal
+CH,CH-AI,Appenzell Innerrhoden,70761945B73029947081098,gn:2661741,Kanton Appenzell Innerrhoden,AI,verified_canton_code_equal
+CH,CH-BL,Basel-Landschaft,70761945B84766611276082,gn:2661603,Kanton Basel-Landschaft,BL,verified_canton_code_equal
+CH,CH-BS,Basel-Stadt,70761945B62987387977087,gn:2661602,Kanton Basel-Stadt,BS,verified_canton_code_equal
+CH,CH-BE,Bern,70761945B78940680080703,gn:2661551,Canton de Berne,BE,verified_canton_code_equal
+CH,CH-FR,Fribourg,70761945B87604960987122,gn:2660717,Canton de Fribourg,FR,verified_canton_code_equal
+CH,CH-GE,Genève,70761945B83881285484717,gn:2660645,Canton de Genève,GE,verified_canton_code_equal
+CH,CH-GL,Glarus,70761945B11753136967749,gn:2660593,Kanton Glarus,GL,verified_canton_code_equal
+CH,CH-GR,Graubünden,70761945B85432491504073,gn:2660522,Kanton Graubünden,GR,verified_canton_code_equal
+CH,CH-JU,Jura,70761945B19914004537681,gn:2660207,Canton de Jura,JU,verified_canton_code_equal
+CH,CH-LU,Luzern,70761945B29073934101403,gn:2659810,Kanton Luzern,LU,verified_canton_code_equal
+CH,CH-NE,Neuchâtel,70761945B64873726514121,gn:2659495,Canton de Neuchâtel,NE,verified_canton_code_equal
+CH,CH-NW,Nidwalden,70761945B45925471978558,gn:2659471,Kanton Nidwalden,NW,verified_canton_code_equal
+CH,CH-OW,Obwalden,70761945B39944874342149,gn:2659315,Kanton Obwalden,OW,verified_canton_code_equal
+CH,CH-SH,Schaffhausen,70761945B22837365779622,gn:2658760,Kanton Schaffhausen,SH,verified_canton_code_equal
+CH,CH-SZ,Schwyz,70761945B29858350399599,gn:2658664,Kanton Schwyz,SZ,verified_canton_code_equal
+CH,CH-SO,Solothurn,70761945B36749553910786,gn:2658563,Kanton Solothurn,SO,verified_canton_code_equal
+CH,CH-SG,St. Gallen,70761945B27205007293794,gn:2658821,Kanton St. Gallen,SG,verified_canton_code_equal
+CH,CH-TG,Thurgau,70761945B73326014959541,gn:2658372,Kanton Thurgau,TG,verified_canton_code_equal
+CH,CH-TI,Ticino,70761945B95773795125249,gn:2658370,Cantone Ticino,TI,verified_canton_code_equal
+CH,CH-UR,Uri,70761945B76174754463268,gn:2658226,Kanton Uri,UR,verified_canton_code_equal
+CH,CH-VS,Valais,70761945B38573473865054,gn:2658205,Canton du Valais,VS,verified_canton_code_equal
+CH,CH-VD,Vaud,70761945B85268669280160,gn:2658182,Canton de Vaud,VD,verified_canton_code_equal
+CH,CH-ZG,Zug,70761945B70106229378933,gn:2657907,Kanton Zug,ZG,verified_canton_code_equal
+CH,CH-ZH,Zürich,70761945B4468941998498,gn:2657895,Kanton Zürich,ZH,verified_canton_code_equal

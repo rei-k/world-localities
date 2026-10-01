@@ -1,0 +1,69 @@
+{
+  "countries": {
+    "AT": {
+      "eligible_localities": 20869,
+      "sampled": 901,
+      "mapped_regions": 9,
+      "boundary_year": "2017"
+    },
+    "DE": {
+      "eligible_localities": 80836,
+      "sampled": 1600,
+      "mapped_regions": 16,
+      "boundary_year": "2021"
+    },
+    "CH": {
+      "eligible_localities": 13182,
+      "sampled": 2398,
+      "mapped_regions": 26,
+      "boundary_year": "2022"
+    }
+  },
+  "localities": 4899,
+  "tasks": 14693,
+  "crosswalk_regions": 51,
+  "splits": {
+    "train": {
+      "tasks": 11131,
+      "localities": 3711,
+      "tiles": 595,
+      "labels": {
+        "MATCH": 3678,
+        "REVIEW": 3775,
+        "CONFLICT": 3678
+      }
+    },
+    "validation": {
+      "tasks": 2292,
+      "localities": 764,
+      "tiles": 129,
+      "labels": {
+        "MATCH": 751,
+        "REVIEW": 790,
+        "CONFLICT": 751
+      }
+    },
+    "test": {
+      "tasks": 1270,
+      "localities": 424,
+      "tiles": 106,
+      "labels": {
+        "MATCH": 417,
+        "REVIEW": 436,
+        "CONFLICT": 417
+      }
+    }
+  },
+  "snapshot_verdicts": {
+    "MATCH": 4846,
+    "REVIEW": 53
+  },
+  "sampling": "SHA256-ranked current populated-place candidates, up to requested count per source ADM1 (plus an unresolved-state bucket); not population representative",
+  "per_region_limit": 100,
+  "seed": "map-pilot-v1",
+  "tile_degrees": 0.25,
+  "boundary_distance_projection": "EPSG:3035",
+  "assumed_default_uncertainty_m": 100.0,
+  "geometry_used_for_labels": "full resolution; preview geometry NEVER used for labels",
+  "split_limitation": "Shared ADM1s across splits; adjacent tiles may be close. No held-out-country generalization claim."
+}

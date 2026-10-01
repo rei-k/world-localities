@@ -1,0 +1,1289 @@
+[
+  {
+    "seed": 17,
+    "step": 1,
+    "mean_sampled_reward": -0.763671875,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.3276614310645724,
+      "macro_f1": 0.16453061671596012,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 0.0,
+        "REVIEW": 0.0
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          790,
+          0,
+          0
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 1541,
+      "mean_reward": -1.0170157068062826
+    }
+  },
+  {
+    "seed": 17,
+    "step": 250,
+    "mean_sampled_reward": 0.24609375,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.34467713787085513,
+      "macro_f1": 0.1708847069002812,
+      "recall": {
+        "MATCH": 0.0,
+        "CONFLICT": 0.0,
+        "REVIEW": 1.0
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          751
+        ],
+        [
+          0,
+          0,
+          751
+        ],
+        [
+          0,
+          0,
+          790
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 0,
+      "mean_reward": 0.18084642233856893
+    }
+  },
+  {
+    "seed": 17,
+    "step": 500,
+    "mean_sampled_reward": 0.5595703125,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.6684118673647469,
+      "macro_f1": 0.5555798771493495,
+      "recall": {
+        "MATCH": 0.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          751
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.5786431064572426
+    }
+  },
+  {
+    "seed": 17,
+    "step": 750,
+    "mean_sampled_reward": 0.96484375,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.993455497382199,
+      "macro_f1": 0.9935091329153511,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9810126582278481
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          15,
+          775
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 15,
+      "mean_reward": 0.9803664921465969
+    }
+  },
+  {
+    "seed": 17,
+    "step": 1000,
+    "mean_sampled_reward": 1.0,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 17,
+    "step": 1250,
+    "mean_sampled_reward": 0.98828125,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 17,
+    "step": 1500,
+    "mean_sampled_reward": 1.0,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 17,
+    "step": 1750,
+    "mean_sampled_reward": 1.0,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 17,
+    "step": 2000,
+    "mean_sampled_reward": 0.98828125,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 17,
+    "step": 2250,
+    "mean_sampled_reward": 0.98828125,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 17,
+    "step": 2500,
+    "mean_sampled_reward": 1.0,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9965095986038395,
+      "macro_f1": 0.9965376427435979,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9898734177215189
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          8,
+          782
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 8,
+      "mean_reward": 0.9895287958115183
+    }
+  },
+  {
+    "seed": 29,
+    "step": 1,
+    "mean_sampled_reward": -0.5576171875,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.34467713787085513,
+      "macro_f1": 0.19102889614315077,
+      "recall": {
+        "MATCH": 0.0,
+        "CONFLICT": 0.0,
+        "REVIEW": 1.0
+      },
+      "confusion_matrix": [
+        [
+          0,
+          325,
+          426
+        ],
+        [
+          0,
+          0,
+          751
+        ],
+        [
+          0,
+          0,
+          790
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 325,
+      "mean_reward": -0.06729930191972076
+    }
+  },
+  {
+    "seed": 29,
+    "step": 250,
+    "mean_sampled_reward": 0.1435546875,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.34467713787085513,
+      "macro_f1": 0.1708847069002812,
+      "recall": {
+        "MATCH": 0.0,
+        "CONFLICT": 0.0,
+        "REVIEW": 1.0
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          751
+        ],
+        [
+          0,
+          0,
+          751
+        ],
+        [
+          0,
+          0,
+          790
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 0,
+      "mean_reward": 0.18084642233856893
+    }
+  },
+  {
+    "seed": 29,
+    "step": 500,
+    "mean_sampled_reward": 0.30078125,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.6679755671902269,
+      "macro_f1": 0.5555337952854694,
+      "recall": {
+        "MATCH": 0.0,
+        "CONFLICT": 0.9946737683089214,
+        "REVIEW": 0.9924050632911392
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          751
+        ],
+        [
+          0,
+          747,
+          4
+        ],
+        [
+          0,
+          6,
+          784
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 6,
+      "mean_reward": 0.5803883071553229
+    }
+  },
+  {
+    "seed": 29,
+    "step": 750,
+    "mean_sampled_reward": 0.9599609375,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9930191972076788,
+      "macro_f1": 0.9930762423663615,
+      "recall": {
+        "MATCH": 0.9986684420772304,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9810126582278481
+      },
+      "confusion_matrix": [
+        [
+          750,
+          0,
+          1
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          15,
+          775
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 15,
+      "mean_reward": 0.9798211169284468
+    }
+  },
+  {
+    "seed": 29,
+    "step": 1000,
+    "mean_sampled_reward": 0.9833984375,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 29,
+    "step": 1250,
+    "mean_sampled_reward": 0.98828125,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 29,
+    "step": 1500,
+    "mean_sampled_reward": 1.0,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 29,
+    "step": 1750,
+    "mean_sampled_reward": 1.0,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 29,
+    "step": 2000,
+    "mean_sampled_reward": 1.0,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9965095986038395,
+      "macro_f1": 0.9965376427435979,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9898734177215189
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          8,
+          782
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 8,
+      "mean_reward": 0.9895287958115183
+    }
+  },
+  {
+    "seed": 29,
+    "step": 2250,
+    "mean_sampled_reward": 0.98828125,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9965095986038395,
+      "macro_f1": 0.9965376427435979,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9898734177215189
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          8,
+          782
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 8,
+      "mean_reward": 0.9895287958115183
+    }
+  },
+  {
+    "seed": 29,
+    "step": 2500,
+    "mean_sampled_reward": 0.98828125,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 43,
+    "step": 1,
+    "mean_sampled_reward": -0.6787109375,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.12696335078534032,
+      "macro_f1": 0.13699669005201653,
+      "recall": {
+        "MATCH": 0.1118508655126498,
+        "CONFLICT": 0.08788282290279627,
+        "REVIEW": 0.17848101265822786
+      },
+      "confusion_matrix": [
+        [
+          84,
+          616,
+          51
+        ],
+        [
+          452,
+          66,
+          233
+        ],
+        [
+          649,
+          0,
+          141
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 1717,
+      "mean_reward": -1.4022687609075044
+    }
+  },
+  {
+    "seed": 43,
+    "step": 250,
+    "mean_sampled_reward": 0.150390625,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.34467713787085513,
+      "macro_f1": 0.1708847069002812,
+      "recall": {
+        "MATCH": 0.0,
+        "CONFLICT": 0.0,
+        "REVIEW": 1.0
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          751
+        ],
+        [
+          0,
+          0,
+          751
+        ],
+        [
+          0,
+          0,
+          790
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 0,
+      "mean_reward": 0.18084642233856893
+    }
+  },
+  {
+    "seed": 43,
+    "step": 500,
+    "mean_sampled_reward": 0.978515625,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.993455497382199,
+      "macro_f1": 0.9935091329153511,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9810126582278481
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          15,
+          775
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 15,
+      "mean_reward": 0.9803664921465969
+    }
+  },
+  {
+    "seed": 43,
+    "step": 750,
+    "mean_sampled_reward": 1.0,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 43,
+    "step": 1000,
+    "mean_sampled_reward": 0.9716796875,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 43,
+    "step": 1250,
+    "mean_sampled_reward": 0.9951171875,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9965095986038395,
+      "macro_f1": 0.9965376427435979,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9898734177215189
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          8,
+          782
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 8,
+      "mean_reward": 0.9895287958115183
+    }
+  },
+  {
+    "seed": 43,
+    "step": 1500,
+    "mean_sampled_reward": 0.9765625,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9960732984293194,
+      "macro_f1": 0.9961049481818246,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9886075949367089
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          9,
+          781
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 9,
+      "mean_reward": 0.9882198952879581
+    }
+  },
+  {
+    "seed": 43,
+    "step": 1750,
+    "mean_sampled_reward": 0.98828125,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9965095986038395,
+      "macro_f1": 0.9965376427435979,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9898734177215189
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          8,
+          782
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 8,
+      "mean_reward": 0.9895287958115183
+    }
+  },
+  {
+    "seed": 43,
+    "step": 2000,
+    "mean_sampled_reward": 0.98828125,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9965095986038395,
+      "macro_f1": 0.9965376427435979,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9898734177215189
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          8,
+          782
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 8,
+      "mean_reward": 0.9895287958115183
+    }
+  },
+  {
+    "seed": 43,
+    "step": 2250,
+    "mean_sampled_reward": 1.0,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9965095986038395,
+      "macro_f1": 0.9965376427435979,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9898734177215189
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          8,
+          782
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 8,
+      "mean_reward": 0.9895287958115183
+    }
+  },
+  {
+    "seed": 43,
+    "step": 2500,
+    "mean_sampled_reward": 0.98828125,
+    "validation": {
+      "n": 2292,
+      "accuracy": 0.9965095986038395,
+      "macro_f1": 0.9965376427435979,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9898734177215189
+      },
+      "confusion_matrix": [
+        [
+          751,
+          0,
+          0
+        ],
+        [
+          0,
+          751,
+          0
+        ],
+        [
+          0,
+          8,
+          782
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 8,
+      "mean_reward": 0.9895287958115183
+    }
+  }
+]

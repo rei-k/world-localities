@@ -1,0 +1,641 @@
+{
+  "status": "completed",
+  "execution": "local CPU; no cloud training job submitted",
+  "model_type": "one_step_contextual_bandit_mlp",
+  "seeds": [
+    {
+      "seed": 17,
+      "untrained_test": {
+        "n": 1270,
+        "accuracy": 0.3283464566929134,
+        "macro_f1": 0.16488730723606168,
+        "recall": {
+          "MATCH": 1.0,
+          "CONFLICT": 0.0,
+          "REVIEW": 0.0
+        },
+        "confusion_matrix": [
+          [
+            417,
+            0,
+            0
+          ],
+          [
+            417,
+            0,
+            0
+          ],
+          [
+            435,
+            1,
+            0
+          ]
+        ],
+        "label_order": [
+          "MATCH",
+          "CONFLICT",
+          "REVIEW"
+        ],
+        "unsafe_confident_errors": 853,
+        "mean_reward": -1.01496062992126
+      },
+      "validation": {
+        "n": 2292,
+        "accuracy": 0.9965095986038395,
+        "macro_f1": 0.9965376427435979,
+        "recall": {
+          "MATCH": 1.0,
+          "CONFLICT": 1.0,
+          "REVIEW": 0.9898734177215189
+        },
+        "confusion_matrix": [
+          [
+            751,
+            0,
+            0
+          ],
+          [
+            0,
+            751,
+            0
+          ],
+          [
+            0,
+            8,
+            782
+          ]
+        ],
+        "label_order": [
+          "MATCH",
+          "CONFLICT",
+          "REVIEW"
+        ],
+        "unsafe_confident_errors": 8,
+        "mean_reward": 0.9895287958115183
+      },
+      "trained_test": {
+        "n": 1270,
+        "accuracy": 0.9984251968503937,
+        "macro_f1": 0.9984362683092266,
+        "recall": {
+          "MATCH": 1.0,
+          "CONFLICT": 1.0,
+          "REVIEW": 0.9954128440366973
+        },
+        "confusion_matrix": [
+          [
+            417,
+            0,
+            0
+          ],
+          [
+            0,
+            417,
+            0
+          ],
+          [
+            0,
+            2,
+            434
+          ]
+        ],
+        "label_order": [
+          "MATCH",
+          "CONFLICT",
+          "REVIEW"
+        ],
+        "unsafe_confident_errors": 2,
+        "mean_reward": 0.9952755905511811
+      }
+    },
+    {
+      "seed": 29,
+      "untrained_test": {
+        "n": 1270,
+        "accuracy": 0.24645669291338582,
+        "macro_f1": 0.18795541057739384,
+        "recall": {
+          "MATCH": 0.0,
+          "CONFLICT": 0.04316546762589928,
+          "REVIEW": 0.676605504587156
+        },
+        "confusion_matrix": [
+          [
+            0,
+            416,
+            1
+          ],
+          [
+            0,
+            18,
+            399
+          ],
+          [
+            139,
+            2,
+            295
+          ]
+        ],
+        "label_order": [
+          "MATCH",
+          "CONFLICT",
+          "REVIEW"
+        ],
+        "unsafe_confident_errors": 557,
+        "mean_reward": -0.7094488188976378
+      },
+      "validation": {
+        "n": 2292,
+        "accuracy": 0.9960732984293194,
+        "macro_f1": 0.9961049481818246,
+        "recall": {
+          "MATCH": 1.0,
+          "CONFLICT": 1.0,
+          "REVIEW": 0.9886075949367089
+        },
+        "confusion_matrix": [
+          [
+            751,
+            0,
+            0
+          ],
+          [
+            0,
+            751,
+            0
+          ],
+          [
+            0,
+            9,
+            781
+          ]
+        ],
+        "label_order": [
+          "MATCH",
+          "CONFLICT",
+          "REVIEW"
+        ],
+        "unsafe_confident_errors": 9,
+        "mean_reward": 0.9882198952879581
+      },
+      "trained_test": {
+        "n": 1270,
+        "accuracy": 0.9984251968503937,
+        "macro_f1": 0.9984362683092266,
+        "recall": {
+          "MATCH": 1.0,
+          "CONFLICT": 1.0,
+          "REVIEW": 0.9954128440366973
+        },
+        "confusion_matrix": [
+          [
+            417,
+            0,
+            0
+          ],
+          [
+            0,
+            417,
+            0
+          ],
+          [
+            0,
+            2,
+            434
+          ]
+        ],
+        "label_order": [
+          "MATCH",
+          "CONFLICT",
+          "REVIEW"
+        ],
+        "unsafe_confident_errors": 2,
+        "mean_reward": 0.9952755905511811
+      }
+    },
+    {
+      "seed": 43,
+      "untrained_test": {
+        "n": 1270,
+        "accuracy": 0.19606299212598424,
+        "macro_f1": 0.17826638375830237,
+        "recall": {
+          "MATCH": 0.014388489208633094,
+          "CONFLICT": 0.5155875299760192,
+          "REVIEW": 0.06422018348623854
+        },
+        "confusion_matrix": [
+          [
+            6,
+            409,
+            2
+          ],
+          [
+            157,
+            215,
+            45
+          ],
+          [
+            408,
+            0,
+            28
+          ]
+        ],
+        "label_order": [
+          "MATCH",
+          "CONFLICT",
+          "REVIEW"
+        ],
+        "unsafe_confident_errors": 974,
+        "mean_reward": -1.3470472440944883
+      },
+      "validation": {
+        "n": 2292,
+        "accuracy": 0.9965095986038395,
+        "macro_f1": 0.9965376427435979,
+        "recall": {
+          "MATCH": 1.0,
+          "CONFLICT": 1.0,
+          "REVIEW": 0.9898734177215189
+        },
+        "confusion_matrix": [
+          [
+            751,
+            0,
+            0
+          ],
+          [
+            0,
+            751,
+            0
+          ],
+          [
+            0,
+            8,
+            782
+          ]
+        ],
+        "label_order": [
+          "MATCH",
+          "CONFLICT",
+          "REVIEW"
+        ],
+        "unsafe_confident_errors": 8,
+        "mean_reward": 0.9895287958115183
+      },
+      "trained_test": {
+        "n": 1270,
+        "accuracy": 0.9984251968503937,
+        "macro_f1": 0.9984362683092266,
+        "recall": {
+          "MATCH": 1.0,
+          "CONFLICT": 1.0,
+          "REVIEW": 0.9954128440366973
+        },
+        "confusion_matrix": [
+          [
+            417,
+            0,
+            0
+          ],
+          [
+            0,
+            417,
+            0
+          ],
+          [
+            0,
+            2,
+            434
+          ]
+        ],
+        "label_order": [
+          "MATCH",
+          "CONFLICT",
+          "REVIEW"
+        ],
+        "unsafe_confident_errors": 2,
+        "mean_reward": 0.9952755905511811
+      }
+    }
+  ],
+  "selected_seed": 17,
+  "selected_test": {
+    "n": 1270,
+    "accuracy": 0.9984251968503937,
+    "macro_f1": 0.9984362683092266,
+    "recall": {
+      "MATCH": 1.0,
+      "CONFLICT": 1.0,
+      "REVIEW": 0.9954128440366973
+    },
+    "confusion_matrix": [
+      [
+        417,
+        0,
+        0
+      ],
+      [
+        0,
+        417,
+        0
+      ],
+      [
+        0,
+        2,
+        434
+      ]
+    ],
+    "label_order": [
+      "MATCH",
+      "CONFLICT",
+      "REVIEW"
+    ],
+    "unsafe_confident_errors": 2,
+    "mean_reward": 0.9952755905511811
+  },
+  "deterministic_oracle_test": {
+    "n": 1270,
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "recall": {
+      "MATCH": 1.0,
+      "CONFLICT": 1.0,
+      "REVIEW": 1.0
+    },
+    "confusion_matrix": [
+      [
+        417,
+        0,
+        0
+      ],
+      [
+        0,
+        417,
+        0
+      ],
+      [
+        0,
+        0,
+        436
+      ]
+    ],
+    "label_order": [
+      "MATCH",
+      "CONFLICT",
+      "REVIEW"
+    ],
+    "unsafe_confident_errors": 0,
+    "mean_reward": 1.0
+  },
+  "always_review_test": {
+    "n": 1270,
+    "accuracy": 0.34330708661417325,
+    "macro_f1": 0.170379054318093,
+    "recall": {
+      "MATCH": 0.0,
+      "CONFLICT": 0.0,
+      "REVIEW": 1.0
+    },
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        417
+      ],
+      [
+        0,
+        0,
+        417
+      ],
+      [
+        0,
+        0,
+        436
+      ]
+    ],
+    "label_order": [
+      "MATCH",
+      "CONFLICT",
+      "REVIEW"
+    ],
+    "unsafe_confident_errors": 0,
+    "mean_reward": 0.17913385826771652
+  },
+  "mean_accuracy_across_seeds": 0.9984251968503935,
+  "test_by_country": {
+    "AT": {
+      "n": 286,
+      "accuracy": 0.993006993006993,
+      "macro_f1": 0.993054801953337,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.9795918367346939
+      },
+      "confusion_matrix": [
+        [
+          94,
+          0,
+          0
+        ],
+        [
+          0,
+          94,
+          0
+        ],
+        [
+          0,
+          2,
+          96
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 2,
+      "mean_reward": 0.9790209790209791
+    },
+    "DE": {
+      "n": 696,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 1.0
+      },
+      "confusion_matrix": [
+        [
+          231,
+          0,
+          0
+        ],
+        [
+          0,
+          231,
+          0
+        ],
+        [
+          0,
+          0,
+          234
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 0,
+      "mean_reward": 1.0
+    },
+    "CH": {
+      "n": 288,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": 1.0,
+        "REVIEW": 1.0
+      },
+      "confusion_matrix": [
+        [
+          92,
+          0,
+          0
+        ],
+        [
+          0,
+          92,
+          0
+        ],
+        [
+          0,
+          0,
+          104
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 0,
+      "mean_reward": 1.0
+    }
+  },
+  "test_by_variant": {
+    "original_claim_assumed_100m": {
+      "n": 424,
+      "accuracy": 0.9976415094339622,
+      "macro_f1": 0.6410256410256411,
+      "recall": {
+        "MATCH": 1.0,
+        "CONFLICT": null,
+        "REVIEW": 0.8571428571428571
+      },
+      "confusion_matrix": [
+        [
+          417,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          6
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 1,
+      "mean_reward": 0.9929245283018868
+    },
+    "synthetic_uncertainty_crosses_boundary": {
+      "n": 423,
+      "accuracy": 1.0,
+      "macro_f1": 0.3333333333333333,
+      "recall": {
+        "MATCH": null,
+        "CONFLICT": null,
+        "REVIEW": 1.0
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          423
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 0,
+      "mean_reward": 1.0
+    },
+    "synthetic_wrong_region": {
+      "n": 423,
+      "accuracy": 0.9976359338061466,
+      "macro_f1": 0.63596443476683,
+      "recall": {
+        "MATCH": null,
+        "CONFLICT": 1.0,
+        "REVIEW": 0.8333333333333334
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          417,
+          0
+        ],
+        [
+          0,
+          1,
+          5
+        ]
+      ],
+      "label_order": [
+        "MATCH",
+        "CONFLICT",
+        "REVIEW"
+      ],
+      "unsafe_confident_errors": 1,
+      "mean_reward": 0.9929078014184397
+    }
+  },
+  "interpretation": "Measures imitation of a snapshot-consistency verifier with real map evidence and synthetic challenges. Not independent proof of geographic truth, general geocoding skill or an LLM fine-tune.",
+  "limitations": [
+    "Same ADM1 regions in train and test; only spatial tiles and locality IDs are held out.",
+    "Coordinate uncertainty is assumed, not measured; source polygon error is not quantified.",
+    "Rule oracle defines the labels and therefore scores 100% by construction.",
+    "No model confidence calibration or production release; exact geometry verifier remains authoritative."
+  ]
+}
