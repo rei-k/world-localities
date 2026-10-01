@@ -1,0 +1,184 @@
+{
+  "retrieved_on": "2026-10-01",
+  "inputs": [
+    {
+      "input": "BO-alternatenames.zip",
+      "bytes": 443401,
+      "sha256": "ebe7b7974a12c6f46b680383d62dc2d2e345fd8102d676f474a54237e3da7983"
+    },
+    {
+      "input": "BO.zip",
+      "bytes": 1073550,
+      "sha256": "da51e5db90853a8e890668e46c7c922130d1c84ffdee1a36a61871e3d13e77c6"
+    },
+    {
+      "input": "BR-alternatenames.zip",
+      "bytes": 3304475,
+      "sha256": "bb78d1892e1fccc605e3d7301d74b21ca7bd95cf430e4dbcd404995b0b187a4f"
+    },
+    {
+      "input": "BR.zip",
+      "bytes": 7177281,
+      "sha256": "b7c122fc46782e7f44a35215616a2dcb2371dbf14b54f85cf9550139762137b4"
+    },
+    {
+      "input": "BV-alternatenames.zip",
+      "bytes": 7966,
+      "sha256": "8513374451d31736003fbf78bcf4ccc235d3cdb1fbc05da377e497c21d54443a"
+    },
+    {
+      "input": "BV.zip",
+      "bytes": 7317,
+      "sha256": "c72805c48e2994fc7f063f17a9cd9c84f1d040659f28a0418f9d26d4a6455c94"
+    },
+    {
+      "input": "CL-alternatenames.zip",
+      "bytes": 638374,
+      "sha256": "3279df5f23abc9d56c731cd44e713274c22260943e30801c4f0e93e2d6a75365"
+    },
+    {
+      "input": "CL.zip",
+      "bytes": 1421407,
+      "sha256": "b97d10d82ee0a489d6fad6460be58212494ece75e4a882ac498c13178bb895c1"
+    },
+    {
+      "input": "CO-alternatenames.zip",
+      "bytes": 659217,
+      "sha256": "1aac98cf276912d57812e34c84a1562fcd3bda71cdc12b8b7a2cb12d7d39a9a8"
+    },
+    {
+      "input": "CO.zip",
+      "bytes": 2248809,
+      "sha256": "422d378408aec9f41dca992abd4ade60f4d53657f78941fe023984448991b968"
+    },
+    {
+      "input": "EC-alternatenames.zip",
+      "bytes": 262028,
+      "sha256": "9a6e9eb0ca702b5894e2e1433933960b656a92e619d1002f2112b714e9f85b53"
+    },
+    {
+      "input": "EC.zip",
+      "bytes": 633370,
+      "sha256": "0a551914efe913a9f764043a7db645a4f97a80176956e01ab62983bcf20b25dc"
+    },
+    {
+      "input": "FK-alternatenames.zip",
+      "bytes": 28062,
+      "sha256": "09548583c9f72a7e5862c68417157f665ec34cec00ae0fb09d823ffb7605a180"
+    },
+    {
+      "input": "FK.zip",
+      "bytes": 39573,
+      "sha256": "2b9aac57045f4c34ed16301411022c7340c4127d2be187fdec40f8e51280a323"
+    },
+    {
+      "input": "GF-alternatenames.zip",
+      "bytes": 63977,
+      "sha256": "83a4ea946cd31fe23feb85710660f6143285eaf42d06e4177f1c1a8df2611922"
+    },
+    {
+      "input": "GF.zip",
+      "bytes": 118913,
+      "sha256": "634a4174df4148f2e5173ac8e73d0bc27a0c0aed289012835965f179aff1c196"
+    },
+    {
+      "input": "GS-alternatenames.zip",
+      "bytes": 42670,
+      "sha256": "cdaa3f7c3c82352e664fc4d49032774c12f42183ea73fade51da29a5ef2eddd2"
+    },
+    {
+      "input": "GS.zip",
+      "bytes": 36519,
+      "sha256": "b06cc09b12cfe67a4893b20a3b671c0ac9d585353a5af0aba8936d34d70b5221"
+    },
+    {
+      "input": "GY-alternatenames.zip",
+      "bytes": 96639,
+      "sha256": "8363b771dd940eda95162170bba5cf4c0b5773c85043b17e95dfad95aa3c2194"
+    },
+    {
+      "input": "GY.zip",
+      "bytes": 174049,
+      "sha256": "3e05375027884ffc2cce08f47c738842af7ca68f9656dc977650016fdfac6990"
+    },
+    {
+      "input": "PE-alternatenames.zip",
+      "bytes": 975126,
+      "sha256": "830197471d9d39f26249bdaae617379f040d792ba2b1ac0b03328944c65f436b"
+    },
+    {
+      "input": "PE.zip",
+      "bytes": 3087236,
+      "sha256": "9edb9fa3e9e3e59787bc1790fe1338d06f2ad99cd793c3d80a044ce0c0b603e9"
+    },
+    {
+      "input": "SR-alternatenames.zip",
+      "bytes": 57880,
+      "sha256": "34f708c4270b82a324b8dd152e7454634333c64623ef6f1014f0860fb354da3d"
+    },
+    {
+      "input": "SR.zip",
+      "bytes": 83050,
+      "sha256": "e2e4ca55694dfb1afcbbc717b2df03680d0ace7427cf0af9ea7e2e4b1042e90d"
+    },
+    {
+      "input": "UY-alternatenames.zip",
+      "bytes": 180043,
+      "sha256": "fb0b3abcc686dc73ed1b09ab6104cf2d5ccd2bab34c6b453ca5372dc84659cd2"
+    },
+    {
+      "input": "UY.zip",
+      "bytes": 276105,
+      "sha256": "2df283fc17f36e9c52f4b59c3e8584a136f7703810dc3dd078a34a77a5b115ff"
+    },
+    {
+      "input": "VE-alternatenames.zip",
+      "bytes": 369139,
+      "sha256": "f1cb3f066b4a512e67b7cfded1b3fb35ae06f2afb0311c144bdc47677c3236d2"
+    },
+    {
+      "input": "VE.zip",
+      "bytes": 1824593,
+      "sha256": "d74463f8f38262260ac2204207139737e9b628053961d7f11a4763fe801c81b8"
+    },
+    {
+      "input": "countryInfo.txt",
+      "bytes": 31678,
+      "sha256": "93bafc525813f22e4711ff9ed6d626343094ce48c26388dc7c49189b3d7d5512"
+    },
+    {
+      "input": "geonames-license-page.html",
+      "bytes": 30275,
+      "sha256": "27880516473d0d17538976cc71c75a6a0e3ff37b6549cb8e2ecd1b333eb702b8"
+    },
+    {
+      "input": "geonames-readme.txt",
+      "bytes": 8843,
+      "sha256": "b1957379b6c1242c700c98ac9a8aa0a09f56c3c0a50ee72175527005f48ef2c5"
+    },
+    {
+      "input": "m49.html",
+      "bytes": 1721575,
+      "sha256": "b9048114f6e7f2abda83bf03d4263c9d7cd1bd7230e3d0461025ee7839a7a1fb"
+    }
+  ],
+  "source_archives_included_in_repository": false,
+  "selected_raw_columns_preserved_in_output": true,
+  "source_repo_inspection": {
+    "repository": "rei-k/world-address",
+    "branch": "address-foundation/nac-multilingual-20260927",
+    "commit": "d53ec1901b2ce6ff6778a78f9d3ac38d1c776d3d",
+    "recursive_tree_entries": 6365,
+    "existing_layer": "address-foundation/registry/countries/CC.json: admin profiles with incomplete/uncertain translations; not used for name synthesis",
+    "locality_release_inspected": "af-locality-data-20260927-36342022298-1",
+    "decision": "Fresh GeoNames all-A/P country extracts and language-tagged aliases provide larger source-preserving gazetteer coverage than country admin profiles. Existing official BR layer remains separate."
+  },
+  "publication_scope": {
+    "published_country_area_count": 14,
+    "m49_country_area_count": 16,
+    "pending_country_codes": [
+      "AR",
+      "PY"
+    ]
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "representation": "ordered raw binary chunks; concatenate exactly to original compressed bytes",
+  "chunk_size_limit_bytes": 524288,
+  "files": [
+    {
+      "country": "BO",
+      "path": "countries/BO/entities.csv.gz",
+      "bytes": 828693,
+      "sha256": "11e2b16a5cbface5948e809283bfdc9fecbddcfb0a8237d789d7c83db25b45f1",
+      "git_blob_sha": "1c7ffcc4bee1941438ff5bc383461e66ef88aa64",
+      "parts": [
+        {
+          "path": ".parts/countries/BO/entities.csv.gz/part-0001.bin",
+          "bytes": 524288,
+          "sha256": "c02d4b16b9b61f62ae1abf17480344ee98da9eb22cf5e76dd9752467459df9e9"
+        },
+        {
+          "path": ".parts/countries/BO/entities.csv.gz/part-0002.bin",
+          "bytes": 304405,
+          "sha256": "81c1a6d812f3dcaaaa93c29d3ed97a294d9b83f3e17556ce2841106d2478a826"
+        }
+      ]
+    },
+    {
+      "country": "BR",
+      "path": "countries/BR/alternate-values.csv.gz",
+      "bytes": 2097790,
+      "sha256": "a75d4de8105e91d9f8111e876cd1153194ccd4e6aeda76c6f66bd65ce79d6e1f",
+      "git_blob_sha": "813905abf408fccfd8db672474a76491ec803d8e",
+      "parts": [
+        {
+          "path": ".parts/countries/BR/alternate-values.csv.gz/part-0001.bin",
+          "bytes": 524288,
+          "sha256": "913aa14e58102ecaad2a455104cc556fd27a9cdfb6164652664bf157ad0437cd"
+        },
+        {
+          "path": ".parts/countries/BR/alternate-values.csv.gz/part-0002.bin",
+          "bytes": 524288,
+          "sha256": "5d04f5fc60c2026a0aff9876db81ce7b7f75b693ad227d05dba0254d5f71a0fc"
+        },
+        {
+          "path": ".parts/countries/BR/alternate-values.csv.gz/part-0003.bin",
+          "bytes": 524288,
+          "sha256": "0ab633cc4bfbd5c931cd64b56e08dcfb3ed9416172ffde407dce61524ce9d026"
+        },
+        {
+          "path": ".parts/countries/BR/alternate-values.csv.gz/part-0004.bin",
+          "bytes": 524288,
+          "sha256": "940a457b7c25f88d1d797e68237a509c473ae7643258382fa4dc272456cfbd5e"
+        },
+        {
+          "path": ".parts/countries/BR/alternate-values.csv.gz/part-0005.bin",
+          "bytes": 638,
+          "sha256": "5913ac4198a4f43b76e322beb6dbbffff6174e6450e1f1204ed0e4ca00eef418"
+        }
+      ]
+    },
+    {
+      "country": "BR",
+      "path": "countries/BR/entities.csv.gz",
+      "bytes": 3222418,
+      "sha256": "d47d1900b8723b61d8c2ff623a358fe9031b4d0a835344110ab7c05d41634a51",
+      "git_blob_sha": "571d9a7d0b03fdd2147b5fd7fd3dda5f37a1d594",
+      "parts": [
+        {
+          "path": ".parts/countries/BR/entities.csv.gz/part-0001.bin",
+          "bytes": 524288,
+          "sha256": "619ab6e1e3aafc5ad9b31d10a7218f3e3add0662d6245d0bed5f3ae2c307e434"
+        },
+        {
+          "path": ".parts/countries/BR/entities.csv.gz/part-0002.bin",
+          "bytes": 524288,
+          "sha256": "1df46ec2523468f34ef98c8c7e3d5da4fd1a3c9c090e7b574eda2a5effb5d6cc"
+        },
+        {
+          "path": ".parts/countries/BR/entities.csv.gz/part-0003.bin",
+          "bytes": 524288,
+          "sha256": "abe5dd9e34cefb420d130ae7a4ec25ea5d326159d445f6ae36bb9c5e53171887"
+        },
+        {
+          "path": ".parts/countries/BR/entities.csv.gz/part-0004.bin",
+          "bytes": 524288,
+          "sha256": "c9266c8aaf350a072088779c1616a5e4936fc997e2c6825eb7c40e39ac2d5fec"
+        },
+        {
+          "path": ".parts/countries/BR/entities.csv.gz/part-0005.bin",
+          "bytes": 524288,
+          "sha256": "3043ffd916fdbaf5af0616893d4e863cb07411d6a9a03dd768b32a40cdc8bb9c"
+        },
+        {
+          "path": ".parts/countries/BR/entities.csv.gz/part-0006.bin",
+          "bytes": 524288,
+          "sha256": "3db20633994a44f252473d0cb74c098cdeca6cf0da85b630d92a8eea894c0e52"
+        },
+        {
+          "path": ".parts/countries/BR/entities.csv.gz/part-0007.bin",
+          "bytes": 76690,
+          "sha256": "a06b4a03d975c56e6a55c07e416007d097f015aeff5f3d65fa919b47942679be"
+        }
+      ]
+    },
+    {
+      "country": "CO",
+      "path": "countries/CO/entities.csv.gz",
+      "bytes": 1333883,
+      "sha256": "37c2359a87f0ab7a7e7f459f0e3288bb0e5a6ac603447d341e129c3d6e793aa3",
+      "git_blob_sha": "7031a63cae08ad66a93411fed911cd37329540d5",
+      "parts": [
+        {
+          "path": ".parts/countries/CO/entities.csv.gz/part-0001.bin",
+          "bytes": 524288,
+          "sha256": "3c13ba21cf2ec1c1931cbd49ecc2c66cf789ce607d1e8ec1b76461473d406665"
+        },
+        {
+          "path": ".parts/countries/CO/entities.csv.gz/part-0002.bin",
+          "bytes": 524288,
+          "sha256": "a9d0405d0077d6c91a30a6f8cd91cb3b1bf2a8031da2208e30768345397d6ebe"
+        },
+        {
+          "path": ".parts/countries/CO/entities.csv.gz/part-0003.bin",
+          "bytes": 285307,
+          "sha256": "090b593806832d613fdaef8d35da1261038703265b635b380cbe06b38a67abdb"
+        }
+      ]
+    },
+    {
+      "country": "PE",
+      "path": "countries/PE/entities.csv.gz",
+      "bytes": 1768140,
+      "sha256": "d0e039331a74f43c773d9a0fc81d3473cc7b7d1180d0e20aba8456f469e21b1d",
+      "git_blob_sha": "1522a6b0bac94b287f5efd20efb1b8a0b5d46d36",
+      "parts": [
+        {
+          "path": ".parts/countries/PE/entities.csv.gz/part-0001.bin",
+          "bytes": 524288,
+          "sha256": "f175ab9d2812f7dd07cd1680a9e5287c66b12c24f0cf37d27c232bd0391d103b"
+        },
+        {
+          "path": ".parts/countries/PE/entities.csv.gz/part-0002.bin",
+          "bytes": 524288,
+          "sha256": "175aba4a05e04dc0867010418b08d09d24ec3a2d6e2648ea71fdd55627b50ca9"
+        },
+        {
+          "path": ".parts/countries/PE/entities.csv.gz/part-0003.bin",
+          "bytes": 524288,
+          "sha256": "2b84ce4587ca9874e675aff6b697379bc171387445ebf3b004772bf84bb00d80"
+        },
+        {
+          "path": ".parts/countries/PE/entities.csv.gz/part-0004.bin",
+          "bytes": 195276,
+          "sha256": "74ffad96c0388d4648cf203e103a823c10b83f339b3ef1eef20dcb0aae0c2f86"
+        }
+      ]
+    },
+    {
+      "country": "VE",
+      "path": "countries/VE/entities.csv.gz",
+      "bytes": 852599,
+      "sha256": "a44b529c33c29b55fe28d7a0579ebf481c47334d53a29739bf401ce94fc21923",
+      "git_blob_sha": "f5febd516b31122c7cf89775d7f65daffe558d79",
+      "parts": [
+        {
+          "path": ".parts/countries/VE/entities.csv.gz/part-0001.bin",
+          "bytes": 524288,
+          "sha256": "8debce5d4f057fc0d5d14d18723a5311fa7abb495f5c0e0b87c968664d030844"
+        },
+        {
+          "path": ".parts/countries/VE/entities.csv.gz/part-0002.bin",
+          "bytes": 328311,
+          "sha256": "69687216999d76ff5e64be445ae2b5718835b8d0356fa2402d51d6a9d30c18e3"
+        }
+      ]
+    }
+  ]
+}

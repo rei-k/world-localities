@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "published_country_area_count": 14,
+  "m49_country_area_count": 16,
+  "pending_country_codes": [
+    "AR",
+    "PY"
+  ],
+  "excluded_country_payloads_projections_parts_and_report_entries_absent": true,
+  "original_canonical_and_16_country_publication_files_unchanged": true,
+  "split_file_count": 6,
+  "part_count": 23,
+  "max_part_bytes": 524288,
+  "large_originals_absent_in_published_tree": true,
+  "unchanged_smaller_gzip_files": 22,
+  "included_country_payloads_match_canonical_exactly": true,
+  "clean_publication_only_copy_tested": true,
+  "automatic_query_reconstruction": "BR passed; UY smoke passed",
+  "automatic_full_verify_reconstruction": "all fourteen countries passed",
+  "full_integrity_and_derived_column_replay": "passed",
+  "unit_regression_reconstruction_and_scope_tests": 21,
+  "counts": {
+    "entities": 241514,
+    "alternate_values": 289202
+  },
+  "no_remote_writes": true
+}
