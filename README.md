@@ -7,8 +7,9 @@
 | 地域 | 行政区画・地名 | 別出典の公式対応表 | 取得日 |
 |---|---:|---:|---|
 | [ヨーロッパ](europe-registry/README.md) | 57か国・地域、1,161,589件 | Eurostat LAU: 32か国、104,687行 | 2026-09-29 |
+| [アジア＋ロシア全域補足](asia-registry/README.md) | 52国・地域、3,277,921件 | 公式対訳・郵便番号の全面対応は未収録 | 国別メタデータ参照 |
 
-GeoNamesとEurostatは重複する対象を含むため、件数を合算しません。
+地域台帳間にも同じ `gn:` IDの重複があります。アジアと欧州、GeoNamesとEurostatの件数を単純に合算しません。
 企業名簿・法人情報は収録対象に含めません。
 
 国別の分割CSV、原典コード、確認できた親子関係、出典・ライセンス、検証結果を収録しています。
@@ -34,3 +35,15 @@ python build.py verify
 欧州データは、[rei-k/world-address PR #406](https://github.com/rei-k/world-address/pull/406)の
 コミット`9071ff08548bbc6b449e6c30e8eae2adad025d46`から収録しました。
 取得済みデータの内容と検証結果を保ち、配置場所に関する案内だけを更新しています。
+
+アジアは [world-address の保存済みスナップショット](https://github.com/rei-k/world-address/tree/8e30ef141e40769fa932adeb2f901505023bfd1e/address-foundation/asia-registry) を収録しています。
+移行の照合結果は [migration.json](asia-registry/migration.json)、公式情報の拡充順序は
+[追加設計](docs/enrichment-plan-ja.md) を参照してください。
+
+次のコマンドはリポジトリのルートから実行します。
+
+```bash
+python asia-registry/package.py unpack --country JP
+python asia-registry/build.py verify --country JP
+python -m unittest discover -s tests -p 'test_asia_package.py' -v
+```
