@@ -1,6 +1,6 @@
 # Attribution and reuse
 
-Data: GeoNames, https://www.geonames.org/, retrieved 2026-10-01 from the URLs and SHA-256 values recorded in country metadata. Licensed under Creative Commons Attribution 4.0 International: https://creativecommons.org/licenses/by/4.0/. The included upstream readme states this license. Attribute GeoNames and indicate the modifications when redistributing.
+Data: GeoNames, https://www.geonames.org/, retrieved 2026-10-01 for the previous fourteen countries/areas and 2026-10-02 for Argentina/Paraguay, from the URLs and SHA-256 values recorded in country metadata. AR/PY original archives and their `countryInfo` reference bytes are retained for offline source replay. Licensed under Creative Commons Attribution 4.0 International: https://creativecommons.org/licenses/by/4.0/. The included upstream readme states this license. Attribute GeoNames and indicate the modifications when redistributing.
 
 Derived data changes: selection of source feature classes A/P; source-preserving CSV conversion; stable namespaced IDs; exact-code administrative references; retained alternate-value observations; source-based coverage counts and verification metadata. No street or premise-address data is included. Do not imply GeoNames endorsement or independent verification of administrative law, language completeness or delivery coverage.
 

@@ -1,6 +1,26 @@
 {
   "countries": [
     {
+      "alpha3": "ARG",
+      "country": "AR",
+      "geonames_continent": "SA",
+      "geonames_id": "3865483",
+      "id": "country:AR",
+      "m49": "032",
+      "name_en": "Argentina",
+      "region": "South America",
+      "region_m49": "005",
+      "source_country_languages": [
+        "es-AR",
+        "en",
+        "it",
+        "de",
+        "fr",
+        "gn"
+      ],
+      "status": "source_country_or_area"
+    },
+    {
       "alpha3": "BOL",
       "country": "BO",
       "geonames_continent": "SA",
@@ -171,6 +191,22 @@
       "status": "source_country_or_area"
     },
     {
+      "alpha3": "PRY",
+      "country": "PY",
+      "geonames_continent": "SA",
+      "geonames_id": "3437598",
+      "id": "country:PY",
+      "m49": "600",
+      "name_en": "Paraguay",
+      "region": "South America",
+      "region_m49": "005",
+      "source_country_languages": [
+        "es-PY",
+        "gn"
+      ],
+      "status": "source_country_or_area"
+    },
+    {
       "alpha3": "SUR",
       "country": "SR",
       "geonames_continent": "SA",
@@ -221,6 +257,8 @@
     }
   ],
   "m49_country_area_count": 16,
+  "pending_countries": [],
+  "published_country_area_count": 16,
   "related_separate_layers": [
     {
       "country": "BR",
@@ -457,18 +495,5 @@
       "VEN"
     ]
   ],
-  "source_url": "https://unstats.un.org/unsd/methodology/m49/",
-  "published_country_area_count": 14,
-  "pending_countries": [
-    {
-      "country": "AR",
-      "name_en": "Argentina",
-      "status": "publication_pending"
-    },
-    {
-      "country": "PY",
-      "name_en": "Paraguay",
-      "status": "publication_pending"
-    }
-  ]
+  "source_url": "https://unstats.un.org/unsd/methodology/m49/"
 }

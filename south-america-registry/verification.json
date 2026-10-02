@@ -1,16 +1,30 @@
 {
-  "alternate_values": 289202,
+  "alternate_values": 339656,
   "current_official_hierarchy_verified": false,
   "errors": 0,
   "full_municipality_coverage_verified": false,
   "m49_country_area_count": 16,
   "no_address1": true,
-  "pending_country_codes": [
-    "AR",
-    "PY"
-  ],
-  "prepared_countries": 14,
+  "pending_country_codes": [],
+  "postal_deliverability_verified": false,
+  "prepared_countries": 16,
   "reports": [
+    {
+      "address_candidates": 14850,
+      "admin_rows": 605,
+      "alternate_values": 41207,
+      "ambiguous_parents": 0,
+      "country": "AR",
+      "country_scope_only": 0,
+      "derived_columns_replay": "exact",
+      "integrity": "passed",
+      "localities_without_adm1": 0,
+      "locality_rows": 14889,
+      "other_admin_rows": 2,
+      "rows": 15496,
+      "source_archive_replay": "exact",
+      "unresolved_parents": 1
+    },
     {
       "address_candidates": 25772,
       "admin_rows": 760,
@@ -24,6 +38,7 @@
       "locality_rows": 25804,
       "other_admin_rows": 3,
       "rows": 26567,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 207
     },
     {
@@ -39,6 +54,7 @@
       "locality_rows": 72393,
       "other_admin_rows": 13,
       "rows": 78068,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 18
     },
     {
@@ -54,6 +70,7 @@
       "locality_rows": 0,
       "other_admin_rows": 1,
       "rows": 1,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 0
     },
     {
@@ -69,6 +86,7 @@
       "locality_rows": 6967,
       "other_admin_rows": 7,
       "rows": 7392,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 0
     },
     {
@@ -84,6 +102,7 @@
       "locality_rows": 35945,
       "other_admin_rows": 27,
       "rows": 37464,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 78
     },
     {
@@ -99,6 +118,7 @@
       "locality_rows": 11458,
       "other_admin_rows": 5,
       "rows": 12746,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 10
     },
     {
@@ -114,6 +134,7 @@
       "locality_rows": 57,
       "other_admin_rows": 1,
       "rows": 58,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 0
     },
     {
@@ -129,6 +150,7 @@
       "locality_rows": 741,
       "other_admin_rows": 15,
       "rows": 782,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 0
     },
     {
@@ -144,6 +166,7 @@
       "locality_rows": 4,
       "other_admin_rows": 1,
       "rows": 5,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 0
     },
     {
@@ -159,6 +182,7 @@
       "locality_rows": 907,
       "other_admin_rows": 52,
       "rows": 969,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 0
     },
     {
@@ -174,7 +198,24 @@
       "locality_rows": 47493,
       "other_admin_rows": 3,
       "rows": 49591,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 233
+    },
+    {
+      "address_candidates": 6839,
+      "admin_rows": 8498,
+      "alternate_values": 9247,
+      "ambiguous_parents": 0,
+      "country": "PY",
+      "country_scope_only": 0,
+      "derived_columns_replay": "exact",
+      "integrity": "passed",
+      "localities_without_adm1": 0,
+      "locality_rows": 6868,
+      "other_admin_rows": 3,
+      "rows": 15369,
+      "source_archive_replay": "exact",
+      "unresolved_parents": 0
     },
     {
       "address_candidates": 526,
@@ -189,6 +230,7 @@
       "locality_rows": 553,
       "other_admin_rows": 1,
       "rows": 632,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 0
     },
     {
@@ -204,6 +246,7 @@
       "locality_rows": 1089,
       "other_admin_rows": 1,
       "rows": 1234,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 1
     },
     {
@@ -219,10 +262,15 @@
       "locality_rows": 25553,
       "other_admin_rows": 1,
       "rows": 26005,
+      "source_archive_replay": "not_run_original_source_archives_not_published",
       "unresolved_parents": 6
     }
   ],
-  "rows": 241514,
-  "scope_countries": 14,
+  "rows": 272379,
+  "scope_countries": 16,
+  "source_archive_replay_countries": [
+    "AR",
+    "PY"
+  ],
   "status": "passed"
 }
