@@ -9,6 +9,7 @@
 | [ヨーロッパ](europe-registry/README.md) | 57か国・地域、1,161,589件 | Eurostat LAU: 32か国、104,687行 | 2026-09-29 |
 | [オセアニア](oceania-registry/README.md) | 29か国・地域、46,594件 | AU ABS公式コード567件。GeoNames直接ID郵便対応262行は別レイヤー | 2026-09-26～29 |
 | [アジア＋ロシア全域補足](asia-registry/README.md) | 52国・地域、3,277,921件 | [JP・TWの公式名称・郵便対応](official-registry/README.md)を追加。全面対応は未完了 | 国別メタデータ参照 |
+| [南米](south-america-registry/README.md) | M49の16/16国・地域、272,379件 | GeoNames出典付き台帳。公式自治体完全性・郵便配達可能性は未検証。BRのIBGE公式台帳とは別レイヤー | 2026-10-01・03 |
 
 地域台帳間にも同じ `gn:` IDの重複があります。アジアと欧州、GeoNamesとEurostatの件数を単純に合算しません。
 企業名簿・法人情報は収録対象に含めません。

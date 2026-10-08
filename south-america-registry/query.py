@@ -11,7 +11,7 @@ def select(country, kind=None, level=None, state=None, parent=None, text=None, i
     if len(country) != 2 or not country.isalpha() or country != country.upper():
         raise ValueError('country must be an uppercase two-letter code')
     if country not in PUBLISHED_SCOPE:
-        raise ValueError('Country is not included in this 14-area publication; AR/PY are pending')
+        raise ValueError('Country is not included in the M49 South America publication')
     materialize_country(ROOT, country)
     rows = read_csv(ROOT / 'countries' / country / 'entities.csv.gz')
     for r in rows:

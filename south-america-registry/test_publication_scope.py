@@ -1,22 +1,25 @@
-"""Regression tests for the explicitly limited publication scope."""
+"""Regression tests for the complete M49 gazetteer publication scope."""
 import unittest
 from build import PUBLISHED_SCOPE, PENDING, SCOPE
 from query import select
 
 
 class PublicationScope(unittest.TestCase):
-    def test_fourteen_of_sixteen(self):
+    def test_sixteen_of_sixteen(self):
         self.assertEqual(len(SCOPE),16)
-        self.assertEqual(len(PUBLISHED_SCOPE),14)
-        self.assertEqual(PENDING,{'AR','PY'})
-        self.assertFalse(PUBLISHED_SCOPE.intersection(PENDING))
-        self.assertEqual(PUBLISHED_SCOPE | PENDING,SCOPE)
+        self.assertEqual(PUBLISHED_SCOPE,SCOPE)
+        self.assertEqual(PENDING,set())
 
-    def test_pending_queries_rejected(self):
-        for cc in sorted(PENDING):
+    def test_ar_py_queries_supported(self):
+        for cc in ['AR','PY']:
             with self.subTest(country=cc):
-                with self.assertRaisesRegex(ValueError,'not included'):
-                    list(select(cc))
+                rows=list(select(cc,kind='admin_subdivision',level=1))
+                self.assertTrue(rows)
+                self.assertTrue(all(r['country_code']==cc and r['parent_id']=='country:'+cc for r in rows))
+
+    def test_out_of_scope_query_rejected(self):
+        with self.assertRaisesRegex(ValueError,'not included'):
+            list(select('MX'))
 
 
 if __name__=='__main__':unittest.main()
