@@ -109,6 +109,25 @@ def inspect_area(root, area):
             record(f'official-registry/americas-provenance/registry/countries/{cc}.json')
             snapshots.verify_country(root / 'official-registry', cc, schema)
             checked_official.append(cc)
+    if area == 'central-america':
+        central = imported('central_payload_quality', ROOT / 'central-america-registry/quality.py')
+        payload_report = central.verify_all(root)
+        v.require(payload_report['status'] == 'passed',
+                  'Central America payload validation failed: ' + str(payload_report['failed_countries']))
+        government = imported('central_canton_codes', ROOT / 'central-america-registry/government_codes.py')
+        government.verify(root)
+        # Record all new source and derived bytes actually validated by the runner.
+        for folder in ('central-america-registry/enrichment', 'central-america-registry/government-reference/CR'):
+            manifest = v.decode_json(record(folder + '/manifest.json'))
+            for filename in sorted(manifest['files']):
+                record(folder + '/' + filename)
+        record('central-america-registry/locale_manifest.json')
+        for cc in central.BASE:
+            folder = 'central-america-registry/countries/' + cc
+            for metadata_name in ('metadata.json', 'locale_metadata.json'):
+                metadata = v.decode_json(record(folder + '/' + metadata_name))
+                for filename in sorted(metadata['files']):
+                    record(folder + '/' + filename)
     return {
         'area': area, 'status': 'passed', 'input_sha256': fingerprint(paths),
         'checked_file_sha256': paths, 'country_area_count': len(sources),
@@ -116,8 +135,8 @@ def inspect_area(root, area):
         'pending_country_area_codes': sorted(cc for cc, x in sources.items() if x['status'] == 'pending_source'),
         'unresolved_parent_links': sum(x.get('unresolved_parents', 0) for x in sources.values()),
         'official_full_row_and_parent_checks': checked_official,
-        'regional_gazetteer_payload_checks': 'not_run' if area != 'northern-america' else 'not_applicable',
-        'regional_check_scope': 'pinned country metadata and country-level metrics, not compressed payload contents',
+        'regional_gazetteer_payload_checks': ('passed_hashes_and_derived_replay_CR_raw_replay' if area == 'central-america' else 'not_run' if area != 'northern-america' else 'not_applicable'),
+        'regional_check_scope': ('Seven Central America gazetteer payloads: hashes, derived columns and ID references; CR raw ZIP replay and government CodeSystem replay. Legacy six-country raw ZIP replay is not run.' if area == 'central-america' else 'pinned country metadata and country-level metrics, not compressed payload contents'),
         'quality_notes': notes,
         'upstream_freshness_verified': False, 'postal_or_address_deliverability_verified': False
     }

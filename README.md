@@ -76,5 +76,15 @@ BM/GL/PMの**18件の行政区画名シード**も追加しました。
  / `python americas-registry/audit.py --mode plan`
  / `python americas-registry/audit.py --mode cycle --rounds 3`
 
-アメリカ大陸の地域別の**出典付き国・地域レイヤーは52/57**です。
+アメリカ大陸の地域別の**出典付き国・地域レイヤーは53/57**です。
 この数値は全住所・自治体・全公用語の網羅を意味しません。
+
+## 中央アメリカの追加強化（2026-10-15）
+
+[中央アメリカ強化記録](central-america-registry/ENRICHMENT_20261015.md)に、
+コスタリカ6,465地名・行政地物と6,182言語付き名称の追加、政府公開84カントンコード表、
+8か国共通検索、全ペイロード検査を整理した。国別出典レイヤーは中央アメリカ8/8、
+アメリカ大陸53/57。住所・郵便番号・全自治体の完全網羅ではない。
+
+新しい入口は `python central-america-registry/query_enriched.py --country CR --text 'San Jose' --language es`、
+実データ検査は `python central-america-registry/quality.py`。

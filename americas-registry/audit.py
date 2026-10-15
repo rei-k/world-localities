@@ -7,6 +7,7 @@ Run after each upstream data change; --mode cycle stops if the inputs do not
 change instead of pretending to enrich data by repeating a read.
 """
 import argparse
+import importlib.util
 import csv
 import hashlib
 import json
@@ -184,13 +185,32 @@ def _central(root):
     require(sum(x["source_locality_rows"] for x in coverage.values()) ==
             manifest["totals"]["locality_rows"], "Central America source total mismatch")
     require("MX" in roster and "MX" not in published and "CR" in roster,
-            "Expected separate MX / pending CR scope has changed")
+            "Expected separate MX / additive CR scope has changed")
     sources = {cc: regional_source(cc, "central-america-registry", coverage)
                for cc in published}
     sources["MX"] = official_snapshot(root, "MX")
+    # The preserved six-country publication remains unchanged. CR is additive.
+    module_path = Path(__file__).resolve().parents[1] / "central-america-registry/supplement.py"
+    spec = importlib.util.spec_from_file_location("central_cr_snapshot", module_path)
+    supplement = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(supplement)
+    cr = supplement.verify(root)
+    sources["CR"] = {
+        "country": "CR", "status": "published_source_layer",
+        "layer": "central-america-registry/enrichment/countries/CR",
+        "source_locality_rows": cr["locality_rows"],
+        "in_m49_area_locality_rows": cr["locality_rows"],
+        "excluded_source_locality_rows": 0,
+        "unresolved_parents": cr["unresolved_parents"],
+        "quality": "geonames_source_gazetteer_raw_replayed_not_official_postal_coverage"
+    }
     for cc in roster - set(sources):
         sources[cc] = pending(cc)
-    return sources, ["MX: separate INEGI official snapshot; not part of 6-country GeoNames package"]
+    return sources, [
+        "MX: separate INEGI official snapshot; not part of 6-country GeoNames package",
+        "CR: additive source gazetteer with raw replay; original six-country snapshot is unchanged",
+        "CR: source ADM2 count is 82; separate government CodeSystem has 84 entries and is not a verified GeoNames crosswalk"
+    ]
 
 
 def _caribbean(root):

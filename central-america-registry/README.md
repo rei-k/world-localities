@@ -1,3 +1,7 @@
+> **2026-10-15 現行統合版:** コスタリカの追加レイヤーとメキシコの別出典を含め、中央アメリカ8/8か国を参照できるようになりました。
+> [追加内容・検証範囲](ENRICHMENT_20261015.md)、`query_enriched.py`、`quality.py`を参照してください。
+> 以下の6か国版の説明と既存manifest/coverageは、変更していない保存済み原本の説明です。
+
 # Central America locality and administrative source snapshot
 
 Six country batches contain 53,257 GeoNames administrative/populated-place
