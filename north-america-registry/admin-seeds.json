@@ -13,20 +13,20 @@
     "bermuda_municipalities_2026": {
       "publisher": "Government of Bermuda, Parliamentary Registry",
       "url": "https://www.gov.bm/print/html/node/1237056",
-      "source_vintage": "2026-04-10 notice",
+      "source_vintage": "2026-04-10 government notice referring to the municipalities of Hamilton and St. George",
       "license_status": "official naming facts only; no copied raw map or household data"
     },
     "greenland_statistics_2026": {
       "publisher": "Statistics Greenland",
-      "url": "https://bank.stat.gl/pxweb/en/Greenland/Greenland__BE__BE01__BE0120/BEXSTC.px/table/tableViewLayout1/?loadedQueryId=ccc952e4-ac57-4e6c-82d4-c69317d7bb5f&timeType=top&timeValue=1",
-      "source_vintage": "2026 municipality table, last updated 2026-02-10",
+      "url": "https://stat.gl/publ/en/BE/202604/contents/Midyear%20Population.htm",
+      "source_vintage": "2026Q3 municipal population listing; direct official published table",
       "license_status": "names verified from published public table; permission for large-scale source reuse not established"
     },
     "france_communes_2025": {
-      "publisher": "Légifrance, decree 2025-685 Article 6",
-      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051949424",
-      "source_vintage": "2025-07-22 law documenting 97501 and 97502; not a claim of full 2026 COG import",
-      "license_status": "official legal names and codes only, not a copied INSEE database"
+      "publisher": "INSEE, Communes 975 Saint-Pierre-et-Miquelon",
+      "url": "https://www.insee.fr/fr/statistiques/fichier/8680702/dep975.pdf",
+      "source_vintage": "INSEE December 2025 publication; reference municipal population in force from 2026-01-01; commune codes 501 and 502 under 975",
+      "license_status": "Verified official commune naming/code facts only; no copied proprietary address or household data"
     }
   },
   "records": [
@@ -139,9 +139,9 @@
       "can_validate_postal_or_street": false
     },
     {
-      "provisional_id": "seed:BM:municipality:city-of-hamilton",
+      "provisional_id": "seed:BM:municipality:hamilton",
       "country": "BM",
-      "source_name": "City of Hamilton",
+      "source_name": "Hamilton",
       "language": "en",
       "kind": "municipality",
       "official_code": null,
@@ -151,9 +151,9 @@
       "can_validate_postal_or_street": false
     },
     {
-      "provisional_id": "seed:BM:municipality:town-of-st-george",
+      "provisional_id": "seed:BM:municipality:st-george",
       "country": "BM",
-      "source_name": "Town of St. George",
+      "source_name": "St. George",
       "language": "en",
       "kind": "municipality",
       "official_code": null,
