@@ -40,6 +40,34 @@ def _metadata(registry):
     return scope, by_country, overrides
 
 
+def administrative_seeds(registry, country, text=None, limit=20):
+    data = load_json(registry / "admin-seeds.json")
+    records = []
+    seen = set()
+    for row in data["records"]:
+        identity = row["provisional_id"]
+        if identity in seen:
+            raise QueryError("duplicated provisional administrative seed ID")
+        seen.add(identity)
+        if row["evidence_id"] not in data["source_evidence"]:
+            raise QueryError("administrative seed is missing source evidence")
+        if row["country"] != country:
+            continue
+        if text and normalized(text) not in normalized(row["source_name"]):
+            continue
+        records.append({
+            "provisional_id": identity,
+            "name": row["source_name"],
+            "language": row["language"],
+            "kind": row["kind"],
+            "official_code": row["official_code"],
+            "evidence_url": data["source_evidence"][row["evidence_id"]]["url"],
+            "locality_status": "administrative_seed_only",
+            "postal_or_street_verified": False
+        })
+    return records[:limit], len(records)
+
+
 def display_region_name(country, region, overrides):
     change = overrides.get((country, region["code"]))
     if change is None:
@@ -67,11 +95,18 @@ def search(country, *, region=None, text=None, limit=20,
     if profile["status"] == "pending_locality_source":
         if region:
             raise QueryError(f"{country}: no region catalogue has been loaded")
+        seeds, count = administrative_seeds(root / "north-america-registry", country, text, limit)
         return {
             "country": country, "m49_region": "021", "status": "not_loaded",
             "source_layer": None, "source_locality_rows": None,
             "rows_scanned": None, "matches_found": None, "results": [],
-            "limitations": ["No verified locality source has been installed; an empty result does not mean no places exist."]
+            "administrative_seeds": seeds, "administrative_seed_matches": count,
+            "administrative_seeds_truncated": count > limit,
+            "limitations": [
+                "Administrative seed names are evidence-backed but not a full locality gazetteer.",
+                "No verified locality source has been installed; an empty locality result does not mean no places exist.",
+                "Administrative seeds cannot validate postal addresses or street and unit numbers."
+            ]
         }
     if profile["status"] != "preserved_official_snapshot":
         raise QueryError(f"{country}: unknown source status")
