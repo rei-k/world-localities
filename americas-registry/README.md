@@ -13,6 +13,10 @@ or change third-party licences.
 | 3 | [Caribbean](../caribbean-registry/README.md) | 029 | 27 / 28 | CU |
 | 4 | [South America](../south-america-registry/README.md) | 005 | 16 / 16 GeoNames country-area source packs | None for source packs |
 
+The Northern quality layer also contains **18 attributed administrative names**
+for BM/GL/PM (not counted as locality source coverage) and a sourced,
+non-destructive Canadian Nova Scotia presentation correction.
+
 Across these four M49 areas, **52 / 57 country-area sources** are included,
 but no claim of full official municipal, address, postcode or translation
 completeness follows. In particular, South America's 16/16 is source-pack
