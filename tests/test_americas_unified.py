@@ -91,12 +91,20 @@ class AmericasAreaQualityTests(unittest.TestCase):
         self.assertTrue(all(not x["delivery_verified"] for x in result["results"]))
         self.assertTrue(all(not x["postal_assignment_verified"] for x in result["results"]))
 
-    def test_pending_source_returns_unknown_not_empty_geography(self):
-        for cc in ("BM", "GL", "PM"):
+    def test_pending_source_returns_administrative_seeds_not_fake_localities(self):
+        counts = {"BM": 11, "GL": 5, "PM": 2}
+        self.assertEqual(audit.verify_administrative_seeds(ROOT), counts)
+        for cc, count in counts.items():
             result = northern.search(cc, root=ROOT)
             self.assertEqual(result["status"], "not_loaded")
             self.assertIsNone(result["source_locality_rows"])
             self.assertIsNone(result["matches_found"])
+            self.assertEqual(result["results"], [])
+            self.assertEqual(len(result["administrative_seeds"]), count)
+            self.assertTrue(all(not x["postal_or_street_verified"] for x in result["administrative_seeds"]))
+        pm = northern.search("PM", text="Miquelon", root=ROOT)
+        self.assertEqual(pm["administrative_seed_matches"], 1)
+        self.assertEqual(pm["administrative_seeds"][0]["official_code"], "97501")
 
     def test_plan_starts_with_northern_gaps(self):
         queue = audit.quality_queue(self.report)
