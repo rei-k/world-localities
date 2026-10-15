@@ -106,6 +106,38 @@ def pending(country):
     }
 
 
+def verify_administrative_seeds(root):
+    data = load_json(root, "north-america-registry/admin-seeds.json")
+    require(data["schema_version"] == 1, "unsupported administrative seed version")
+    sources, records = data["source_evidence"], data["records"]
+    seen, counts = set(), {"BM": 0, "GL": 0, "PM": 0}
+    for row in records:
+        cc, identity = row["country"], row["provisional_id"]
+        require(cc in counts and identity.startswith(f"seed:{cc}:"),
+                "invalid Northern seed country or provisional ID")
+        require(identity not in seen, f"duplicate seed {identity}")
+        seen.add(identity)
+        require(row["kind"] in ("parish", "municipality", "commune"),
+                "unsupported administrative unit type")
+        require(row["source_name"] and row["status"] == "source_attested_administrative_name",
+                "administrative seed is not source-attested")
+        require(row["evidence_id"] in sources and sources[row["evidence_id"]]["url"].startswith("https://"),
+                "missing administrative seed evidence")
+        require(not row["can_validate_postal_or_street"],
+                "administrative seed cannot be used for postal/street verification")
+        if cc == "PM":
+            require(row["kind"] == "commune" and row["official_code"] in ("97501", "97502")
+                    and row["authority_code_scheme"] == "FR-INSEE-COG-COM",
+                    "PM INSEE code mismatch")
+        else:
+            require(row["official_code"] is None and row["authority_code_scheme"] is None,
+                    "unverified BM/GL official code")
+        counts[cc] += 1
+    require(counts == {"BM": 11, "GL": 5, "PM": 2},
+            "Northern administration seed inventory unexpectedly changed")
+    return counts
+
+
 def _northern(root):
     scope = load_json(root, "north-america-registry/scope.json")
     require(scope["region_m49"] == "021", "Northern M49 mismatch")
@@ -126,11 +158,16 @@ def _northern(root):
             raise AuditError(f"{cc}: unsupported Northern status")
     require(sources["US"]["excluded_source_regions"] == ["US-PR"],
             "US Puerto Rico must be accounted for in Caribbean, not Northern America")
+    for cc, count in verify_administrative_seeds(root).items():
+        sources[cc]["administrative_name_seed_rows"] = count
     corrections = load_json(root, "north-america-registry/name-overrides.json")
     require(any(x["state_code"] == "CA-NS" and x["snapshot_name"] == "New Scotia"
                 and x["display_name_en"] == "Nova Scotia" and x["evidence_url"]
                 for x in corrections["entries"]), "Canada's Nova Scotia presentation fix is missing")
-    return sources, ["CA-NS: Nova Scotia verified display correction; source snapshots remain immutable"]
+    return sources, [
+        "CA-NS: Nova Scotia verified display correction; source snapshots remain immutable",
+        "BM/GL/PM: 18 government-attested administrative names recorded separately, not a locality source"
+    ]
 
 
 def _central(root):
