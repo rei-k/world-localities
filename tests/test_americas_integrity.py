@@ -289,7 +289,7 @@ class QualityCycleTests(unittest.TestCase):
     def test_full_real_area_cycle(self):
         result = cycle.run_cycle(ROOT)
         self.assertEqual(result['status'], 'passed', result)
-        self.assertEqual(result['source_country_area_count'], 52)
+        self.assertEqual(result['source_country_area_count'], 53)
         self.assertEqual(result['new_locality_records_added'], 0)
         self.assertTrue(all(x['checked_file_sha256'] for x in result['areas']))
 

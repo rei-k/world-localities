@@ -27,13 +27,13 @@ class AmericasAreaQualityTests(unittest.TestCase):
         self.assertEqual([x["key"] for x in self.report["areas"]],
                          ["northern-america", "central-america", "caribbean", "south-america"])
         self.assertEqual(self.report["m49_country_area_count"], 57)
-        self.assertEqual(self.report["source_country_area_count"], 52)
+        self.assertEqual(self.report["source_country_area_count"], 53)
         self.assertEqual([x["m49_country_area_count"] for x in self.report["areas"]],
                          [5, 8, 28, 16])
         self.assertEqual([x["source_country_area_count"] for x in self.report["areas"]],
-                         [2, 7, 27, 16])
+                         [2, 8, 27, 16])
         self.assertEqual([x["pending_country_area_codes"] for x in self.report["areas"]],
-                         [["BM", "GL", "PM"], ["CR"], ["CU"], []])
+                         [["BM", "GL", "PM"], [], ["CU"], []])
         self.assertIs(self.report["postal_street_delivery_verified"], False)
 
     def test_northern_coverage_excludes_puerto_rico_from_us_source_count(self):
@@ -50,7 +50,7 @@ class AmericasAreaQualityTests(unittest.TestCase):
         by_code = {x["country"]: x for x in area["countries"]}
         self.assertEqual(by_code["MX"]["layer"], "official-registry/MX")
         self.assertEqual(by_code["MX"]["source_locality_rows"], 2478)
-        self.assertIn("CR", area["pending_country_area_codes"])
+        self.assertNotIn("CR", area["pending_country_area_codes"])
 
     def test_caribbean_pr_and_us_source_pr_remain_distinct(self):
         by_code = {x["country"]: x for x in self.areas["caribbean"]["countries"]}
