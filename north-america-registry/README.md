@@ -16,6 +16,15 @@ the Caribbean. See the [official UN M49 list](https://unstats.un.org/unsd/method
 | GL | unknown | Source pending; **not** a claim of zero localities |
 | PM | unknown | Source pending; **not** a claim of zero localities |
 
+A separate [administrative-name seed catalogue](admin-seeds.json) adds **18
+evidence-backed names** for the three missing country/area sources: Bermuda's
+nine parishes and two municipalities, Greenland's five municipalities,
+and Saint Pierre and Miquelon's two French communes with INSEE codes 97501
+and 97502. These are **not** a substitute for a locality source. Seed IDs
+outside INSEE are provisional; the data have no house number or delivery
+authority. Pending-country queries return seed names in the separate
+`administrative_seeds` property while `status=not_loaded` remains true.
+
 There are **72,567 rows in the M49 Northern America view**, computed as
 68,744 - 1,231 + 5,054. The untouched US original contains **68,744** source
 rows, including Puerto Rico; its native role counts are not redefined.
