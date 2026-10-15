@@ -59,3 +59,22 @@ python -m unittest discover -s tests -p 'test_asia_package.py' -v
 ```
 
 オセアニアは国別62分割パックに、言語付き名称37,236件と限定的な郵便番号対応を収録しました。地域IDを保持した名称選択と国別展開に対応します。全公用語・郵便番号の完全網羅ではありません。原典と検証結果は [オセアニア台帳](oceania-registry/README.md) を参照してください。
+
+## アメリカ大陸（北部アメリカから順次強化）
+
+[アメリカ大陸の統合品質監査](americas-registry/README.md)は、国連M49の4地域を
+**北部アメリカ → 中央アメリカ → カリブ海 → 南アメリカ**の順に扱い、
+既存の国別データを再コピーせず参照します。
+
+[北部アメリカ](north-america-registry/README.md)は米国・カナダの公式データ
+（米国68,744行、カナダ5,054行）を読み込み、プエルトリコのM49境界を
+別扱いにします。カナダNova Scotia州名の出典付き表示補正と、
+BM/GL/PMの**18件の行政区画名シード**も追加しました。
+シードは完全な地名台帳や住所・郵便番号の検証結果ではありません。
+
+検証: `python americas-registry/audit.py --mode audit`
+ / `python americas-registry/audit.py --mode plan`
+ / `python americas-registry/audit.py --mode cycle --rounds 3`
+
+アメリカ大陸の地域別の**出典付き国・地域レイヤーは52/57**です。
+この数値は全住所・自治体・全公用語の網羅を意味しません。

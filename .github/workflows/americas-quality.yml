@@ -1,0 +1,54 @@
+name: Americas locality quality checks
+
+on:
+  push:
+    paths:
+      - 'americas-registry/**'
+      - 'north-america-registry/**'
+      - 'official-registry/**'
+      - 'central-america-registry/**'
+      - 'caribbean-registry/**'
+      - 'south-america-registry/**'
+      - 'scripts/verify_americas_snapshots.py'
+      - 'tests/test_americas_*.py'
+      - '.github/workflows/americas-quality.yml'
+  pull_request:
+    paths:
+      - 'americas-registry/**'
+      - 'north-america-registry/**'
+      - 'official-registry/**'
+      - 'central-america-registry/**'
+      - 'caribbean-registry/**'
+      - 'south-america-registry/**'
+      - 'scripts/verify_americas_snapshots.py'
+      - 'tests/test_americas_*.py'
+      - '.github/workflows/americas-quality.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-americas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: ''
+      - name: M49 region membership and source query regressions
+        run: python -m unittest discover -s tests -p 'test_americas_unified.py' -v
+      - name: Existing Americas immutable source byte checks
+        run: python -m unittest discover -s tests -p 'test_americas_snapshots.py' -v
+      - name: Repeatable quality report and queue
+        run: |
+          python americas-registry/audit.py --mode audit > /tmp/americas-audit.json
+          python americas-registry/audit.py --mode plan > /tmp/americas-plan.json
+          python americas-registry/audit.py --mode cycle --rounds 2 > /tmp/americas-cycles.json
+          python north-america-registry/query.py --country BM > /tmp/bermuda.json
