@@ -16,6 +16,7 @@ from .formatting import RenderedAddress, render_address
 from .localized import RegionalAddressRegistry, render_regional_bilingual_address
 from .profiles import AddressProfile, ProfileRegistry
 from .south_asia import SouthAsiaRegistry, render_south_asia_address
+from .southern_europe import SouthernEuropeRegistry, render_southern_europe_address
 from .southeast_asia import SoutheastAsiaRegistry, render_southeast_asia_address
 from .western_asia import WesternAsiaRegistry, render_western_asia_address
 from .western_europe import WesternEuropeRegistry, render_western_europe_address
@@ -34,6 +35,7 @@ __all__ = [
     "RenderedAddress",
     "SoutheastAsiaRegistry",
     "SouthAsiaRegistry",
+    "SouthernEuropeRegistry",
     "ValidationLevel",
     "ValidationResult",
     "WesternAsiaRegistry",
@@ -45,6 +47,7 @@ __all__ = [
     "render_central_asia_address",
     "render_regional_bilingual_address",
     "render_south_asia_address",
+    "render_southern_europe_address",
     "render_southeast_asia_address",
     "render_western_asia_address",
     "render_western_europe_address",

@@ -27,7 +27,7 @@ EVIDENCE_STATUSES = {
     "provisional",
 }
 DANGEROUS_BIDI_CONTROLS = re.compile("[\u202a-\u202e\u2066-\u2069]")
-LATIN_APOSTROPHE_LETTERS = {"\u02bb", "\u02bc"}
+LATIN_APOSTROPHE_LETTERS = {"\u00aa", "\u00ba", "\u02bb", "\u02bc"}
 SCRIPT_UNICODE_NAMES = {
     "Arab": "ARABIC",
     "Armn": "ARMENIAN",
