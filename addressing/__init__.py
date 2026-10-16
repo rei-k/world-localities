@@ -13,6 +13,7 @@ from .east_asia import (
     render_bilingual_address,
     select_localized_components,
 )
+from .eastern_africa import EasternAfricaRegistry, render_eastern_africa_address
 from .eastern_europe import EasternEuropeRegistry, render_eastern_europe_address
 from .formatting import RenderedAddress, render_address
 from .localized import (
@@ -40,6 +41,7 @@ __all__ = [
     "CentralAsiaRegistry",
     "CentralEuropeRegistry",
     "EastAsiaRegistry",
+    "EasternAfricaRegistry",
     "EasternEuropeRegistry",
     "LocalizedAddress",
     "LocationPrecision",
@@ -64,6 +66,7 @@ __all__ = [
     "render_bilingual_address",
     "render_central_asia_address",
     "render_central_europe_address",
+    "render_eastern_africa_address",
     "render_eastern_europe_address",
     "render_northern_africa_address",
     "render_northern_europe_address",

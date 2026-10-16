@@ -34,6 +34,7 @@ SCRIPT_UNICODE_NAMES = {
     "Beng": "BENGALI",
     "Cyrl": "CYRILLIC",
     "Deva": "DEVANAGARI",
+    "Ethi": "ETHIOPIC",
     "Geor": "GEORGIAN",
     "Grek": "GREEK",
     "Hebr": "HEBREW",
