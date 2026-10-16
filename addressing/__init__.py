@@ -33,6 +33,7 @@ from .south_asia import SouthAsiaRegistry, render_south_asia_address
 from .southern_europe import SouthernEuropeRegistry, render_southern_europe_address
 from .southeast_asia import SoutheastAsiaRegistry, render_southeast_asia_address
 from .western_asia import WesternAsiaRegistry, render_western_asia_address
+from .western_africa import WesternAfricaRegistry, render_western_africa_address
 from .western_europe import WesternEuropeRegistry, render_western_europe_address
 
 __all__ = [
@@ -61,6 +62,7 @@ __all__ = [
     "ValidationLevel",
     "ValidationResult",
     "WesternAsiaRegistry",
+    "WesternAfricaRegistry",
     "WesternEuropeRegistry",
     "canonicalize_components",
     "canonicalize_localized_components",
@@ -79,6 +81,7 @@ __all__ = [
     "render_southern_europe_address",
     "render_southeast_asia_address",
     "render_western_asia_address",
+    "render_western_africa_address",
     "render_western_europe_address",
     "select_localized_components",
 ]
