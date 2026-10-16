@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 from build import ROOT, RAW, FIELDS, build_rows, source_rows, csv_bytes, read_csv, write_json
 from build_names import verify_locale
-from materialize import materialize_country
+from localities.materialize import materialize_country
 
 def digest(data):
     return hashlib.sha256(data).hexdigest()

@@ -55,9 +55,7 @@ jobs:
           mkdir -p qa-reports
           python -m unittest discover -s tests -p 'test_repository_layout.py' -v 2>&1 | tee qa-reports/layout-tests.log
           python -m unittest discover -s tests -p 'test_americas_*.py' -v 2>&1 | tee qa-reports/tests.log
-          python caribbean-registry/test_materialize.py -v 2>&1 | tee qa-reports/caribbean-materialize.log
-          python central-america-registry/test_materialize.py -v 2>&1 | tee qa-reports/central-materialize.log
-          python south-america-registry/test_materialize.py -v 2>&1 | tee qa-reports/south-materialize.log
+          python -m unittest discover -s tests -p 'test_split_materialization.py' -v 2>&1 | tee qa-reports/split-materialization.log
       - name: Source-aware cycle and query reports
         if: ${{ always() }}
         shell: bash

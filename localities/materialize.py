@@ -132,12 +132,18 @@ def ensure_file(path: Path, root: Path) -> Path:
     return path
 
 
-def main(default_root: Path) -> None:
+def main(default_root: Path | None = None) -> None:
     import argparse
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--country", required=True)
     parser.add_argument("--root", type=Path, default=default_root)
     args = parser.parse_args()
+    if args.root is None:
+        parser.error("--root is required")
     for path in materialize_country(args.root, args.country):
         print(path.relative_to(args.root))
+
+
+if __name__ == "__main__":
+    main()

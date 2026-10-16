@@ -3,8 +3,14 @@ import unittest
 import tempfile
 import zipfile
 from pathlib import Path
+import sys
+
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
+
 from build import aliases
-from geonames_core import RAW, build_rows
+from localities.geonames import RAW, build_rows
 
 
 def row(gid, code, a1='', a2='', a3='', cc='KE'):

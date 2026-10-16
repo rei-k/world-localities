@@ -11,7 +11,7 @@ import re
 import zipfile
 from collections import Counter, defaultdict
 from pathlib import Path
-from typing import Any, Iterable, Iterator
+from typing import Any, Callable, Iterable, Iterator
 
 RAW = (
     "geonameid name asciiname alternatenames latitude longitude feature_class "
@@ -244,6 +244,7 @@ def write_country(
     country_meta: dict[str, Any],
     *,
     registry_root: Path | None = None,
+    known_issues_factory: Callable[[str, Counter], list[dict[str, Any]]] | None = None,
 ) -> dict[str, Any]:
     directory = output / "countries" / country
     directory.mkdir(parents=True, exist_ok=True)
@@ -280,6 +281,16 @@ def write_country(
         ),
     )
     freshness_root = registry_root if registry_root is not None else output
+    feature_counts = Counter(row["feature_code"] for row in rows)
+    known_issues = (
+        known_issues_factory(country, feature_counts)
+        if known_issues_factory is not None
+        else freshness_issues(
+            country,
+            sum(row["admin_level"] == "1" for row in rows),
+            freshness_root,
+        )
+    )
     metadata = dict(
         schema_version=1,
         source="GeoNames",
@@ -289,11 +300,7 @@ def write_country(
         files=files,
         counts=stats,
         current_official_hierarchy_verified=False,
-        known_issues=freshness_issues(
-            country,
-            sum(row["admin_level"] == "1" for row in rows),
-            freshness_root,
-        ),
+        known_issues=known_issues,
         preview_files={
             "admin1.csv": {
                 "sha256": sha(preview),
@@ -301,7 +308,7 @@ def write_country(
                 "note": "Duplicate display projection; do not add to entity counts.",
             }
         },
-        feature_counts=dict(sorted(Counter(row["feature_code"] for row in rows).items())),
+        feature_counts=dict(sorted(feature_counts.items())),
         parent_relation_counts=dict(
             sorted(Counter(row["parent_relation"] for row in rows).items())
         ),

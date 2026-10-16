@@ -2,34 +2,33 @@
 """Query one country without installing dependencies or building a database."""
 import argparse
 import json
+from pathlib import Path
+import sys
+
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
+
 from build import ROOT, PUBLISHED_SCOPE
-from geonames_core import read_csv
-from materialize import materialize_country
+from localities.geonames import read_csv
+from localities.materialize import materialize_country
+from localities.query import matching_rows, page, validate_country_code
 
 
 def select(country, kind=None, level=None, state=None, parent=None, text=None, include_other=False):
-    if len(country) != 2 or not country.isalpha() or country != country.upper():
-        raise ValueError('country must be an uppercase two-letter code')
+    validate_country_code(country)
     if country not in PUBLISHED_SCOPE:
         raise ValueError('Country is not included in the M49 South America publication')
     materialize_country(ROOT, country)
-    rows = read_csv(ROOT / 'countries' / country / 'entities.csv.gz')
-    for r in rows:
-        if kind and r['kind'] != kind:
-            continue
-        if level and r['admin_level'] != str(level):
-            continue
-        if state and r['state_id'] != state:
-            continue
-        if parent and r['parent_id'] != parent:
-            continue
-        if not include_other and not kind and not level and r['address_candidate'] != '1':
-            continue
-        if text:
-            labels = [r['name'], r['asciiname'], *r['alternatenames'].split(',')]
-            if not any(text.casefold() in s.casefold() for s in labels):
-                continue
-        yield r
+    yield from matching_rows(
+        read_csv(ROOT / 'countries' / country / 'entities.csv.gz'),
+        kind=kind,
+        level=level,
+        state=state,
+        parent=parent,
+        text=text,
+        include_other=include_other,
+    )
 
 
 def main():
@@ -48,11 +47,7 @@ def main():
         p.error('limit must be 1..10000; offset must be nonnegative')
     matches = select(args.country, args.kind, args.level, args.state, args.parent,
                      args.text, args.include_other)
-    total, out = 0, []
-    for r in matches:
-        if args.offset <= total < args.offset + args.limit:
-            out.append(r)
-        total += 1
+    total, out = page(matches, args.offset, args.limit)
     meta = json.loads((ROOT / 'countries' / args.country / 'metadata.json').read_text(encoding='utf-8'))
     print(json.dumps({'country': args.country, 'total': total, 'offset': args.offset,
                       'current_official_hierarchy_verified': meta['current_official_hierarchy_verified'],

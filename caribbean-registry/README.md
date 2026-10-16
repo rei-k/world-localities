@@ -59,13 +59,13 @@ Data: GeoNames, CC BY 4.0. Code: MIT. See `NOTICE.md`, `schema.json`, and `alter
 
 The publication stores the Dominican Republic `countries/DO/entities.csv.gz` as two binary parts under `.parts/DO/` to keep upload requests bounded. The original compressed file is intentionally absent until materialized. This is a transport-only change: no entity, language, source hash or country metadata has changed.
 
-Before the full validator, or before querying DO, run from this directory:
+Before the full validator, or before querying DO, run from the repository root:
 
-    python materialize.py --country DO
-    python build.py verify
-    python -m unittest discover -s . -p 'test_caribbean.py' -v
-    python -m unittest discover -s . -p 'test_materialize.py' -v
+    python -m localities materialize --registry caribbean --country DO
+    python caribbean-registry/build.py verify
+    python caribbean-registry/test_caribbean.py -v
+    python -m unittest discover -s tests -p 'test_split_materialization.py' -v
 
-`split_manifest.json` records the original relative path, full byte count and SHA-256, and each ordered part's path, byte count and SHA-256. `materialize.py` uses only local files, verifies the parts and reconstructed output, and recreates the canonical gzip bytes exactly. It rejects unsafe/traversal paths, symlink paths, corrupt parts and a mismatched existing destination rather than overwriting it. Repeating the command with an already matching destination is safe. Other countries need no reconstruction. The compressed original must not be counted or uploaded in addition to its transport parts.
+`split_manifest.json` records the original relative path, full byte count and SHA-256, and each ordered part's path, byte count and SHA-256. The shared `localities.materialize` implementation uses only local files, verifies the parts and reconstructed output, and recreates the canonical gzip bytes exactly. It rejects unsafe/traversal paths, symlink paths, corrupt parts and a mismatched existing destination rather than overwriting it. Repeating the command with an already matching destination is safe. Other countries need no reconstruction. The compressed original must not be counted or uploaded in addition to its transport parts.
 
 The partial publication-only clean-copy reconstruction, all 27 country replays and 13 regressions with the partial-scope assertion were tested; see `publication-verification.json`.

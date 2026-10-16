@@ -78,10 +78,11 @@ Each `countries/<CC>/` contains:
 The corresponding `sources/<CC>.zip` and `sources/alternatenames/<CC>.zip` preserve
 exact downloaded bytes. Guatemala and Panama source ZIPs are published as four
 ordered binary parts of at most 512 KiB, described in `split_manifest.json`; their
-full-file hashes remain canonical. `materialize.py` verifies every part and the
+full-file hashes remain canonical. The shared `localities.materialize` module verifies every part and the
 reconstructed size/SHA256, rejecting traversal, symlinks and mismatched existing
 outputs. Build and verification restore these sources automatically; explicit
-restoration is available with `python materialize.py --country GT` (or `PA`).
+restoration from the repository root is available with
+`python -m localities materialize --registry central-america --country GT` (or `PA`).
 These files support an independently testable country batch.
 No network or third-party Python packages are needed to read, query or verify.
 
@@ -90,7 +91,8 @@ cd central-america-registry
 python verify.py --countries BZ
 python query.py --country GT --text 'Guatemala' --language es --limit 10
 python query.py --country SV --level 2 --language en --limit 10
-python -m unittest test_registry test_materialize -v
+python test_central_registry.py -v
+python -m unittest discover -s ../tests -p 'test_split_materialization.py' -v
 python verify.py --report source_verification.json
 ```
 

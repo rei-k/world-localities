@@ -11,10 +11,15 @@ from pathlib import Path
 import tempfile
 import unittest
 import zipfile
+import sys
+
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
 
 from build import ALIAS_RAW, PUBLISHED_SCOPE, ROOT, build
-from geonames_core import RAW, build_rows, read_csv
-from materialize import materialize_country, safe_path
+from localities.geonames import RAW, build_rows, read_csv
+from localities.materialize import materialize_country, safe_path
 
 
 def load_json(path):

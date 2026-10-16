@@ -1,5 +1,4 @@
 import hashlib
-import importlib.util
 import json
 from pathlib import Path
 import sys
@@ -9,15 +8,9 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from localities import geonames, materialize
+from localities import materialize
+from localities.__main__ import materialization_roots
 from localities.layout import load_catalog, validate_catalog
-
-
-def load_module(name, path):
-    spec = importlib.util.spec_from_file_location(name, path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
 
 
 class RepositoryLayout(unittest.TestCase):
@@ -25,37 +18,37 @@ class RepositoryLayout(unittest.TestCase):
         report = validate_catalog(ROOT)
         self.assertEqual(report["status"], "passed")
         self.assertEqual(report["registry_count"], 10)
-        self.assertEqual(report["shared_component_count"], 2)
+        self.assertEqual(report["shared_component_count"], 3)
+        self.assertEqual(report["exact_duplicate_python_files"], 0)
+        self.assertEqual(
+            report["duplicate_python_basenames"],
+            ["__init__.py", "build.py", "query.py"],
+        )
 
     def test_catalog_paths_are_unique(self):
         catalog = load_catalog()
         paths = [entry["path"] for entry in catalog["registries"]]
         self.assertEqual(len(paths), len(set(paths)))
 
-    def test_geonames_compatibility_entries_use_shared_transform(self):
-        for index, relative in enumerate(
-            [
-                "caribbean-registry/geonames_core.py",
-                "south-america-registry/geonames_core.py",
-            ]
-        ):
-            module = load_module(f"compat_geonames_{index}", ROOT / relative)
-            self.assertIs(module.build_rows, geonames.build_rows)
-            self.assertIs(module.read_csv, geonames.read_csv)
-            self.assertEqual(module.ROOT, (ROOT / relative).parent)
+    def test_obsolete_duplicate_adapters_are_removed(self):
+        obsolete = [
+            "caribbean-registry/geonames_core.py",
+            "south-america-registry/geonames_core.py",
+            "caribbean-registry/materialize.py",
+            "central-america-registry/materialize.py",
+            "south-america-registry/materialize.py",
+        ]
+        self.assertTrue(all(not (ROOT / relative).exists() for relative in obsolete))
 
-    def test_materialize_compatibility_entries_use_shared_restore(self):
-        for index, relative in enumerate(
-            [
-                "caribbean-registry/materialize.py",
-                "central-america-registry/materialize.py",
-                "south-america-registry/materialize.py",
-            ]
-        ):
-            module = load_module(f"compat_materialize_{index}", ROOT / relative)
-            self.assertIs(module.restore, materialize.restore)
-            self.assertIs(module.manifest, materialize.manifest)
-            self.assertEqual(module.ROOT, (ROOT / relative).parent)
+    def test_unified_cli_exposes_only_split_registries(self):
+        self.assertEqual(
+            materialization_roots(),
+            {
+                "caribbean": "caribbean-registry",
+                "central-america": "central-america-registry",
+                "south-america": "south-america-registry",
+            },
+        )
 
     def test_ensure_file_validates_existing_managed_output(self):
         with tempfile.TemporaryDirectory() as temporary:

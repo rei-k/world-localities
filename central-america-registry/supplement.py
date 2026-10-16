@@ -24,6 +24,9 @@ from urllib.parse import urlsplit
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 RELATIVE = 'central-america-registry/enrichment'
 MAX_ARCHIVE = 32 * 1024 * 1024
 MAX_TEXT = 128 * 1024 * 1024
@@ -55,19 +58,16 @@ def load_module(name, path):
 def libraries():
     """Load existing region adapters without polluting other regions' imports."""
     directory = Path(__file__).resolve().parent
-    saved = {key: sys.modules.get(key) for key in ('materialize', 'build')}
+    saved = sys.modules.get('build')
     try:
-        mat = load_module('cr_materializer', directory / 'materialize.py')
-        sys.modules['materialize'] = mat
         build = load_module('cr_builder', directory / 'build.py')
         sys.modules['build'] = build
         names = load_module('cr_names', directory / 'build_names.py')
     finally:
-        for key, value in saved.items():
-            if value is None:
-                sys.modules.pop(key, None)
-            else:
-                sys.modules[key] = value
+        if saved is None:
+            sys.modules.pop('build', None)
+        else:
+            sys.modules['build'] = saved
     validation = load_module('cr_strict_validation', ROOT / 'north-america-registry/validation.py')
     return build, names, validation
 

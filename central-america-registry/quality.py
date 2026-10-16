@@ -6,8 +6,14 @@ import importlib.util
 import io
 import json
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from localities.materialize import materialize_country
+
 DIRECTORY = Path(__file__).resolve().parent
 _spec = importlib.util.spec_from_file_location('central_supplement_quality', DIRECTORY / 'supplement.py')
 supplement = importlib.util.module_from_spec(_spec)
@@ -55,8 +61,7 @@ def load_country(country, root=ROOT):
         locale = v.load_json(directory, 'locale_metadata.json')
     else:
         central = root / 'central-america-registry'
-        materializer = supplement.load_module('central_quality_materializer', DIRECTORY / 'materialize.py')
-        materializer.materialize_country(central, country)
+        materialize_country(central, country)
         manifest = v.load_json(central, 'manifest.json')
         entries = v.unique_rows(manifest['countries'], 'country', 'legacy Central America manifest')
         v.require(set(entries) == set(BASE), 'six-country historical base scope changed')

@@ -4,10 +4,15 @@ import argparse, csv, gzip, io, json, re, zipfile
 from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
-import geonames_core as core
-from materialize import materialize_country, safe_path
+import sys
 
 ROOT = Path(__file__).resolve().parent
+REPOSITORY_ROOT = ROOT.parent
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
+
+from localities import geonames as core
+from localities.materialize import materialize_country, safe_path
 SCOPE = {'AR','BO','BV','BR','CL','CO','EC','FK','GF','GS','GY','PE','PY','SR','UY','VE'}
 PENDING = set()
 PUBLISHED_SCOPE = SCOPE - PENDING

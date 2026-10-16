@@ -10,9 +10,13 @@ import subprocess
 import sys
 import tempfile
 
-import geonames_core as core
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
+
+from localities import geonames as core
+from localities.materialize import manifest, restore, safe_path
 from build import PUBLISHED_SCOPE, ROOT, build
-from materialize import manifest, restore, safe_path
 
 LIMIT=512*1024
 
@@ -85,6 +89,8 @@ def verify(root):
         return [name for name in names if name=='__pycache__' or name.endswith('.pyc') or (relative/name).as_posix() in excluded]
     with tempfile.TemporaryDirectory(prefix='south-america-publication-') as temp:
         clean=Path(temp)/'pack';shutil.copytree(root,clean,ignore=ignore,symlinks=True)
+        shutil.copytree(root.parent/'localities',Path(temp)/'localities',ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
+        shutil.copyfile(root.parent/'tests/test_split_materialization.py',clean/'test_split_materialization.py')
         assert all(not safe_path(clean,name).exists() for name in excluded)
         baseline=load(clean/'sources/baseline-14-publication.json')
         for entry in baseline['files']:

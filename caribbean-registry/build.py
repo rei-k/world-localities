@@ -4,7 +4,36 @@ import argparse, base64, csv, gzip, hashlib, io, json, re, zipfile
 from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
-from geonames_core import ROOT, RAW, FIELDS, read_csv, source_rows, build_rows, write_country, csv_bytes, compressed, sha, write_json, code_key
+import sys
+
+ROOT = Path(__file__).resolve().parent
+REPOSITORY_ROOT = ROOT.parent
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
+
+from localities import geonames as core
+
+RAW = core.RAW
+FIELDS = core.FIELDS
+read_csv = core.read_csv
+source_rows = core.source_rows
+build_rows = core.build_rows
+csv_bytes = core.csv_bytes
+compressed = core.compressed
+sha = core.sha
+write_json = core.write_json
+code_key = core.code_key
+
+
+def write_country(rows, country, output, source_meta, country_meta):
+    return core.write_country(
+        rows,
+        country,
+        output,
+        source_meta,
+        country_meta,
+        registry_root=ROOT,
+    )
 
 CODES='AG AI AW BB BL BQ BS CW DM DO GD GP HT JM KN KY LC MF MQ MS PR SX TC TT VC VG VI'.split()
 M49_SCOPE_CODES=sorted(CODES+['CU'])

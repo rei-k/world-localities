@@ -64,7 +64,7 @@ Postal values are only rows explicitly tagged `post` by GeoNames and linked to t
 
 Twelve compressed files (nine derived gzip files and three original ZIPs) are distributed as 37 ordered raw binary chunks of at most 512 KiB under `.parts/`. `split_manifest.json` records original paths, byte counts, full SHA-256/Git blob hashes and each ordered part's byte count and SHA-256. These chunks are not separate gzip or ZIP streams; exact concatenation restores the original compressed bytes without recompression or data changes. The listed originals are absent from the published tree. The previous fourteen-country publication representation is unchanged, including its unsplit gzip files.
 
-`query.py` automatically materializes the requested country; `build.py verify` automatically materializes every country before validating it. You can also run `python materialize.py --country AR`. This is offline and requires no extra packages. A clean publication-only copy was tested with all twelve listed originals absent: automatic AR/PY/BR queries and full-pack verification rebuilt exact original bytes, and all 33 data/reconstruction/scope regression tests passed. See `publication_verification.json`. A writable checkout is needed for the reconstructed files. Use a writable copy if the installed package is read-only. The original canonical metadata and integrity hashes remain valid.
+`query.py` automatically materializes the requested country; `build.py verify` automatically materializes every country before validating it. From the repository root, explicit restoration is available with `python -m localities materialize --registry south-america --country AR`. This is offline and requires no extra packages. A clean publication-only copy is tested with all twelve listed originals absent, including the shared reconstruction suite. See `publication_verification.json`. A writable checkout is needed for the reconstructed files. Use a writable copy if the installed package is read-only. The original canonical metadata and integrity hashes remain valid.
 
 `publication.py pack` creates/checks parts without altering canonical bytes. `publication.py verify` checks the previous 73 published file hashes before any restoration, uses an isolated clean copy, runs all tests and full entity replay, and independently rebuilds all eight AR/PY country files from retained source archives. All eight rebuilt files match exactly. Other fourteen upstream ZIP pairs were not shipped by PR #9: their preserved entity columns replay exactly and their recorded archive hashes match the inventory, but replay of those original ZIP bytes was not performed.
 
@@ -95,8 +95,8 @@ python build.py verify
 For an offline AR/PY rebuild using the retained snapshots:
 
 ```sh
-python materialize.py --country AR
-python materialize.py --country PY
+(cd .. && python -m localities materialize --registry south-america --country AR)
+(cd .. && python -m localities materialize --registry south-america --country PY)
 mkdir -p /tmp/south-america-inputs
 cp sources/AR.zip sources/AR-alternatenames.zip sources/PY.zip sources/PY-alternatenames.zip /tmp/south-america-inputs/
 cp sources/countryInfo-2026-10-02.txt /tmp/south-america-inputs/countryInfo.txt

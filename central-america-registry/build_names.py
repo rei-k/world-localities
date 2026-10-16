@@ -11,7 +11,7 @@ from pathlib import Path
 import re
 import zipfile
 from build import ROOT, read_csv, write_json, compressed, csv_bytes
-from materialize import materialize_country
+from localities.materialize import materialize_country
 
 ALT = 'alternate_name_id geonameid language name is_preferred is_short is_colloquial is_historic valid_from valid_to'.split()
 NON_LANGUAGE = {'abbr','link','post','wkdt','unlc','iata','icao','faac','phon'}
