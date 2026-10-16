@@ -30,9 +30,13 @@ DANGEROUS_BIDI_CONTROLS = re.compile("[\u202a-\u202e\u2066-\u2069]")
 LATIN_APOSTROPHE_LETTERS = {"\u02bb", "\u02bc"}
 SCRIPT_UNICODE_NAMES = {
     "Arab": "ARABIC",
+    "Armn": "ARMENIAN",
     "Beng": "BENGALI",
     "Cyrl": "CYRILLIC",
     "Deva": "DEVANAGARI",
+    "Geor": "GEORGIAN",
+    "Grek": "GREEK",
+    "Hebr": "HEBREW",
     "Sinh": "SINHALA",
     "Taml": "TAMIL",
     "Thaa": "THAANA",

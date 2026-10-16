@@ -17,6 +17,7 @@ from .localized import RegionalAddressRegistry, render_regional_bilingual_addres
 from .profiles import AddressProfile, ProfileRegistry
 from .south_asia import SouthAsiaRegistry, render_south_asia_address
 from .southeast_asia import SoutheastAsiaRegistry, render_southeast_asia_address
+from .western_asia import WesternAsiaRegistry, render_western_asia_address
 
 __all__ = [
     "AddressProfile",
@@ -34,6 +35,7 @@ __all__ = [
     "SouthAsiaRegistry",
     "ValidationLevel",
     "ValidationResult",
+    "WesternAsiaRegistry",
     "canonicalize_components",
     "canonicalize_localized_components",
     "render_address",
@@ -42,5 +44,6 @@ __all__ = [
     "render_regional_bilingual_address",
     "render_south_asia_address",
     "render_southeast_asia_address",
+    "render_western_asia_address",
     "select_localized_components",
 ]
