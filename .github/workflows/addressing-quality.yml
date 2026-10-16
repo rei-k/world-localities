@@ -16,6 +16,7 @@ on:
       - 'tests/test_northern_europe_addressing.py'
       - 'tests/test_eastern_europe_addressing.py'
       - 'tests/test_central_europe_addressing.py'
+      - 'tests/test_oceania_addressing.py'
       - 'tests/test_repository_layout.py'
       - 'localities/registry_catalog.json'
       - '.github/workflows/addressing-quality.yml'
@@ -34,6 +35,7 @@ on:
       - 'tests/test_northern_europe_addressing.py'
       - 'tests/test_eastern_europe_addressing.py'
       - 'tests/test_central_europe_addressing.py'
+      - 'tests/test_oceania_addressing.py'
       - 'tests/test_repository_layout.py'
       - 'localities/registry_catalog.json'
       - '.github/workflows/addressing-quality.yml'
@@ -72,6 +74,7 @@ jobs:
           python -m addressing northern-europe
           python -m addressing eastern-europe
           python -m addressing central-europe
+          python -m addressing oceania
           python -m unittest discover -s tests -p 'test_addressing_core.py' -v
           python -m unittest discover -s tests -p 'test_east_asia_addressing.py' -v
           python -m unittest discover -s tests -p 'test_southeast_asia_addressing.py' -v
@@ -83,5 +86,6 @@ jobs:
           python -m unittest discover -s tests -p 'test_northern_europe_addressing.py' -v
           python -m unittest discover -s tests -p 'test_eastern_europe_addressing.py' -v
           python -m unittest discover -s tests -p 'test_central_europe_addressing.py' -v
+          python -m unittest discover -s tests -p 'test_oceania_addressing.py' -v
           python -m unittest discover -s tests -p 'test_repository_layout.py' -v
           python -m localities layout

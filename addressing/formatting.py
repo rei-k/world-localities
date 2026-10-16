@@ -214,6 +214,7 @@ def render_address(
         "entrance": "subpremise",
         "floor": "subpremise",
         "recipient": "attention",
+        "state": "state_code",
         "unit": "subpremise",
     }
     unrendered = {

@@ -17,6 +17,7 @@ from .eastern_europe import EasternEuropeRegistry, render_eastern_europe_address
 from .formatting import RenderedAddress, render_address
 from .localized import RegionalAddressRegistry, render_regional_bilingual_address
 from .northern_europe import NorthernEuropeRegistry, render_northern_europe_address
+from .oceania import OceaniaRegistry, render_oceania_address
 from .profiles import AddressProfile, ProfileRegistry
 from .south_asia import SouthAsiaRegistry, render_south_asia_address
 from .southern_europe import SouthernEuropeRegistry, render_southern_europe_address
@@ -36,6 +37,7 @@ __all__ = [
     "LocationPrecision",
     "MissingLocalizedComponents",
     "NorthernEuropeRegistry",
+    "OceaniaRegistry",
     "ProfileRegistry",
     "RegionalAddressRegistry",
     "RenderedAddress",
@@ -54,6 +56,7 @@ __all__ = [
     "render_central_europe_address",
     "render_eastern_europe_address",
     "render_northern_europe_address",
+    "render_oceania_address",
     "render_regional_bilingual_address",
     "render_south_asia_address",
     "render_southern_europe_address",
