@@ -27,9 +27,11 @@ EVIDENCE_STATUSES = {
     "provisional",
 }
 DANGEROUS_BIDI_CONTROLS = re.compile("[\u202a-\u202e\u2066-\u2069]")
+LATIN_APOSTROPHE_LETTERS = {"\u02bb", "\u02bc"}
 SCRIPT_UNICODE_NAMES = {
     "Arab": "ARABIC",
     "Beng": "BENGALI",
+    "Cyrl": "CYRILLIC",
     "Deva": "DEVANAGARI",
     "Sinh": "SINHALA",
     "Taml": "TAMIL",
@@ -69,6 +71,7 @@ def _script_subtag(tag: str) -> str | None:
 def _latin_only(value: str) -> bool:
     return all(
         not unicodedata.category(character).startswith("L")
+        or character in LATIN_APOSTROPHE_LETTERS
         or "LATIN" in unicodedata.name(character, "")
         for character in value
     )

@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 
+from .central_asia import CentralAsiaRegistry, render_central_asia_address
 from .formatting import render_address
 from .east_asia import EastAsiaRegistry, render_bilingual_address
 from .profiles import ProfileRegistry
@@ -22,6 +23,9 @@ def main() -> None:
     )
     commands.add_parser(
         "south-asia", help="report native/English Southern Asia coverage"
+    )
+    commands.add_parser(
+        "central-asia", help="report native/English Central Asia coverage"
     )
     profile = commands.add_parser("profile", help="show a selected profile")
     render = commands.add_parser("render", help="render structured address JSON")
@@ -53,6 +57,14 @@ def main() -> None:
     south.add_argument("--native-language")
     south.add_argument("--components-json", required=True)
     south.add_argument("--allow-incomplete", action="store_true")
+    central = commands.add_parser(
+        "render-central-asia",
+        help="render strict native and English Central Asia output",
+    )
+    central.add_argument("--country", required=True)
+    central.add_argument("--native-language")
+    central.add_argument("--components-json", required=True)
+    central.add_argument("--allow-incomplete", action="store_true")
     args = parser.parse_args()
     registry = ProfileRegistry()
     if args.command == "verify":
@@ -66,6 +78,9 @@ def main() -> None:
         return
     if args.command == "south-asia":
         print(json.dumps(SouthAsiaRegistry().report(), sort_keys=True))
+        return
+    if args.command == "central-asia":
+        print(json.dumps(CentralAsiaRegistry().report(), sort_keys=True))
         return
     if args.command == "render-bilingual":
         components = json.loads(args.components_json)
@@ -98,6 +113,19 @@ def main() -> None:
         if not isinstance(components, dict):
             parser.error("--components-json must contain a JSON object")
         result = render_south_asia_address(
+            components,
+            args.country,
+            native_language=args.native_language,
+            strict=not args.allow_incomplete,
+            registry=registry,
+        )
+        print(json.dumps(result.to_dict(), ensure_ascii=False, sort_keys=True))
+        return
+    if args.command == "render-central-asia":
+        components = json.loads(args.components_json)
+        if not isinstance(components, dict):
+            parser.error("--components-json must contain a JSON object")
+        result = render_central_asia_address(
             components,
             args.country,
             native_language=args.native_language,
