@@ -70,7 +70,7 @@ python -m unittest discover -s tests -p 'test_asia_package.py' -v
 
 ## 世界住所フォーム互換レイヤー
 
-[`addressing/`](addressing/README.md) は、251の国・地域プロファイルと21の言語別変種を
+[`addressing/`](addressing/README.md) は、251の国・地域プロファイルと46の言語別変種を
 固定出典・ハッシュ付きで収録し、入力フィールドの順番に依存しない共通住所要素から
 国内向け・国際向け表示を生成します。これは表示互換レイヤーであり、街路・番地・建物の
 実在や郵便配達可能性を証明するものではありません。検証結果は形式、地名、郵便、街路、
@@ -80,8 +80,14 @@ python -m unittest discover -s tests -p 'test_asia_package.py' -v
 同時生成できます。英語値の欠落や非ラテン文字混入を厳格モードで拒否し、機械翻字を
 公式英語名として扱いません。北朝鮮の形式は未検証状態を保持して出力します。
 
+東南アジア11か国は母国語14変種と英語を分離しました。シンガポールはマレー語・
+簡体字中国語・タミル語、東ティモールはテトゥン語・ポルトガル語を個別に選択できます。
+Address2と棟・入口・階・部屋を配送行へ保持し、母国語がラテン文字でも英語値へ自動流用しません。
+公開資料が限定的なミャンマーと東ティモールは `provisional` のまま出力します。
+
 ```bash
 python -m addressing verify
+python -m addressing southeast-asia
 python -m addressing profile --country JP --language ja
 ```
 

@@ -12,7 +12,9 @@ from .east_asia import (
     select_localized_components,
 )
 from .formatting import RenderedAddress, render_address
+from .localized import RegionalAddressRegistry, render_regional_bilingual_address
 from .profiles import AddressProfile, ProfileRegistry
+from .southeast_asia import SoutheastAsiaRegistry, render_southeast_asia_address
 
 __all__ = [
     "AddressProfile",
@@ -23,12 +25,16 @@ __all__ = [
     "LocationPrecision",
     "MissingLocalizedComponents",
     "ProfileRegistry",
+    "RegionalAddressRegistry",
     "RenderedAddress",
+    "SoutheastAsiaRegistry",
     "ValidationLevel",
     "ValidationResult",
     "canonicalize_components",
     "canonicalize_localized_components",
     "render_address",
     "render_bilingual_address",
+    "render_regional_bilingual_address",
+    "render_southeast_asia_address",
     "select_localized_components",
 ]

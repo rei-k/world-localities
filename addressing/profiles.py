@@ -10,7 +10,10 @@ from typing import Any
 
 
 PROFILE_PATH = Path(__file__).with_name("profiles.json")
-EXTENSION_PATHS = (Path(__file__).with_name("east_asia_profiles.json"),)
+EXTENSION_PATHS = (
+    Path(__file__).with_name("east_asia_profiles.json"),
+    Path(__file__).with_name("southeast_asia_profiles.json"),
+)
 CONFIG_FIELDS = {
     "address_template",
     "fallback_template",
@@ -52,6 +55,7 @@ class ProfileRegistry:
         self.county_codes = payload["county_codes"]
         self._raw = dict(payload["profiles"])
         self.extensions: list[dict[str, Any]] = []
+        self.default_languages: dict[str, str] = {}
         self._extension_new_profiles = 0
         self._extension_overrides = 0
         for extension_path in extension_paths:
@@ -62,6 +66,10 @@ class ProfileRegistry:
                 raise ValueError("unsupported address profile extension schema")
             overrides = set(extension.get("overrides", []))
             profiles = extension.get("profiles", {})
+            for country_code, policy in extension.get("countries", {}).items():
+                default_language = policy.get("default_native_language")
+                if default_language:
+                    self.default_languages[country_code] = default_language
             if overrides - set(profiles):
                 raise ValueError("address profile override missing replacement")
             for key, profile in profiles.items():
@@ -121,11 +129,15 @@ class ProfileRegistry:
         else:
             selected_language = language
             if selected_language is None:
-                selected_language = next(
-                    iter(self.country_languages.get(country_code, [])), None
-                )
+                selected_language = self.default_languages.get(country_code)
+                if selected_language is None:
+                    selected_language = next(
+                        iter(self.country_languages.get(country_code, [])), None
+                    )
             if selected_language:
-                candidates.append(country_code + "_" + selected_language)
+                candidates.append(
+                    country_code + "_" + selected_language.split("-", 1)[0].lower()
+                )
         candidates.append(country_code)
         return self.get(next(key for key in candidates if key in self._raw))
 

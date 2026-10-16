@@ -210,7 +210,11 @@ def render_address(
     handled_aliases = {
         "address_line1": "road",
         "address_line2": "subpremise",
+        "block": "subpremise",
+        "entrance": "subpremise",
+        "floor": "subpremise",
         "recipient": "attention",
+        "unit": "subpremise",
     }
     unrendered = {
         key: value

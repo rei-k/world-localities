@@ -7,6 +7,7 @@ on:
       - 'scripts/compile_address_profiles.py'
       - 'tests/test_addressing_core.py'
       - 'tests/test_east_asia_addressing.py'
+      - 'tests/test_southeast_asia_addressing.py'
       - 'tests/test_repository_layout.py'
       - 'localities/registry_catalog.json'
       - '.github/workflows/addressing-quality.yml'
@@ -16,6 +17,7 @@ on:
       - 'scripts/compile_address_profiles.py'
       - 'tests/test_addressing_core.py'
       - 'tests/test_east_asia_addressing.py'
+      - 'tests/test_southeast_asia_addressing.py'
       - 'tests/test_repository_layout.py'
       - 'localities/registry_catalog.json'
       - '.github/workflows/addressing-quality.yml'
@@ -45,7 +47,9 @@ jobs:
         run: |
           python -m addressing verify
           python -m addressing east-asia
+          python -m addressing southeast-asia
           python -m unittest discover -s tests -p 'test_addressing_core.py' -v
           python -m unittest discover -s tests -p 'test_east_asia_addressing.py' -v
+          python -m unittest discover -s tests -p 'test_southeast_asia_addressing.py' -v
           python -m unittest discover -s tests -p 'test_repository_layout.py' -v
           python -m localities layout

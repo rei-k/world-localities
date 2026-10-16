@@ -22,6 +22,9 @@
       "native_languages": ["zh-Hans"],
       "default_native_language": "zh-Hans",
       "native_profile": "CN_zh",
+      "native_profiles": {
+        "zh-Hans": "CN_zh"
+      },
       "english_profile": "CN_en",
       "country_names": {"zh-Hans": "中国", "en": "China"},
       "romanization_policy": "Use an authority-backed English alias or user-supplied Hanyu Pinyin; automatic transliteration is not verification.",
@@ -38,6 +41,9 @@
       "native_languages": ["zh-Hant"],
       "default_native_language": "zh-Hant",
       "native_profile": "HK_zh",
+      "native_profiles": {
+        "zh-Hant": "HK_zh"
+      },
       "english_profile": "HK_en",
       "country_names": {"zh-Hant": "香港", "en": "Hong Kong"},
       "romanization_policy": "Prefer the English address published by Hongkong Post or the address authority; do not substitute Mandarin Pinyin for Cantonese place names.",
@@ -54,6 +60,9 @@
       "native_languages": ["ja"],
       "default_native_language": "ja",
       "native_profile": "JP_ja",
+      "native_profiles": {
+        "ja": "JP_ja"
+      },
       "english_profile": "JP_en",
       "country_names": {"ja": "日本", "en": "Japan"},
       "romanization_policy": "Prefer an official English locality alias; otherwise retain user-supplied Latin spelling and mark it unverified.",
@@ -70,6 +79,9 @@
       "native_languages": ["ko"],
       "default_native_language": "ko",
       "native_profile": "KP_ko",
+      "native_profiles": {
+        "ko": "KP_ko"
+      },
       "english_profile": "KP_en",
       "country_names": {"ko": "조선민주주의인민공화국", "en": "Democratic People's Republic of Korea"},
       "romanization_policy": "Only an authority-backed or user-confirmed English form is accepted; no bundled automatic romanizer is treated as authoritative.",
@@ -86,6 +98,9 @@
       "native_languages": ["ko"],
       "default_native_language": "ko",
       "native_profile": "KR_ko",
+      "native_profiles": {
+        "ko": "KR_ko"
+      },
       "english_profile": "KR_en",
       "country_names": {"ko": "대한민국", "en": "Republic of Korea"},
       "romanization_policy": "Prefer the English road-name address returned by the official Road Name Address Information System.",
@@ -102,6 +117,10 @@
       "native_languages": ["mn-Cyrl", "mn-Mong"],
       "default_native_language": "mn-Cyrl",
       "native_profile": "MN_mn",
+      "native_profiles": {
+        "mn-Cyrl": "MN_mn",
+        "mn-Mong": "MN_mn"
+      },
       "english_profile": "MN_en",
       "country_names": {"mn-Cyrl": "Монгол Улс", "mn-Mong": "ᠮᠣᠩᠭᠣᠯ ᠤᠯᠤᠰ", "en": "Mongolia"},
       "romanization_policy": "International output must use a user-confirmed or authority-backed Latin form; transliteration alone is not an English-name assertion.",
@@ -123,6 +142,10 @@
       "native_languages": ["zh-Hant", "pt"],
       "default_native_language": "zh-Hant",
       "native_profile": "MO_zh",
+      "native_profiles": {
+        "zh-Hant": "MO_zh",
+        "pt": "MO_pt"
+      },
       "english_profile": "MO_en",
       "country_names": {"zh-Hant": "澳門", "pt": "Macau", "en": "Macao"},
       "romanization_policy": "Prefer the Chinese or Portuguese official street form. English output may use the Macao Post English form and is not assumed to be an official translation of every name.",
@@ -139,6 +162,9 @@
       "native_languages": ["zh-Hant"],
       "default_native_language": "zh-Hant",
       "native_profile": "TW_zh",
+      "native_profiles": {
+        "zh-Hant": "TW_zh"
+      },
       "english_profile": "TW_en",
       "country_names": {"zh-Hant": "臺灣", "en": "Taiwan"},
       "romanization_policy": "Prefer the Chunghwa Post English-address result or an official locality alias; preserve the supplied spelling when variants exist.",
