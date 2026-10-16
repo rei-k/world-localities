@@ -41,6 +41,7 @@ SCRIPT_UNICODE_NAMES = {
     "Taml": "TAMIL",
     "Thaa": "THAANA",
     "Tibt": "TIBETAN",
+    "Tfng": "TIFINAGH",
 }
 
 
@@ -338,6 +339,31 @@ class RegionalAddressRegistry:
                     raise ValueError(f"invalid address source fields: {code}")
                 if not source["url"].startswith("https://"):
                     raise ValueError(f"non-HTTPS address source: {code}")
+
+
+class PostcodeRegionalAddressRegistry(RegionalAddressRegistry):
+    """Regional policies with explicit postcode syntax and requirement flags."""
+
+    def verify_postcode_policies(self) -> None:
+        for country_code, policy in self.countries.items():
+            if "postcode_pattern" not in policy:
+                raise ValueError(f"postcode policy missing: {country_code}")
+            pattern = policy["postcode_pattern"]
+            if pattern is not None:
+                re.compile(str(pattern))
+            if not isinstance(policy.get("postcode_required"), bool):
+                raise ValueError(f"postcode requirement missing: {country_code}")
+
+    def validate_postcode(self, country_code: str, postcode: str | None) -> bool:
+        """Check syntax only; this does not assert that a code was assigned."""
+
+        policy = self.get(country_code)
+        if postcode is None or not postcode.strip():
+            return not policy["postcode_required"]
+        pattern = policy["postcode_pattern"]
+        if pattern is None:
+            return False
+        return re.fullmatch(str(pattern), postcode.strip(), re.IGNORECASE) is not None
 
 
 @dataclass(frozen=True)
