@@ -9,8 +9,10 @@ on:
       - 'central-america-registry/**'
       - 'caribbean-registry/**'
       - 'south-america-registry/**'
+      - 'localities/**'
       - 'scripts/verify_americas_snapshots.py'
       - 'tests/test_americas_*.py'
+      - 'tests/test_repository_layout.py'
       - '.github/workflows/americas-quality.yml'
   pull_request:
     paths:
@@ -20,8 +22,10 @@ on:
       - 'central-america-registry/**'
       - 'caribbean-registry/**'
       - 'south-america-registry/**'
+      - 'localities/**'
       - 'scripts/verify_americas_snapshots.py'
       - 'tests/test_americas_*.py'
+      - 'tests/test_repository_layout.py'
       - '.github/workflows/americas-quality.yml'
   workflow_dispatch:
 
@@ -49,7 +53,11 @@ jobs:
         shell: bash
         run: |
           mkdir -p qa-reports
+          python -m unittest discover -s tests -p 'test_repository_layout.py' -v 2>&1 | tee qa-reports/layout-tests.log
           python -m unittest discover -s tests -p 'test_americas_*.py' -v 2>&1 | tee qa-reports/tests.log
+          python caribbean-registry/test_materialize.py -v 2>&1 | tee qa-reports/caribbean-materialize.log
+          python central-america-registry/test_materialize.py -v 2>&1 | tee qa-reports/central-materialize.log
+          python south-america-registry/test_materialize.py -v 2>&1 | tee qa-reports/south-materialize.log
       - name: Source-aware cycle and query reports
         if: ${{ always() }}
         shell: bash

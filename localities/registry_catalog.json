@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "package": "localities",
+  "registries": [
+    {
+      "path": "official-registry",
+      "role": "official_overlay",
+      "scope": "country-specific official codes, names, and postal joins"
+    },
+    {
+      "path": "africa-registry",
+      "role": "regional_registry",
+      "scope": "Africa"
+    },
+    {
+      "path": "asia-registry",
+      "role": "regional_registry",
+      "scope": "Asia with documented Russia supplement"
+    },
+    {
+      "path": "europe-registry",
+      "role": "regional_registry",
+      "scope": "Europe"
+    },
+    {
+      "path": "oceania-registry",
+      "role": "regional_registry",
+      "scope": "Oceania"
+    },
+    {
+      "path": "americas-registry",
+      "role": "regional_coordinator",
+      "scope": "Americas quality audit and release coordination"
+    },
+    {
+      "path": "north-america-registry",
+      "role": "regional_registry",
+      "scope": "UN M49 Northern America"
+    },
+    {
+      "path": "central-america-registry",
+      "role": "regional_registry",
+      "scope": "UN M49 Central America"
+    },
+    {
+      "path": "caribbean-registry",
+      "role": "regional_registry",
+      "scope": "UN M49 Caribbean"
+    },
+    {
+      "path": "south-america-registry",
+      "role": "regional_registry",
+      "scope": "UN M49 South America"
+    }
+  ],
+  "shared_components": [
+    {
+      "module": "localities.geonames",
+      "consumers": [
+        "caribbean-registry/geonames_core.py",
+        "south-america-registry/geonames_core.py"
+      ]
+    },
+    {
+      "module": "localities.materialize",
+      "consumers": [
+        "caribbean-registry/materialize.py",
+        "central-america-registry/materialize.py",
+        "south-america-registry/materialize.py"
+      ]
+    }
+  ]
+}

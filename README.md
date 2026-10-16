@@ -58,6 +58,16 @@ python asia-registry/build.py verify --country JP
 python -m unittest discover -s tests -p 'test_asia_package.py' -v
 ```
 
+## コードとデータの構成
+
+地域別データと出典固有の処理は従来どおり各 `*-registry/` に置き、複数地域で
+同じ契約を持つGeoNames変換と分割ファイル復元だけを `localities/` に共通化しています。
+既存の地域別CLIとモジュールパスは互換入口として維持します。
+
+構成の正本は [`localities/registry_catalog.json`](localities/registry_catalog.json)、
+責務と変更方針は[リポジトリ構成](docs/repository-layout.md)を参照してください。
+構成検証は `python -m localities.layout` で実行できます。
+
 オセアニアは国別62分割パックに、言語付き名称37,236件と限定的な郵便番号対応を収録しました。地域IDを保持した名称選択と国別展開に対応します。全公用語・郵便番号の完全網羅ではありません。原典と検証結果は [オセアニア台帳](oceania-registry/README.md) を参照してください。
 
 ## アメリカ大陸（北部アメリカから順次強化）
