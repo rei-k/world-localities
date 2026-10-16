@@ -29,8 +29,11 @@ class AddressProfiles(unittest.TestCase):
             {
                 "status": "passed",
                 "country_profiles": 251,
-                "locale_profiles": 16,
+                "locale_profiles": 21,
                 "inherited_profiles": 38,
+                "extension_profiles": 17,
+                "extension_new_profiles": 5,
+                "extension_overrides": 12,
                 "source_commit": "cbf23487c13ad437cadab0083ef79fe5f1d1823e",
                 "source_sha256": "2ed532207d6cf8c8a1823f1e5531466c00e9d292b115c0ac837321989ba4b085",
             },
@@ -174,7 +177,8 @@ class AddressComponentsAndRendering(unittest.TestCase):
             registry=self.registry,
         )
         self.assertIn("10階 1001号室", rendered.lines)
-        self.assertIn("generic_subpremise_placement", rendered.warnings)
+        self.assertNotIn("generic_subpremise_placement", rendered.warnings)
+        self.assertFalse(rendered.unrendered_components)
 
     def test_opaque_address1_and_unknown_fields_are_reported(self):
         rendered = render_address(

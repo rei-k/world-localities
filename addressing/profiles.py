@@ -10,6 +10,7 @@ from typing import Any
 
 
 PROFILE_PATH = Path(__file__).with_name("profiles.json")
+EXTENSION_PATHS = (Path(__file__).with_name("east_asia_profiles.json"),)
 CONFIG_FIELDS = {
     "address_template",
     "fallback_template",
@@ -35,7 +36,12 @@ class AddressProfile:
 
 
 class ProfileRegistry:
-    def __init__(self, path: Path = PROFILE_PATH):
+    def __init__(
+        self,
+        path: Path = PROFILE_PATH,
+        *,
+        extension_paths: tuple[Path, ...] = EXTENSION_PATHS,
+    ):
         payload = json.loads(path.read_text(encoding="utf-8"))
         if payload.get("schema_version") != 1:
             raise ValueError("unsupported address profile schema")
@@ -44,7 +50,31 @@ class ProfileRegistry:
         self.country_languages = payload["country_languages"]
         self.state_codes = payload["state_codes"]
         self.county_codes = payload["county_codes"]
-        self._raw = payload["profiles"]
+        self._raw = dict(payload["profiles"])
+        self.extensions: list[dict[str, Any]] = []
+        self._extension_new_profiles = 0
+        self._extension_overrides = 0
+        for extension_path in extension_paths:
+            if not extension_path.is_file():
+                continue
+            extension = json.loads(extension_path.read_text(encoding="utf-8"))
+            if extension.get("schema_version") != 1:
+                raise ValueError("unsupported address profile extension schema")
+            overrides = set(extension.get("overrides", []))
+            profiles = extension.get("profiles", {})
+            if overrides - set(profiles):
+                raise ValueError("address profile override missing replacement")
+            for key, profile in profiles.items():
+                exists = key in self._raw
+                if exists != (key in overrides):
+                    action = "undeclared override" if exists else "override target missing"
+                    raise ValueError(f"{action}: {key}")
+                self._raw[key] = profile
+                if exists:
+                    self._extension_overrides += 1
+                else:
+                    self._extension_new_profiles += 1
+            self.extensions.append(extension)
         self._verify()
 
     def _resolved_config(self, key: str, seen: set[str] | None = None) -> dict[str, Any]:
@@ -130,6 +160,11 @@ class ProfileRegistry:
             "country_profiles": len(self.country_codes),
             "locale_profiles": locale_profiles,
             "inherited_profiles": inherited_profiles,
+            "extension_profiles": sum(
+                len(extension["profiles"]) for extension in self.extensions
+            ),
+            "extension_new_profiles": self._extension_new_profiles,
+            "extension_overrides": self._extension_overrides,
             "source_commit": self.source["commit"],
             "source_sha256": self.source["sha256"],
         }

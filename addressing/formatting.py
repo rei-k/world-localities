@@ -19,15 +19,29 @@ def _python_replacement(value: str) -> str:
     return re.sub(r"\$(\d+)", r"\\g<\1>", value)
 
 
-def _replace_placeholders(template: str, values: Mapping[str, str]) -> str:
-    return PLACEHOLDER.sub(lambda match: values.get(match.group(1), ""), template)
+def _replace_placeholders(
+    template: str, values: Mapping[str, str], used: set[str] | None = None
+) -> str:
+    def replace(match: re.Match[str]) -> str:
+        key = match.group(1)
+        value = values.get(key, "")
+        if value and used is not None:
+            used.add(key)
+        return value
+
+    return PLACEHOLDER.sub(replace, template)
 
 
-def _render_first(template: str, values: Mapping[str, str]) -> str:
+def _render_first(
+    template: str, values: Mapping[str, str], used: set[str] | None = None
+) -> str:
     def choose(match: re.Match[str]) -> str:
         for alternative in match.group(1).split("||"):
-            rendered = _replace_placeholders(alternative, values)
+            candidate_used: set[str] = set()
+            rendered = _replace_placeholders(alternative, values, candidate_used)
             if rendered.strip(" ,\t\n-"):
+                if used is not None:
+                    used.update(candidate_used)
                 return rendered
         return ""
 
@@ -105,6 +119,7 @@ class RenderedAddress:
     country_code: str
     components: dict[str, str]
     extras: dict[str, str]
+    unrendered_components: dict[str, str]
     warnings: tuple[str, ...]
 
     def to_dict(self) -> dict[str, object]:
@@ -115,6 +130,7 @@ class RenderedAddress:
             "country_code": self.country_code,
             "components": dict(self.components),
             "extras": dict(self.extras),
+            "unrendered_components": dict(self.unrendered_components),
             "warnings": list(self.warnings),
         }
 
@@ -142,6 +158,10 @@ def render_address(
     if supplied_country and supplied_country != profile.country_code:
         raise ValueError("component country_code does not match selected profile")
     values["country_code"] = profile.country_code
+    if values.get("recipient") and not values.get("attention"):
+        # address-formatting historically names the addressee slot "attention".
+        # Preserve the clearer public component without dropping it.
+        values["attention"] = values["recipient"]
     if values.get("address_line1") and not any(
         values.get(key) for key in ("road", "house_number", "house")
     ):
@@ -180,12 +200,27 @@ def render_address(
         else:
             template = "{{{subpremise}}}\n" + template
         warnings.append("generic_subpremise_placement")
-    rendered = _replace_placeholders(_render_first(template, values), values)
+    used: set[str] = set()
+    rendered = _replace_placeholders(_render_first(template, values, used), values, used)
     for pattern, replacement in profile.config.get("postformat_replace", []):
         rendered = re.sub(pattern, _python_replacement(replacement), rendered)
     lines = _clean_lines(rendered)
     if canonical.extras:
         warnings.append("unrendered_extra_components")
+    handled_aliases = {
+        "address_line1": "road",
+        "address_line2": "subpremise",
+        "recipient": "attention",
+    }
+    unrendered = {
+        key: value
+        for key, value in canonical.values.items()
+        if key not in {"country_code", "language", "script"}
+        and key not in used
+        and handled_aliases.get(key) not in used
+    }
+    if unrendered:
+        warnings.append("unrendered_known_components")
     return RenderedAddress(
         text="\n".join(lines),
         lines=lines,
@@ -193,5 +228,6 @@ def render_address(
         country_code=profile.country_code,
         components=dict(sorted(values.items())),
         extras=dict(canonical.extras),
+        unrendered_components=dict(sorted(unrendered.items())),
         warnings=tuple(warnings),
     )

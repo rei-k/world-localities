@@ -1,0 +1,352 @@
+"""Strict native/English address selection for East Asian address profiles."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+import json
+from pathlib import Path
+import re
+import unicodedata
+from typing import Mapping
+
+from .components import COMPONENTS, normalize_key, normalize_value
+from .formatting import RenderedAddress, render_address
+from .profiles import ProfileRegistry
+
+
+CONFIG_PATH = Path(__file__).with_name("east_asia_profiles.json")
+LANGUAGE_NEUTRAL_COMPONENTS = {
+    "country_code",
+    "postcode",
+    "sorting_code",
+    "house_number",
+    "lot",
+}
+
+
+def normalize_language_tag(tag: str) -> str:
+    parts = tag.strip().replace("_", "-").split("-")
+    if not parts or not re.fullmatch(r"[A-Za-z]{2,3}|und", parts[0]):
+        raise ValueError(f"invalid language tag: {tag}")
+    normalized = [parts[0].lower()]
+    for part in parts[1:]:
+        if re.fullmatch(r"[A-Za-z]{4}", part):
+            normalized.append(part.title())
+        elif re.fullmatch(r"[A-Za-z]{2}|[0-9]{3}", part):
+            normalized.append(part.upper())
+        elif re.fullmatch(r"[A-Za-z0-9]{4,8}", part):
+            normalized.append(part.lower())
+        else:
+            raise ValueError(f"invalid language tag: {tag}")
+    return "-".join(normalized)
+
+
+def _base_language(tag: str) -> str:
+    return normalize_language_tag(tag).split("-", 1)[0]
+
+
+def _script_subtag(tag: str) -> str | None:
+    for part in normalize_language_tag(tag).split("-")[1:]:
+        if re.fullmatch(r"[A-Z][a-z]{3}", part):
+            return part
+    return None
+
+
+def _latin_only(value: str) -> bool:
+    return all(
+        not unicodedata.category(character).startswith("L")
+        or "LATIN" in unicodedata.name(character, "")
+        for character in value
+    )
+
+
+@dataclass(frozen=True)
+class LocalizedAddress:
+    values: dict[str, dict[str, str]]
+    extras: dict[str, dict[str, str]]
+
+
+@dataclass(frozen=True)
+class SelectedComponents:
+    values: dict[str, str]
+    missing: tuple[str, ...]
+    warnings: tuple[str, ...]
+
+
+class MissingLocalizedComponents(ValueError):
+    def __init__(self, language: str, components: tuple[str, ...]):
+        self.language = language
+        self.components = components
+        super().__init__(
+            f"missing {language} values for address components: "
+            + ", ".join(components)
+        )
+
+
+def canonicalize_localized_components(
+    components: Mapping[str, str | None | Mapping[str, str | None]],
+) -> LocalizedAddress:
+    values: dict[str, dict[str, str]] = {}
+    extras: dict[str, dict[str, str]] = {}
+    for supplied_key, supplied_value in components.items():
+        if supplied_value is None:
+            continue
+        key = normalize_key(supplied_key)
+        if not isinstance(supplied_value, (str, Mapping)):
+            raise TypeError("localized component must be a string or language mapping")
+        localized = (
+            {"und": supplied_value}
+            if isinstance(supplied_value, str)
+            else dict(supplied_value)
+        )
+        target = values if key in COMPONENTS else extras
+        destination = target.setdefault(key, {})
+        for supplied_language, supplied_text in localized.items():
+            if supplied_text is None:
+                continue
+            language = normalize_language_tag(str(supplied_language))
+            text = normalize_value(supplied_text)
+            if not text:
+                continue
+            if language in destination and destination[language] != text:
+                raise ValueError(
+                    f"conflicting {language} values for address component: {key}"
+                )
+            destination[language] = text
+        if not destination:
+            target.pop(key, None)
+    country = values.get("country_code")
+    if country:
+        distinct = set(country.values())
+        if len(distinct) != 1:
+            raise ValueError("country_code cannot vary by language")
+        code = next(iter(distinct)).upper()
+        if not re.fullmatch(r"[A-Z]{2}", code):
+            raise ValueError("country_code must be a two-letter code")
+        values["country_code"] = {"und": code}
+    return LocalizedAddress(
+        values={key: dict(sorted(item.items())) for key, item in sorted(values.items())},
+        extras={key: dict(sorted(item.items())) for key, item in sorted(extras.items())},
+    )
+
+
+def _choose_language_value(
+    localized: Mapping[str, str],
+    target_language: str,
+    *,
+    source_language: str | None,
+    neutral: bool,
+) -> tuple[str | None, str | None]:
+    target = normalize_language_tag(target_language)
+    base = _base_language(target)
+    for candidate in (target, base):
+        if candidate in localized:
+            return localized[candidate], None
+    target_script = _script_subtag(target)
+    for language, value in localized.items():
+        if _base_language(language) == base:
+            candidate_script = _script_subtag(language)
+            if target_script and candidate_script and candidate_script != target_script:
+                continue
+            return value, f"language_variant_fallback:{language}"
+    if neutral:
+        language, value = next(iter(localized.items()))
+        return value, f"language_neutral_fallback:{language}"
+    if "und" in localized and source_language:
+        if _base_language(source_language) == base:
+            return localized["und"], "unlabelled_source_language"
+    return None, None
+
+
+def select_localized_components(
+    address: LocalizedAddress,
+    target_language: str,
+    *,
+    source_language: str | None = None,
+) -> SelectedComponents:
+    values: dict[str, str] = {}
+    missing: list[str] = []
+    warnings: list[str] = []
+    for key, localized in address.values.items():
+        value, warning = _choose_language_value(
+            localized,
+            target_language,
+            source_language=source_language,
+            neutral=key in LANGUAGE_NEUTRAL_COMPONENTS,
+        )
+        if value is None:
+            missing.append(key)
+            continue
+        if _base_language(target_language) == "en" and not _latin_only(value):
+            raise ValueError(f"English address component is not Latin-script: {key}")
+        values[key] = value
+        if warning:
+            warnings.append(f"{warning}:{key}")
+    return SelectedComponents(
+        values=dict(sorted(values.items())),
+        missing=tuple(sorted(missing)),
+        warnings=tuple(sorted(warnings)),
+    )
+
+
+class EastAsiaRegistry:
+    def __init__(self, path: Path = CONFIG_PATH):
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if payload.get("schema_version") != 1:
+            raise ValueError("unsupported East Asia addressing schema")
+        self.payload = payload
+        self.countries = payload["countries"]
+        self._verify()
+
+    def get(self, country_code: str) -> dict[str, object]:
+        country_code = country_code.upper()
+        if country_code not in self.countries:
+            raise KeyError(f"country is outside East Asia profile: {country_code}")
+        return self.countries[country_code]
+
+    def report(self) -> dict[str, object]:
+        provisional = sorted(
+            code
+            for code, item in self.countries.items()
+            if item["evidence_status"] == "provisional"
+        )
+        return {
+            "status": "passed",
+            "reviewed_at": self.payload["reviewed_at"],
+            "countries": len(self.countries),
+            "native_language_variants": sum(
+                len(item["native_languages"]) for item in self.countries.values()
+            ),
+            "english_profiles": sum(
+                item["english_profile"].endswith("_en")
+                for item in self.countries.values()
+            ),
+            "provisional_countries": provisional,
+        }
+
+    def _verify(self) -> None:
+        profiles = ProfileRegistry()
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", self.payload.get("reviewed_at", "")):
+            raise ValueError("invalid East Asia review date")
+        expected = {"CN", "HK", "JP", "KP", "KR", "MN", "MO", "TW"}
+        if set(self.countries) != expected:
+            raise ValueError("East Asia country coverage mismatch")
+        profile_status = self.payload.get("profile_status", {})
+        if set(profile_status) != set(self.payload.get("profiles", {})):
+            raise ValueError("East Asia profile status coverage mismatch")
+        if set(profile_status.values()) - {
+            "official_guidance",
+            "source_derived_domestic",
+            "provisional",
+        }:
+            raise ValueError("invalid East Asia profile evidence status")
+        for code, item in self.countries.items():
+            native = item["default_native_language"]
+            if native not in item["native_languages"]:
+                raise ValueError(f"invalid default native language: {code}")
+            if profiles.select(code, language=native).key != item["native_profile"]:
+                raise ValueError(f"native profile selection mismatch: {code}")
+            if profiles.select(code, international=True).key != item["english_profile"]:
+                raise ValueError(f"English profile selection mismatch: {code}")
+            if "en" not in item["country_names"]:
+                raise ValueError(f"English country name missing: {code}")
+            for language in item["native_languages"]:
+                if language not in item["country_names"]:
+                    raise ValueError(f"native country name missing: {code}/{language}")
+            if not item["sources"]:
+                raise ValueError(f"address sources missing: {code}")
+            for source in item["sources"]:
+                if set(source) != {"authority", "url", "scope"}:
+                    raise ValueError(f"invalid address source fields: {code}")
+                if not source["url"].startswith("https://"):
+                    raise ValueError(f"non-HTTPS address source: {code}")
+
+
+@dataclass(frozen=True)
+class BilingualAddressResult:
+    country_code: str
+    native_language: str
+    native: RenderedAddress
+    english: RenderedAddress
+    warnings: tuple[str, ...]
+    untranslated_extras: dict[str, dict[str, str]]
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "country_code": self.country_code,
+            "native_language": self.native_language,
+            "native": self.native.to_dict(),
+            "english": self.english.to_dict(),
+            "warnings": list(self.warnings),
+            "untranslated_extras": self.untranslated_extras,
+        }
+
+
+def render_bilingual_address(
+    components: Mapping[str, str | None | Mapping[str, str | None]],
+    country_code: str,
+    *,
+    native_language: str | None = None,
+    strict: bool = True,
+    registry: ProfileRegistry | None = None,
+    east_asia: EastAsiaRegistry | None = None,
+) -> BilingualAddressResult:
+    registry = registry or ProfileRegistry()
+    east_asia = east_asia or EastAsiaRegistry()
+    country_code = country_code.upper()
+    policy = east_asia.get(country_code)
+    native_language = normalize_language_tag(
+        native_language or str(policy["default_native_language"])
+    )
+    if native_language not in policy["native_languages"]:
+        raise ValueError(f"unsupported native language for {country_code}")
+    localized = canonicalize_localized_components(components)
+    values = {key: dict(item) for key, item in localized.values.items()}
+    supplied_code = values.get("country_code", {}).get("und")
+    if supplied_code and supplied_code != country_code:
+        raise ValueError("component country_code does not match selected country")
+    values["country_code"] = {"und": country_code}
+    values.setdefault("country", {}).update(
+        {
+            language: value
+            for language, value in policy["country_names"].items()
+            if language not in values.get("country", {})
+        }
+    )
+    localized = LocalizedAddress(values=values, extras=localized.extras)
+    native = select_localized_components(
+        localized, native_language, source_language=native_language
+    )
+    english = select_localized_components(localized, "en")
+    if strict and native.missing:
+        raise MissingLocalizedComponents(native_language, native.missing)
+    if strict and english.missing:
+        raise MissingLocalizedComponents("en", english.missing)
+    native_rendered = render_address(
+        native.values,
+        country_code,
+        language=_base_language(native_language),
+        registry=registry,
+    )
+    english_rendered = render_address(
+        english.values,
+        country_code,
+        language="en",
+        international=True,
+        registry=registry,
+    )
+    warnings = list(native.warnings + english.warnings)
+    warnings.extend(f"missing_native:{key}" for key in native.missing)
+    warnings.extend(f"missing_english:{key}" for key in english.missing)
+    if localized.extras:
+        warnings.append("localized_extra_components_not_rendered")
+    if policy["evidence_status"] == "provisional":
+        warnings.append("provisional_country_profile")
+    return BilingualAddressResult(
+        country_code=country_code,
+        native_language=native_language,
+        native=native_rendered,
+        english=english_rendered,
+        warnings=tuple(sorted(set(warnings))),
+        untranslated_extras=localized.extras,
+    )
