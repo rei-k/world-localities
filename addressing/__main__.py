@@ -8,6 +8,7 @@ import json
 from .central_asia import CentralAsiaRegistry, render_central_asia_address
 from .formatting import render_address
 from .east_asia import EastAsiaRegistry, render_bilingual_address
+from .northern_europe import NorthernEuropeRegistry, render_northern_europe_address
 from .profiles import ProfileRegistry
 from .south_asia import SouthAsiaRegistry, render_south_asia_address
 from .southern_europe import SouthernEuropeRegistry, render_southern_europe_address
@@ -38,6 +39,9 @@ def main() -> None:
     )
     commands.add_parser(
         "southern-europe", help="report native/English Southern Europe coverage"
+    )
+    commands.add_parser(
+        "northern-europe", help="report native/English Northern Europe coverage"
     )
     profile = commands.add_parser("profile", help="show a selected profile")
     render = commands.add_parser("render", help="render structured address JSON")
@@ -101,6 +105,14 @@ def main() -> None:
     southern_europe.add_argument("--native-language")
     southern_europe.add_argument("--components-json", required=True)
     southern_europe.add_argument("--allow-incomplete", action="store_true")
+    northern_europe = commands.add_parser(
+        "render-northern-europe",
+        help="render strict native and English Northern Europe output",
+    )
+    northern_europe.add_argument("--country", required=True)
+    northern_europe.add_argument("--native-language")
+    northern_europe.add_argument("--components-json", required=True)
+    northern_europe.add_argument("--allow-incomplete", action="store_true")
     args = parser.parse_args()
     registry = ProfileRegistry()
     if args.command == "verify":
@@ -126,6 +138,9 @@ def main() -> None:
         return
     if args.command == "southern-europe":
         print(json.dumps(SouthernEuropeRegistry().report(), sort_keys=True))
+        return
+    if args.command == "northern-europe":
+        print(json.dumps(NorthernEuropeRegistry().report(), sort_keys=True))
         return
     if args.command == "render-bilingual":
         components = json.loads(args.components_json)
@@ -210,6 +225,19 @@ def main() -> None:
         if not isinstance(components, dict):
             parser.error("--components-json must contain a JSON object")
         result = render_southern_europe_address(
+            components,
+            args.country,
+            native_language=args.native_language,
+            strict=not args.allow_incomplete,
+            registry=registry,
+        )
+        print(json.dumps(result.to_dict(), ensure_ascii=False, sort_keys=True))
+        return
+    if args.command == "render-northern-europe":
+        components = json.loads(args.components_json)
+        if not isinstance(components, dict):
+            parser.error("--components-json must contain a JSON object")
+        result = render_northern_europe_address(
             components,
             args.country,
             native_language=args.native_language,

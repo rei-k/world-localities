@@ -70,7 +70,7 @@ python -m unittest discover -s tests -p 'test_asia_package.py' -v
 
 ## 世界住所フォーム互換レイヤー
 
-[`addressing/`](addressing/README.md) は、251の国・地域プロファイルと186の言語別変種を
+[`addressing/`](addressing/README.md) は、251の国・地域プロファイルと229の言語別変種を
 固定出典・ハッシュ付きで収録し、入力フィールドの順番に依存しない共通住所要素から
 国内向け・国際向け表示を生成します。これは表示互換レイヤーであり、街路・番地・建物の
 実在や郵便配達可能性を証明するものではありません。検証結果は形式、地名、郵便、街路、
@@ -112,6 +112,13 @@ National Address、私書箱中心国、郵便番号を使わない国も個別�
 セルビアの5桁配達局番号と6桁PAK、アルバニアとマルタの独立した郵便番号行、イタリアの
 建物・階・部屋行、スペインの階段・階・扉を含む道路行を国別形式として保持します。
 
+北ヨーロッパ16か国・地域は国内言語32変種と英語を分離しました。Åland、Faroe、
+Guernsey、Jersey、Isle of Man、Svalbard and Jan Mayenを本国プロファイルへ埋め込まず、
+独立した郵便形式として扱います。フィンランドのフィンランド語・スウェーデン語、
+ノルウェーの2書記言語と3サーミ語、英国の英語・ウェールズ語・スコットランド・
+ゲール語・アイルランド語を別入力として検査します。Eircode、英国系郵便番号、`AX-`、
+`FO-`、`LV-`、`LT-`、スウェーデンの3桁＋2桁を国別に正規化します。
+
 ```bash
 python -m addressing verify
 python -m addressing southeast-asia
@@ -120,6 +127,7 @@ python -m addressing central-asia
 python -m addressing western-asia
 python -m addressing western-europe
 python -m addressing southern-europe
+python -m addressing northern-europe
 python -m addressing profile --country JP --language ja
 ```
 
