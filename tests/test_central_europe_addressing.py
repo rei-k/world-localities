@@ -95,9 +95,9 @@ class CentralEuropeProfileCoverage(unittest.TestCase):
 
     def test_composition_does_not_change_global_profile_inventory(self):
         report = self.profiles.report()
-        self.assertEqual(report["locale_profiles"], 514)
-        self.assertEqual(report["extension_profiles"], 710)
-        self.assertEqual(report["extension_overrides"], 212)
+        self.assertEqual(report["locale_profiles"], 558)
+        self.assertEqual(report["extension_profiles"], 782)
+        self.assertEqual(report["extension_overrides"], 240)
 
 
 class CentralEuropeBilingualRendering(unittest.TestCase):

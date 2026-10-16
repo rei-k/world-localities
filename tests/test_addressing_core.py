@@ -29,11 +29,11 @@ class AddressProfiles(unittest.TestCase):
             {
                 "status": "passed",
                 "country_profiles": 251,
-                "locale_profiles": 514,
-                "inherited_profiles": 524,
-                "extension_profiles": 710,
-                "extension_new_profiles": 498,
-                "extension_overrides": 212,
+                "locale_profiles": 558,
+                "inherited_profiles": 567,
+                "extension_profiles": 782,
+                "extension_new_profiles": 542,
+                "extension_overrides": 240,
                 "source_commit": "cbf23487c13ad437cadab0083ef79fe5f1d1823e",
                 "source_sha256": "2ed532207d6cf8c8a1823f1e5531466c00e9d292b115c0ac837321989ba4b085",
             },
@@ -145,7 +145,7 @@ class AddressComponentsAndRendering(unittest.TestCase):
             ),
         )
 
-    def test_dependent_territory_inherits_rules_without_identity_loss(self):
+    def test_dependent_territory_keeps_identity_in_reviewed_regional_profile(self):
         rendered = render_address(
             {
                 "country": "Puerto Rico",
@@ -158,9 +158,9 @@ class AddressComponentsAndRendering(unittest.TestCase):
             registry=self.registry,
         )
         self.assertEqual(rendered.country_code, "PR")
-        self.assertEqual(rendered.profile_key, "PR")
-        self.assertIn("San Juan Antiguo, PR 00901", rendered.lines)
-        self.assertEqual(rendered.lines[-1], "United States of America")
+        self.assertEqual(rendered.profile_key, "PR_es")
+        self.assertIn("San Juan Antiguo PR 00901", rendered.lines)
+        self.assertEqual(rendered.lines[-1], "Puerto Rico")
 
     def test_address2_is_not_silently_dropped(self):
         rendered = render_address(

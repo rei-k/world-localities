@@ -28,6 +28,7 @@ EXTENSION_PATHS = (
     Path(__file__).with_name("southern_africa_profiles.json"),
     Path(__file__).with_name("northern_america_profiles.json"),
     Path(__file__).with_name("central_america_profiles.json"),
+    Path(__file__).with_name("caribbean_profiles.json"),
 )
 CONFIG_FIELDS = {
     "address_template",

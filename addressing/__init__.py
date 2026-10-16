@@ -6,6 +6,7 @@ from .central_america import (
     CentralAmericaRegistry,
     render_central_america_address,
 )
+from .caribbean import CaribbeanRegistry, render_caribbean_address
 from .central_europe import CentralEuropeRegistry, render_central_europe_address
 from .contracts import LocationPrecision, ValidationLevel, ValidationResult
 from .east_asia import (
@@ -51,6 +52,7 @@ __all__ = [
     "BilingualAddressResult",
     "CentralAsiaRegistry",
     "CentralAmericaRegistry",
+    "CaribbeanRegistry",
     "CentralEuropeRegistry",
     "EastAsiaRegistry",
     "EasternAfricaRegistry",
@@ -82,6 +84,7 @@ __all__ = [
     "render_bilingual_address",
     "render_central_asia_address",
     "render_central_america_address",
+    "render_caribbean_address",
     "render_central_europe_address",
     "render_eastern_africa_address",
     "render_eastern_europe_address",
