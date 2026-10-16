@@ -21,6 +21,7 @@ from .localized import (
     RegionalAddressRegistry,
     render_regional_bilingual_address,
 )
+from .middle_africa import MiddleAfricaRegistry, render_middle_africa_address
 from .northern_africa import (
     NorthernAfricaRegistry,
     render_northern_africa_address,
@@ -46,6 +47,7 @@ __all__ = [
     "LocalizedAddress",
     "LocationPrecision",
     "MissingLocalizedComponents",
+    "MiddleAfricaRegistry",
     "NorthernAfricaRegistry",
     "NorthernEuropeRegistry",
     "OceaniaRegistry",
@@ -68,6 +70,7 @@ __all__ = [
     "render_central_europe_address",
     "render_eastern_africa_address",
     "render_eastern_europe_address",
+    "render_middle_africa_address",
     "render_northern_africa_address",
     "render_northern_europe_address",
     "render_oceania_address",

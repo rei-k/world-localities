@@ -12,6 +12,7 @@ from .east_asia import EastAsiaRegistry, render_bilingual_address
 from .eastern_africa import EasternAfricaRegistry, render_eastern_africa_address
 from .eastern_europe import EasternEuropeRegistry, render_eastern_europe_address
 from .northern_africa import NorthernAfricaRegistry, render_northern_africa_address
+from .middle_africa import MiddleAfricaRegistry, render_middle_africa_address
 from .northern_europe import NorthernEuropeRegistry, render_northern_europe_address
 from .oceania import OceaniaRegistry, render_oceania_address
 from .profiles import ProfileRegistry
@@ -64,6 +65,10 @@ def main() -> None:
     commands.add_parser(
         "eastern-africa",
         help="report domestic-language/English Eastern Africa coverage",
+    )
+    commands.add_parser(
+        "middle-africa",
+        help="report domestic-language/English Middle Africa coverage",
     )
     profile = commands.add_parser("profile", help="show a selected profile")
     render = commands.add_parser("render", help="render structured address JSON")
@@ -175,6 +180,14 @@ def main() -> None:
     eastern_africa.add_argument("--native-language")
     eastern_africa.add_argument("--components-json", required=True)
     eastern_africa.add_argument("--allow-incomplete", action="store_true")
+    middle_africa = commands.add_parser(
+        "render-middle-africa",
+        help="render strict domestic-language and English Middle Africa output",
+    )
+    middle_africa.add_argument("--country", required=True)
+    middle_africa.add_argument("--native-language")
+    middle_africa.add_argument("--components-json", required=True)
+    middle_africa.add_argument("--allow-incomplete", action="store_true")
     args = parser.parse_args()
     registry = ProfileRegistry()
     if args.command == "verify":
@@ -218,6 +231,9 @@ def main() -> None:
         return
     if args.command == "eastern-africa":
         print(json.dumps(EasternAfricaRegistry().report(), sort_keys=True))
+        return
+    if args.command == "middle-africa":
+        print(json.dumps(MiddleAfricaRegistry().report(), sort_keys=True))
         return
     if args.command == "render-bilingual":
         components = json.loads(args.components_json)
@@ -380,6 +396,19 @@ def main() -> None:
         if not isinstance(components, dict):
             parser.error("--components-json must contain a JSON object")
         result = render_eastern_africa_address(
+            components,
+            args.country,
+            native_language=args.native_language,
+            strict=not args.allow_incomplete,
+            registry=registry,
+        )
+        print(json.dumps(result.to_dict(), ensure_ascii=False, sort_keys=True))
+        return
+    if args.command == "render-middle-africa":
+        components = json.loads(args.components_json)
+        if not isinstance(components, dict):
+            parser.error("--components-json must contain a JSON object")
+        result = render_middle_africa_address(
             components,
             args.country,
             native_language=args.native_language,
