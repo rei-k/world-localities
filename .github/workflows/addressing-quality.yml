@@ -23,6 +23,7 @@ on:
       - 'tests/test_western_africa_addressing.py'
       - 'tests/test_southern_africa_addressing.py'
       - 'tests/test_northern_america_addressing.py'
+      - 'tests/test_central_america_addressing.py'
       - 'tests/test_repository_layout.py'
       - 'localities/registry_catalog.json'
       - '.github/workflows/addressing-quality.yml'
@@ -48,6 +49,7 @@ on:
       - 'tests/test_western_africa_addressing.py'
       - 'tests/test_southern_africa_addressing.py'
       - 'tests/test_northern_america_addressing.py'
+      - 'tests/test_central_america_addressing.py'
       - 'tests/test_repository_layout.py'
       - 'localities/registry_catalog.json'
       - '.github/workflows/addressing-quality.yml'
@@ -93,6 +95,7 @@ jobs:
           python -m addressing western-africa
           python -m addressing southern-africa
           python -m addressing northern-america
+          python -m addressing central-america
           python -m unittest discover -s tests -p 'test_addressing_core.py' -v
           python -m unittest discover -s tests -p 'test_east_asia_addressing.py' -v
           python -m unittest discover -s tests -p 'test_southeast_asia_addressing.py' -v
@@ -111,5 +114,6 @@ jobs:
           python -m unittest discover -s tests -p 'test_western_africa_addressing.py' -v
           python -m unittest discover -s tests -p 'test_southern_africa_addressing.py' -v
           python -m unittest discover -s tests -p 'test_northern_america_addressing.py' -v
+          python -m unittest discover -s tests -p 'test_central_america_addressing.py' -v
           python -m unittest discover -s tests -p 'test_repository_layout.py' -v
           python -m localities layout
