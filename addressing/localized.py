@@ -26,6 +26,16 @@ EVIDENCE_STATUSES = {
     "source_derived_domestic",
     "provisional",
 }
+DANGEROUS_BIDI_CONTROLS = re.compile("[\u202a-\u202e\u2066-\u2069]")
+SCRIPT_UNICODE_NAMES = {
+    "Arab": "ARABIC",
+    "Beng": "BENGALI",
+    "Deva": "DEVANAGARI",
+    "Sinh": "SINHALA",
+    "Taml": "TAMIL",
+    "Thaa": "THAANA",
+    "Tibt": "TIBETAN",
+}
 
 
 def normalize_language_tag(tag: str) -> str:
@@ -60,6 +70,19 @@ def _latin_only(value: str) -> bool:
     return all(
         not unicodedata.category(character).startswith("L")
         or "LATIN" in unicodedata.name(character, "")
+        for character in value
+    )
+
+
+def _uses_script(value: str, script: str) -> bool:
+    if script == "Latn":
+        return _latin_only(value)
+    marker = SCRIPT_UNICODE_NAMES.get(script)
+    if marker is None:
+        raise ValueError(f"unsupported script validation: {script}")
+    return all(
+        not unicodedata.category(character).startswith("L")
+        or marker in unicodedata.name(character, "")
         for character in value
     )
 
@@ -112,6 +135,10 @@ def canonicalize_localized_components(
             text = normalize_value(supplied_text)
             if not text:
                 continue
+            if DANGEROUS_BIDI_CONTROLS.search(text):
+                raise ValueError(
+                    f"dangerous bidirectional control in address component: {key}"
+                )
             if language in destination and destination[language] != text:
                 raise ValueError(
                     f"conflicting {language} values for address component: {key}"
@@ -172,6 +199,7 @@ def select_localized_components(
     target_language: str,
     *,
     source_language: str | None = None,
+    expected_script: str | None = None,
 ) -> SelectedComponents:
     values: dict[str, str] = {}
     missing: list[str] = []
@@ -188,6 +216,12 @@ def select_localized_components(
             continue
         if base_language(target_language) == "en" and not _latin_only(value):
             raise ValueError(f"English address component is not Latin-script: {key}")
+        if expected_script and key not in LANGUAGE_NEUTRAL_COMPONENTS:
+            if not _uses_script(value, expected_script):
+                raise ValueError(
+                    f"{target_language} address component is not "
+                    f"{expected_script}-script: {key}"
+                )
         values[key] = value
         if warning:
             warnings.append(f"{warning}:{key}")
@@ -283,6 +317,11 @@ class RegionalAddressRegistry:
                     raise ValueError(f"native country name missing: {code}/{language}")
             if item["evidence_status"] not in EVIDENCE_STATUSES:
                 raise ValueError(f"invalid country evidence status: {code}")
+            native_scripts = item.get("native_scripts", {})
+            if native_scripts and set(native_scripts) != set(native_languages):
+                raise ValueError(f"native script coverage mismatch: {code}")
+            if set(native_scripts.values()) - ({"Latn"} | set(SCRIPT_UNICODE_NAMES)):
+                raise ValueError(f"unsupported native script: {code}")
             if not item["romanization_policy"]:
                 raise ValueError(f"romanization policy missing: {code}")
             if not item["sources"]:
@@ -346,7 +385,10 @@ def render_regional_bilingual_address(
     )
     localized = LocalizedAddress(values=values, extras=localized.extras)
     native = select_localized_components(
-        localized, native_language, source_language=native_language
+        localized,
+        native_language,
+        source_language=native_language,
+        expected_script=policy.get("native_scripts", {}).get(native_language),
     )
     english = select_localized_components(localized, "en")
     if strict and native.missing:
