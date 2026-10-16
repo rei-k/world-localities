@@ -18,6 +18,7 @@ LANGUAGE_NEUTRAL_COMPONENTS = {
     "country_code",
     "postcode",
     "sorting_code",
+    "state_code",
     "house_number",
     "lot",
 }
