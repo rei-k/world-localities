@@ -70,7 +70,7 @@ python -m unittest discover -s tests -p 'test_asia_package.py' -v
 
 ## 世界住所フォーム互換レイヤー
 
-[`addressing/`](addressing/README.md) は、251の国・地域プロファイルと117の言語別変種を
+[`addressing/`](addressing/README.md) は、251の国・地域プロファイルと142の言語別変種を
 固定出典・ハッシュ付きで収録し、入力フィールドの順番に依存しない共通住所要素から
 国内向け・国際向け表示を生成します。これは表示互換レイヤーであり、街路・番地・建物の
 実在や郵便配達可能性を証明するものではありません。検証結果は形式、地名、郵便、街路、
@@ -100,12 +100,19 @@ Address2と棟・入口・階・部屋を配送行へ保持し、母国語がラ
 レバノンの複数言語を別々に保持します。パレスチナのP接頭辞8文字、サウジアラビアの
 National Address、私書箱中心国、郵便番号を使わない国も個別形式として扱います。
 
+西ヨーロッパ9か国は国内表記16変種と英語を分離しました。ベルギーのオランダ語・
+フランス語・ドイツ語、ルクセンブルクのルクセンブルク語・フランス語・ドイツ語、
+スイスのドイツ語・フランス語・イタリア語・ロマンシュ語を個別に保持します。同じ
+ラテン文字でも別言語や英語へ自動流用しません。フランスの部屋・階・階段、オランダの
+番地追記、オーストリア・ドイツ・スイスの住戸情報を国別の配送行順序で保持します。
+
 ```bash
 python -m addressing verify
 python -m addressing southeast-asia
 python -m addressing south-asia
 python -m addressing central-asia
 python -m addressing western-asia
+python -m addressing western-europe
 python -m addressing profile --country JP --language ja
 ```
 

@@ -18,6 +18,7 @@ from .profiles import AddressProfile, ProfileRegistry
 from .south_asia import SouthAsiaRegistry, render_south_asia_address
 from .southeast_asia import SoutheastAsiaRegistry, render_southeast_asia_address
 from .western_asia import WesternAsiaRegistry, render_western_asia_address
+from .western_europe import WesternEuropeRegistry, render_western_europe_address
 
 __all__ = [
     "AddressProfile",
@@ -36,6 +37,7 @@ __all__ = [
     "ValidationLevel",
     "ValidationResult",
     "WesternAsiaRegistry",
+    "WesternEuropeRegistry",
     "canonicalize_components",
     "canonicalize_localized_components",
     "render_address",
@@ -45,5 +47,6 @@ __all__ = [
     "render_south_asia_address",
     "render_southeast_asia_address",
     "render_western_asia_address",
+    "render_western_europe_address",
     "select_localized_components",
 ]
