@@ -126,6 +126,12 @@ Guernsey、Jersey、Isle of Man、Svalbard and Jan Mayenを本国プロファイ
 郵便番号表記を国別に保持し、全10か国でAddress2を欠落させません。全プロファイルに
 郵便事業者またはUPUの根拠があり、`provisional` はありません。
 
+中央ヨーロッパは国連M49に独立区分がないため、AT・CH・CZ・DE・HU・LI・PL・SI・SKの
+中核9か国を横断レジストリとして定義しました。国別データを再収録せず、西ヨーロッパ4か国、
+東ヨーロッパ4か国、南ヨーロッパ1か国の検証済みプロファイルを参照します。国内言語12変種、
+英語、Address2、郵便番号表記、住所順序を共通CLIから利用できます。境界が揺れるクロアチアと
+ルクセンブルクは自動包含せず、既存の南ヨーロッパ・西ヨーロッパ経路を維持します。
+
 ```bash
 python -m addressing verify
 python -m addressing southeast-asia
@@ -136,6 +142,7 @@ python -m addressing western-europe
 python -m addressing southern-europe
 python -m addressing northern-europe
 python -m addressing eastern-europe
+python -m addressing central-europe
 python -m addressing profile --country JP --language ja
 ```
 

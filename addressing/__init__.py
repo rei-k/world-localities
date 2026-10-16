@@ -2,6 +2,7 @@
 
 from .components import CanonicalAddress, canonicalize_components
 from .central_asia import CentralAsiaRegistry, render_central_asia_address
+from .central_europe import CentralEuropeRegistry, render_central_europe_address
 from .contracts import LocationPrecision, ValidationLevel, ValidationResult
 from .east_asia import (
     BilingualAddressResult,
@@ -28,6 +29,7 @@ __all__ = [
     "CanonicalAddress",
     "BilingualAddressResult",
     "CentralAsiaRegistry",
+    "CentralEuropeRegistry",
     "EastAsiaRegistry",
     "EasternEuropeRegistry",
     "LocalizedAddress",
@@ -49,6 +51,7 @@ __all__ = [
     "render_address",
     "render_bilingual_address",
     "render_central_asia_address",
+    "render_central_europe_address",
     "render_eastern_europe_address",
     "render_northern_europe_address",
     "render_regional_bilingual_address",

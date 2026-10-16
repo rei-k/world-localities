@@ -6,6 +6,7 @@ import argparse
 import json
 
 from .central_asia import CentralAsiaRegistry, render_central_asia_address
+from .central_europe import CentralEuropeRegistry, render_central_europe_address
 from .formatting import render_address
 from .east_asia import EastAsiaRegistry, render_bilingual_address
 from .eastern_europe import EasternEuropeRegistry, render_eastern_europe_address
@@ -46,6 +47,9 @@ def main() -> None:
     )
     commands.add_parser(
         "eastern-europe", help="report native/English Eastern Europe coverage"
+    )
+    commands.add_parser(
+        "central-europe", help="report native/English Central Europe coverage"
     )
     profile = commands.add_parser("profile", help="show a selected profile")
     render = commands.add_parser("render", help="render structured address JSON")
@@ -125,6 +129,14 @@ def main() -> None:
     eastern_europe.add_argument("--native-language")
     eastern_europe.add_argument("--components-json", required=True)
     eastern_europe.add_argument("--allow-incomplete", action="store_true")
+    central_europe = commands.add_parser(
+        "render-central-europe",
+        help="render strict native and English Central Europe output",
+    )
+    central_europe.add_argument("--country", required=True)
+    central_europe.add_argument("--native-language")
+    central_europe.add_argument("--components-json", required=True)
+    central_europe.add_argument("--allow-incomplete", action="store_true")
     args = parser.parse_args()
     registry = ProfileRegistry()
     if args.command == "verify":
@@ -156,6 +168,9 @@ def main() -> None:
         return
     if args.command == "eastern-europe":
         print(json.dumps(EasternEuropeRegistry().report(), sort_keys=True))
+        return
+    if args.command == "central-europe":
+        print(json.dumps(CentralEuropeRegistry().report(), sort_keys=True))
         return
     if args.command == "render-bilingual":
         components = json.loads(args.components_json)
@@ -266,6 +281,19 @@ def main() -> None:
         if not isinstance(components, dict):
             parser.error("--components-json must contain a JSON object")
         result = render_eastern_europe_address(
+            components,
+            args.country,
+            native_language=args.native_language,
+            strict=not args.allow_incomplete,
+            registry=registry,
+        )
+        print(json.dumps(result.to_dict(), ensure_ascii=False, sort_keys=True))
+        return
+    if args.command == "render-central-europe":
+        components = json.loads(args.components_json)
+        if not isinstance(components, dict):
+            parser.error("--components-json must contain a JSON object")
+        result = render_central_europe_address(
             components,
             args.country,
             native_language=args.native_language,
