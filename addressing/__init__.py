@@ -30,6 +30,7 @@ from .northern_europe import NorthernEuropeRegistry, render_northern_europe_addr
 from .oceania import OceaniaRegistry, render_oceania_address
 from .profiles import AddressProfile, ProfileRegistry
 from .south_asia import SouthAsiaRegistry, render_south_asia_address
+from .southern_africa import SouthernAfricaRegistry, render_southern_africa_address
 from .southern_europe import SouthernEuropeRegistry, render_southern_europe_address
 from .southeast_asia import SoutheastAsiaRegistry, render_southeast_asia_address
 from .western_asia import WesternAsiaRegistry, render_western_asia_address
@@ -58,6 +59,7 @@ __all__ = [
     "RenderedAddress",
     "SoutheastAsiaRegistry",
     "SouthAsiaRegistry",
+    "SouthernAfricaRegistry",
     "SouthernEuropeRegistry",
     "ValidationLevel",
     "ValidationResult",
@@ -78,6 +80,7 @@ __all__ = [
     "render_oceania_address",
     "render_regional_bilingual_address",
     "render_south_asia_address",
+    "render_southern_africa_address",
     "render_southern_europe_address",
     "render_southeast_asia_address",
     "render_western_asia_address",
