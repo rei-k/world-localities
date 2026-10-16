@@ -68,6 +68,19 @@ python -m unittest discover -s tests -p 'test_asia_package.py' -v
 責務と変更方針は[リポジトリ構成](docs/repository-layout.md)を参照してください。
 構成・同名コード検証は `python -m localities layout` で実行できます。
 
+## 世界住所フォーム互換レイヤー
+
+[`addressing/`](addressing/README.md) は、251の国・地域プロファイルと16の言語別変種を
+固定出典・ハッシュ付きで収録し、入力フィールドの順番に依存しない共通住所要素から
+国内向け・国際向け表示を生成します。これは表示互換レイヤーであり、街路・番地・建物の
+実在や郵便配達可能性を証明するものではありません。検証結果は形式、地名、郵便、街路、
+建物、Address2、配達可能性を別レベルで返す契約にしています。
+
+```bash
+python -m addressing verify
+python -m addressing profile --country JP --language ja
+```
+
 オセアニアは国別62分割パックに、言語付き名称37,236件と限定的な郵便番号対応を収録しました。地域IDを保持した名称選択と国別展開に対応します。全公用語・郵便番号の完全網羅ではありません。原典と検証結果は [オセアニア台帳](oceania-registry/README.md) を参照してください。
 
 ## アメリカ大陸（北部アメリカから順次強化）

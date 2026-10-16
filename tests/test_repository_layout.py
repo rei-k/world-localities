@@ -22,7 +22,7 @@ class RepositoryLayout(unittest.TestCase):
         self.assertEqual(report["exact_duplicate_python_files"], 0)
         self.assertEqual(
             report["duplicate_python_basenames"],
-            ["__init__.py", "build.py", "query.py"],
+            ["__init__.py", "__main__.py", "build.py", "query.py"],
         )
 
     def test_catalog_paths_are_unique(self):

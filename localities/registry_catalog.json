@@ -102,6 +102,7 @@
   ],
   "scoped_python_basenames": {
     "__init__.py": "standard package marker",
+    "__main__.py": "package-scoped command line entry point",
     "build.py": "registry-scoped build entry point",
     "query.py": "registry-scoped query entry point"
   }
