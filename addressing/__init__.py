@@ -12,6 +12,7 @@ from .east_asia import (
     render_bilingual_address,
     select_localized_components,
 )
+from .eastern_europe import EasternEuropeRegistry, render_eastern_europe_address
 from .formatting import RenderedAddress, render_address
 from .localized import RegionalAddressRegistry, render_regional_bilingual_address
 from .northern_europe import NorthernEuropeRegistry, render_northern_europe_address
@@ -28,6 +29,7 @@ __all__ = [
     "BilingualAddressResult",
     "CentralAsiaRegistry",
     "EastAsiaRegistry",
+    "EasternEuropeRegistry",
     "LocalizedAddress",
     "LocationPrecision",
     "MissingLocalizedComponents",
@@ -47,6 +49,7 @@ __all__ = [
     "render_address",
     "render_bilingual_address",
     "render_central_asia_address",
+    "render_eastern_europe_address",
     "render_northern_europe_address",
     "render_regional_bilingual_address",
     "render_south_asia_address",
