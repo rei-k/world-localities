@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "mode": "one_reviewable_scope_per_update",
+  "updates": [
+    {
+      "id": "01-world-coverage",
+      "scope": "対象250地域・4項目の不足状況",
+      "status": "included_in_this_commit"
+    },
+    {
+      "id": "02-south-america",
+      "scope": "南米12か国と4補足地域の階層処理",
+      "status": "pending"
+    },
+    {
+      "id": "03-north-america",
+      "scope": "北米の階層処理",
+      "status": "pending"
+    },
+    {
+      "id": "04-central-america",
+      "scope": "中米の階層処理",
+      "status": "pending"
+    },
+    {
+      "id": "05-caribbean",
+      "scope": "カリブ海の階層処理",
+      "status": "pending"
+    },
+    {
+      "id": "06-asia",
+      "scope": "アジアの階層処理",
+      "status": "pending"
+    },
+    {
+      "id": "07-africa",
+      "scope": "アフリカの階層処理",
+      "status": "pending"
+    },
+    {
+      "id": "08-oceania",
+      "scope": "オセアニアの階層処理",
+      "status": "pending"
+    },
+    {
+      "id": "09-europe",
+      "scope": "欧州の階層処理",
+      "status": "pending"
+    },
+    {
+      "id": "10-western-europe",
+      "scope": "西ヨーロッパ部分版",
+      "status": "pending"
+    },
+    {
+      "id": "11-southern-europe",
+      "scope": "南ヨーロッパ部分版",
+      "status": "pending"
+    },
+    {
+      "id": "12-eastern-europe",
+      "scope": "東ヨーロッパ部分版",
+      "status": "pending"
+    },
+    {
+      "id": "13-northern-europe",
+      "scope": "北欧部分版",
+      "status": "pending"
+    },
+    {
+      "id": "14-overseas",
+      "scope": "BV・HM・AQ・海外領の原典と補強",
+      "status": "pending"
+    },
+    {
+      "id": "15-official-addresses",
+      "scope": "公式行政区・通り・割当番地の取込と検証",
+      "status": "pending"
+    }
+  ],
+  "large_data_publication": "Keep original snapshots separate from ordinary Git; decide distribution independently of code commits.",
+  "deliverability_in_scope": false
+}

@@ -2,6 +2,10 @@
 
 世界の自治体・行政区画・地名を、公的コード・親子関係・出典付きで管理するリポジトリです。
 
+2026-10-18版の[世界250地域の監査表と更新順](releases/world-coverage/README.md)を追加しました。
+行政区・住所用の通り・物理的な道路網・割当番地の不足を分けて記録し、地域別の実装は小分けで反映します。
+世界全体の完全網羅は未完了で、配達可能性は今回の対象外です。
+
 ## 収録済みデータ
 
 | 地域 | 行政区画・地名 | 別出典の公式対応表 | 取得日 |
@@ -235,3 +239,4 @@ BM/GL/PMの**18件の行政区画名シード**も追加しました。
 
 新しい入口は `python central-america-registry/query_enriched.py --country CR --text 'San Jose' --language es`、
 実データ検査は `python central-america-registry/quality.py`。
+
