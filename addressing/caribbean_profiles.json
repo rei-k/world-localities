@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
   "region": "Caribbean",
-  "reviewed_at": "2026-10-17",
+  "reviewed_at": "2026-10-18",
   "purpose": "Domestic-language and English address display profiles for all 28 UN M49 Caribbean countries or areas, with explicit postcode, Address2, street, island, parish, urbanization and P.O. Box policies; not an address-existence, postal-assignment, geocoding or deliverability claim.",
   "locality_registry": {
     "path": "caribbean-registry",
     "scope_file": "caribbean-registry/scope.json",
     "manifest_file": "caribbean-registry/manifest.json",
-    "published_country_layers": ["AG", "AI", "AW", "BB", "BL", "BQ", "BS", "CW", "DM", "DO", "GD", "GP", "HT", "JM", "KN", "KY", "LC", "MF", "MQ", "MS", "PR", "SX", "TC", "TT", "VC", "VG", "VI"],
+    "published_country_layers": ["AG", "AI", "AW", "BB", "BL", "BQ", "BS", "CU", "CW", "DM", "DO", "GD", "GP", "HT", "JM", "KN", "KY", "LC", "MF", "MQ", "MS", "PR", "SX", "TC", "TT", "VC", "VG", "VI"],
     "split_materialization_required": ["DO"],
-    "pending_locality_source_countries": ["CU"],
-    "source_entity_rows": 50581,
-    "source_locality_rows": 31942,
-    "address_candidate_rows": 31630,
-    "alternate_rows": 55255,
+    "pending_locality_source_countries": [],
+    "source_entity_rows": 66851,
+    "source_locality_rows": 48025,
+    "address_candidate_rows": 47691,
+    "alternate_rows": 74835,
     "direct_id_postal_observations": 196,
-    "role": "GeoNames-derived country layers for 27 of 28 M49 Caribbean areas. The Dominican Republic gzip is transported as verified split parts and must be materialized before full replay. Cuba is explicitly pending and has no locality rows in this publication. Counts are source rows, direct-ID postal observations are not an official postcode crosswalk, and no row proves a street, house number, postcode assignment, geocode or deliverable address."
+    "role": "GeoNames-derived country layers for all 28 M49 Caribbean areas, including the partial Cuba country extract. The Dominican Republic gzip is transported as verified split parts and must be materialized before full replay. Counts are source rows, direct-ID postal observations are not an official postcode crosswalk, and no row proves a complete official locality set, street, house number, postcode assignment, geocode or deliverable address."
   },
   "overrides": ["AG", "AI", "AW", "BB", "BL", "BQ", "BS", "CU", "CW", "DM", "DO", "GD", "GP", "HT", "JM", "KN", "KY", "LC", "MF", "MQ", "MS", "PR", "SX", "TC", "TT", "VC", "VG", "VI"],
   "countries": {

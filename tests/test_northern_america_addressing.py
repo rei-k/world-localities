@@ -56,7 +56,7 @@ class NorthernAmericaProfileCoverage(unittest.TestCase):
             self.northern_america.report(),
             {
                 "status": "passed",
-                "reviewed_at": "2026-10-17",
+                "reviewed_at": "2026-10-18",
                 "countries": 5,
                 "native_language_variants": 7,
                 "english_profiles": 5,
@@ -75,21 +75,21 @@ class NorthernAmericaProfileCoverage(unittest.TestCase):
                 self.assertTrue(policy["romanization_policy"])
                 self.assertTrue(policy["sources"])
 
-    def test_locality_linkage_keeps_pending_sources_explicit(self):
+    def test_locality_linkage_includes_partial_source_packs_and_keeps_seeds_separate(self):
         linkage = self.northern_america.locality_registry
         scope = json.loads((ROOT / linkage["scope_file"]).read_text(encoding="utf-8"))
         countries = {item["country"]: item for item in scope["countries"]}
 
         self.assertEqual(set(countries), set(EXPECTED_PROFILES))
-        self.assertEqual(set(linkage["materialized_countries"]), {"CA", "US"})
-        self.assertEqual(
-            set(linkage["pending_locality_source_countries"]), {"BM", "GL", "PM"}
-        )
-        self.assertEqual(linkage["source_locality_rows_in_m49_area"], 72567)
+        self.assertEqual(set(linkage["materialized_countries"]), {"BM", "CA", "GL", "PM", "US"})
+        self.assertEqual(linkage["pending_locality_source_countries"], [])
+        self.assertEqual(linkage["source_locality_rows_in_m49_area"], 72866)
         self.assertEqual(
             linkage["administrative_seed_counts"], {"BM": 11, "GL": 5, "PM": 2}
         )
-        self.assertEqual(countries["BM"]["status"], "pending_locality_source")
+        self.assertEqual(countries["BM"]["status"], "published_geonames_source")
+        self.assertEqual(countries["GL"]["status"], "published_geonames_source")
+        self.assertEqual(countries["PM"]["status"], "published_geonames_source")
         self.assertEqual(countries["CA"]["status"], "preserved_official_snapshot")
         self.assertFalse(scope["coverage_claims"]["postal_address_verification"])
         self.assertFalse(scope["coverage_claims"]["street_and_house_number_verification"])

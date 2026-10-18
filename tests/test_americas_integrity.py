@@ -200,9 +200,13 @@ class InputIntegrityTests(unittest.TestCase):
         with self.assertRaisesRegex(v.DataError, 'publisher'):
             query.search('BM', root=self.root)
 
-    def test_pending_source_does_not_ignore_candidate_filter(self):
-        with self.assertRaisesRegex(v.DataError, 'requires a loaded locality source'):
-            query.search('BM', candidate_only=True, root=self.root)
+    def test_partial_source_candidate_filter_returns_unverified_geo_names_rows(self):
+        result = query.search('BM', candidate_only=True, root=self.root)
+        self.assertEqual(result['status'], 'source_gazetteer_available')
+        self.assertEqual(result['source_locality_rows'], 31)
+        self.assertTrue(result['results'])
+        self.assertTrue(all(row['address_candidate_flag'] for row in result['results']))
+        self.assertTrue(all(not row['delivery_verified'] for row in result['results']))
 
 
 class QualityCycleTests(unittest.TestCase):
@@ -289,9 +293,16 @@ class QualityCycleTests(unittest.TestCase):
     def test_full_real_area_cycle(self):
         result = cycle.run_cycle(ROOT)
         self.assertEqual(result['status'], 'passed', result)
-        self.assertEqual(result['source_country_area_count'], 53)
+        self.assertEqual(result['source_country_area_count'], 57)
         self.assertEqual(result['new_locality_records_added'], 0)
         self.assertTrue(all(x['checked_file_sha256'] for x in result['areas']))
+        areas = {item['area']: item for item in result['areas']}
+        self.assertEqual(areas['northern-america']['regional_gazetteer_payload_checks'],
+                         'passed_hashes_and_derived_replay_BM_GL_PM')
+        self.assertEqual(areas['caribbean']['regional_gazetteer_payload_checks'],
+                         'passed_hashes_and_derived_replay_28_Caribbean_packs')
+        self.assertIn('caribbean-registry/countries/CU/entities.csv.gz',
+                      areas['caribbean']['checked_file_sha256'])
 
     def test_cli_bounded_stop_and_saved_state(self):
         with tempfile.TemporaryDirectory() as tmp:

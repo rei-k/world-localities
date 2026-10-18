@@ -137,10 +137,10 @@ class CentralAmericaAcceptanceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             government.parsed_codes(source)
 
-    def test_eight_country_roster_reaches_53_of_57_americas_sources(self):
+    def test_eight_country_roster_and_57_of_57_americas_sources(self):
         audit = imported('central_final_audit', 'americas-registry/audit.py')
         report = audit.audit(ROOT)
-        self.assertEqual(report['source_country_area_count'], 53)
+        self.assertEqual(report['source_country_area_count'], 57)
         central = next(r for r in report['areas'] if r['key'] == 'central-america')
         self.assertEqual(central['source_country_area_count'], 8)
         self.assertEqual(central['pending_country_area_codes'], [])

@@ -3,7 +3,8 @@
 
 This validates stored data; it never downloads, invents, merges or publishes
 new locality records. Official snapshots receive full existing row/parent QA;
-regional gazetteers receive pinned metadata and per-country metric checks.
+Northern America, Central America and Caribbean gazetteers receive pinned
+payload hashes, per-country checks and reproducible transform validation.
 """
 import argparse
 from datetime import datetime, timezone
@@ -77,7 +78,80 @@ def inspect_area(root, area):
         seeds = v.decode_json(record(directory + '/admin-seeds.json'))
         v.validate_seed_data(seeds)
         record(directory + '/name-overrides.json')
-    else:
+        manifest = v.decode_json(record(directory + '/manifest.json'))
+        geonames = {cc for cc, row in published.items() if row['status'] == 'published_geonames_source'}
+        entries = v.unique_rows(manifest['countries'], 'country', area + ' manifest')
+        v.require(set(entries) == geonames == set(manifest['prepared_countries']),
+                  'Northern scope/manifest country mismatch')
+        v.require(paths[directory + '/scope.json'] == manifest['scope_sha256'],
+                  'Northern source scope hash mismatch')
+        coverage_bytes = record(directory + '/coverage.csv')
+        v.require(v.digest(coverage_bytes) == manifest['coverage_sha256'],
+                  'Northern source coverage hash mismatch')
+        coverage = v.unique_rows(v.csv_rows(coverage_bytes), 'country', area + ' coverage')
+        v.require(set(coverage) == geonames, 'Northern source coverage country mismatch')
+        northern_builder = imported('northern_geonames_quality', ROOT / 'north-america-registry/build.py')
+        northern_builder.verify_manifest(root / directory)
+        for cc, entry in entries.items():
+            relative = f'{directory}/countries/{cc}/metadata.json'
+            raw = record(relative)
+            v.require(v.digest(raw) == entry['metadata_sha256'], f'{cc}: metadata hash mismatch')
+            metadata = v.decode_json(raw)
+            check_country_metrics(coverage[cc], metadata)
+            report = northern_builder.verify_one(cc, root / directory)
+            v.require(report['integrity'] == 'passed' and report['entity_replay'] == 'exact',
+                      f'{cc}: GeoNames replay failed')
+            for filename in sorted(metadata['files']):
+                record(f'{directory}/countries/{cc}/{filename}')
+            for filename in sorted(metadata['auxiliary_files']):
+                record(f'{directory}/countries/{cc}/{filename}')
+            for filename in sorted(metadata['preview_files']):
+                record(f'{directory}/countries/{cc}/{filename}')
+    elif area == 'caribbean':
+        manifest = v.decode_json(record(directory + '/manifest.json'))
+        v.require(paths[directory + '/scope.json'] == manifest['scope_sha256'],
+                  'Caribbean scope hash mismatch')
+        entries = v.unique_rows(manifest['countries'], 'country', area + ' manifest')
+        v.require(set(entries) == set(published) == set(manifest['prepared_countries'])
+                  and manifest['missing_countries'] == [],
+                  'Caribbean scope/manifest country mismatch')
+        coverage_bytes = record(directory + '/coverage.csv')
+        v.require(v.digest(coverage_bytes) == manifest['coverage_sha256'],
+                  'Caribbean coverage hash mismatch')
+        coverage = v.unique_rows(v.csv_rows(coverage_bytes), 'country', area + ' coverage')
+        v.require(set(coverage) == set(published), 'Caribbean coverage country mismatch')
+        caribbean_builder = imported('caribbean_geonames_quality', ROOT / 'caribbean-registry/build.py')
+        seen_entities, seen_alternates = set(), set()
+        for cc, entry in entries.items():
+            relative = f'{directory}/countries/{cc}/metadata.json'
+            raw = record(relative)
+            v.require(v.digest(raw) == entry['metadata_sha256'], f'{cc}: metadata hash mismatch')
+            metadata = v.decode_json(raw)
+            check_country_metrics(coverage[cc], metadata)
+            report = caribbean_builder.verify_one(cc, root / directory)
+            v.require(report['integrity'] == 'passed' and report['replay'] == 'exact',
+                      f'{cc}: GeoNames replay failed')
+            country_dir = root / directory / 'countries' / cc
+            entity_ids = {row['id'] for row in caribbean_builder.read_csv(
+                country_dir / 'entities.csv.gz')}
+            alternate_ids = {row['id'] for row in caribbean_builder.read_csv(
+                country_dir / 'alternate-names.csv.gz')}
+            v.require(not seen_entities.intersection(entity_ids),
+                      'duplicate entity ID across Caribbean countries')
+            v.require(not seen_alternates.intersection(alternate_ids),
+                      'duplicate alternate-name ID across Caribbean countries')
+            seen_entities.update(entity_ids)
+            seen_alternates.update(alternate_ids)
+            for filename in sorted(metadata['files']):
+                record(f'{directory}/countries/{cc}/{filename}')
+            for filename in sorted(metadata['auxiliary_files']):
+                record(f'{directory}/countries/{cc}/{filename}')
+            for filename in sorted(metadata['preview_files']):
+                record(f'{directory}/countries/{cc}/{filename}')
+        v.require(len(seen_entities) == manifest['totals']['entities']
+                  and len(seen_alternates) == manifest['totals']['alternate_rows'],
+                  'Caribbean manifest aggregate payload counts mismatch')
+    elif area != 'central-america':
         manifest = v.decode_json(record(directory + '/manifest.json'))
         if 'scope_sha256' in manifest:
             v.require(paths[directory + '/scope.json'] == manifest['scope_sha256'], 'scope hash mismatch')
@@ -135,8 +209,8 @@ def inspect_area(root, area):
         'pending_country_area_codes': sorted(cc for cc, x in sources.items() if x['status'] == 'pending_source'),
         'unresolved_parent_links': sum(x.get('unresolved_parents', 0) for x in sources.values()),
         'official_full_row_and_parent_checks': checked_official,
-        'regional_gazetteer_payload_checks': ('passed_hashes_and_derived_replay_CR_raw_replay' if area == 'central-america' else 'not_run' if area != 'northern-america' else 'not_applicable'),
-        'regional_check_scope': ('Seven Central America gazetteer payloads: hashes, derived columns and ID references; CR raw ZIP replay and government CodeSystem replay. Legacy six-country raw ZIP replay is not run.' if area == 'central-america' else 'pinned country metadata and country-level metrics, not compressed payload contents'),
+        'regional_gazetteer_payload_checks': ('passed_hashes_and_derived_replay_BM_GL_PM' if area == 'northern-america' else 'passed_hashes_and_derived_replay_CR_raw_replay' if area == 'central-america' else 'passed_hashes_and_derived_replay_28_Caribbean_packs' if area == 'caribbean' else 'not_run'),
+        'regional_check_scope': ('Three Northern GeoNames packs: compressed payload hashes, stable source IDs, aliases, parent references, postal projections and exact entity replay; official source completeness is not verified.' if area == 'northern-america' else 'Seven Central America gazetteer payloads: hashes, derived columns and ID references; CR raw ZIP replay and government CodeSystem replay. Legacy six-country raw ZIP replay is not run.' if area == 'central-america' else 'All 28 Caribbean GeoNames payloads: hashes, stable IDs, parent chains and candidates, aliases, postal projections and exact entity replay.' if area == 'caribbean' else 'pinned country metadata and country-level metrics, not compressed payload contents'),
         'quality_notes': notes,
         'upstream_freshness_verified': False, 'postal_or_address_deliverability_verified': False
     }
@@ -158,7 +232,7 @@ def run_cycle(root=ROOT, areas=None, previous=None, inspector=inspect_area):
                 'first_check' if prior is None else
                 'recovered' if prior['status'] != 'passed' else
                 'unchanged' if prior['input_sha256'] == result['input_sha256'] else 'changed')
-        except (ValueError, OSError, KeyError, TypeError, v.csv.Error) as exc:
+        except (ValueError, OSError, KeyError, TypeError, AssertionError, v.csv.Error) as exc:
             result = {'area': area, 'status': 'failed', 'error': str(exc),
                       'change_since_previous': 'failed', 'source_country_area_count': None}
         results.append(result)

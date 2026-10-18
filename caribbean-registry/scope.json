@@ -111,6 +111,22 @@
       "status": "source_country_or_area"
     },
     {
+      "alpha3": "CUB",
+      "country": "CU",
+      "geonames_country_name": "Cuba",
+      "geonames_id": "3562981",
+      "id": "country:CU",
+      "m49": "192",
+      "name_en": "Cuba",
+      "region": "Caribbean",
+      "region_m49": "029",
+      "source_language_codes": [
+        "es-CU",
+        "pap"
+      ],
+      "status": "source_country_or_area"
+    },
+    {
       "alpha3": "CUW",
       "country": "CW",
       "geonames_country_name": "Curacao",
@@ -420,22 +436,15 @@
       "status": "source_country_or_area"
     }
   ],
-  "country_info_sha256": "93bafc525813f22e4711ff9ed6d626343094ce48c26388dc7c49189b3d7d5512",
+  "country_info_sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
   "m49_scope_count": 28,
-  "omitted_countries": [
-    {
-      "country": "CU",
-      "name_en": "Cuba",
-      "reason": "Country upload is pending approval; no Cuba country files are included in this partial publication.",
-      "status": "omitted_from_this_publication"
-    }
-  ],
-  "published_scope_count": 27,
+  "omitted_countries": [],
+  "published_scope_count": 28,
   "region_m49": "029",
-  "retrieved_on": "2026-10-01",
+  "retrieved_on": "2026-10-18",
   "schema_version": 1,
-  "scope_name": "UN M49 Caribbean partial publication: 27 of 28 countries and areas",
-  "scope_note": "This publication includes 27 of 28 M49 Caribbean countries/areas. Cuba (CU) is omitted in full. Statistical grouping only; does not imply any position on sovereignty. Puerto Rico and US Virgin Islands remain independent source country scopes; do not add counts to overlapping US official snapshots.",
-  "source_html_sha256": "4d5cabcb10ad9ef184553b5e64c0a34ba8deeb20dab2e02cd0be3599b93bb01d",
+  "scope_name": "UN M49 Caribbean source publication: 28 of 28 countries and areas",
+  "scope_note": "Statistical grouping only; does not imply any position on sovereignty. Puerto Rico and US Virgin Islands remain independent source country scopes; do not add counts to overlapping US official snapshots.",
+  "source_html_sha256": "b9048114f6e7f2abda83bf03d4263c9d7cd1bd7230e3d0461025ee7839a7a1fb",
   "source_url": "https://unstats.un.org/unsd/methodology/m49/"
 }

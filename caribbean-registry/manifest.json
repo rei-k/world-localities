@@ -29,6 +29,10 @@
       "metadata_sha256": "137fedc43e80d6bd496199a8d13a5d72b3b6ed2b6e7bd566a5b50757bd93a0fc"
     },
     {
+      "country": "CU",
+      "metadata_sha256": "4fff183444385b429ef3b6770d898d6a319851d17741db02ac6e72c288263026"
+    },
+    {
       "country": "CW",
       "metadata_sha256": "bf99670d741781dd4f64724bcca93130c39a6535a9013321adc1268e73fefca3"
     },
@@ -109,21 +113,11 @@
       "metadata_sha256": "25c35ce7452f3919533d0cb04d76da96b8108b8afb5fb1194ab3af58c2e90c46"
     }
   ],
-  "coverage_claim": "Partial Caribbean publication: 27 of 28 M49 countries/areas; Cuba (CU) is omitted. All A/P rows for each included source-country extract; legal municipality, native/English label, and postal completeness unverified.",
-  "coverage_sha256": "32bace8470058981eeb016ef1e86cb8d37ecce9a6897acd0c2c003de36332974",
+  "coverage_claim": "Source-pack coverage: all 28 UN M49 Caribbean countries/areas have a GeoNames country extract. Official municipality, native/English label, postal, road, address and deliverability completeness remain unverified.",
+  "coverage_sha256": "914ebe44d7203062d13f800af0c49f16afdf817448264e30e157ef7554bb8990",
   "license": "CC-BY-4.0",
-  "missing_countries": [
-    "CU"
-  ],
-  "omitted_countries": [
-    {
-      "country": "CU",
-      "name_en": "Cuba",
-      "reason": "Country upload is pending approval; no Cuba country files are included in this partial publication.",
-      "status": "omitted_from_this_publication"
-    }
-  ],
-  "prepared_count": 27,
+  "missing_countries": [],
+  "prepared_count": 28,
   "prepared_countries": [
     "AG",
     "AI",
@@ -132,6 +126,7 @@
     "BL",
     "BQ",
     "BS",
+    "CU",
     "CW",
     "DM",
     "DO",
@@ -153,22 +148,22 @@
     "VG",
     "VI"
   ],
-  "prepared_on": "2026-10-01",
+  "prepared_on": "2026-10-18",
   "schema_version": 1,
   "scope_count": 28,
-  "scope_sha256": "b73a11e6f4f3eded4170e94a00133c8a50049c97ec6e9d0ebb405b18ce444182",
+  "scope_sha256": "047cde58a5a875e3ad9e45dc3d98a401392e7014efbcec2ddfc8226a93d1728c",
   "totals": {
-    "address_candidates": 31630,
-    "admin_rows": 18256,
-    "alternate_rows": 55255,
+    "address_candidates": 47691,
+    "admin_rows": 18441,
+    "alternate_rows": 74835,
     "ambiguous_parents": 0,
-    "country_scope_only": 2544,
-    "english_entities": 1296,
-    "entities": 50581,
-    "localities_without_adm1": 2547,
-    "locality_rows": 31942,
-    "other_admin_rows": 383,
+    "country_scope_only": 2545,
+    "english_entities": 1393,
+    "entities": 66851,
+    "localities_without_adm1": 2548,
+    "locality_rows": 48025,
+    "other_admin_rows": 385,
     "postal_rows": 196,
-    "unresolved_parents": 764
+    "unresolved_parents": 822
   }
 }

@@ -6,11 +6,10 @@
   ],
   "errors": 0,
   "limitations": [
-    "This verifies fidelity to the acquired source archives, not their independent truth or legal completeness."
+    "This verifies fidelity to the acquired source archives, not their independent truth or legal completeness.",
+    "The original 27-country source archives were checked on 2026-10-01; Cuba source archives and shipped rows were checked on 2026-10-18."
   ],
-  "omitted_countries": [
-    "CU"
-  ],
+  "omitted_countries": [],
   "reports": [
     {
       "alternate_raw_fields_match": true,
@@ -66,6 +65,14 @@
       "country": "BS",
       "entity_raw_fields_match": true,
       "entity_rows": 396,
+      "source_zip_hashes_match": true
+    },
+    {
+      "country": "CU",
+      "entity_rows": 16270,
+      "alternate_rows": 19580,
+      "entity_raw_fields_match": true,
+      "alternate_raw_fields_match": true,
       "source_zip_hashes_match": true
     },
     {
@@ -229,7 +236,19 @@
       "source_zip_hashes_match": true
     }
   ],
-  "source_archives": 54,
-  "source_countries": 27,
-  "verified_on": "2026-10-01"
+  "source_archives": 56,
+  "source_countries": 28,
+  "verified_on": "2026-10-18",
+  "verification_batches": [
+    {
+      "source_countries": 27,
+      "verified_on": "2026-10-01"
+    },
+    {
+      "source_countries": [
+        "CU"
+      ],
+      "verified_on": "2026-10-18"
+    }
+  ]
 }

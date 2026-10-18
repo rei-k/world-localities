@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Search preserved US/CA localities; reject corrupt inputs before returning results."""
 import argparse
+import gzip
 import importlib.util
 import json
 from pathlib import Path
@@ -12,6 +13,104 @@ _spec = importlib.util.spec_from_file_location('northern_input_validation', REGI
 validation = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(validation)
 QueryError = validation.DataError
+
+
+def geonames_search(country, profile, *, region, text, limit, candidate_only, registry):
+    builder = importlib.util.spec_from_file_location('northern_geonames_builder', REGISTRY / 'build.py')
+    module = importlib.util.module_from_spec(builder)
+    builder.loader.exec_module(module)
+    module.verify_manifest(registry, [country])
+    metadata = validation.load_json(registry, f'countries/{country}/metadata.json')
+    entity_info = metadata['files']['entities.csv.gz']
+    packed = validation.verified_bytes(registry, f'countries/{country}/entities.csv.gz', entity_info['sha256'])
+    rows = validation.csv_rows(gzip.decompress(packed), module.core.FIELDS)
+    aliases = []
+    alias_info = metadata['auxiliary_files'].get('alternate-names.csv.gz')
+    if alias_info:
+        packed_aliases = validation.verified_bytes(
+            registry, f'countries/{country}/alternate-names.csv.gz', alias_info['sha256'])
+        aliases = validation.csv_rows(gzip.decompress(packed_aliases), module.ALT_FIELDS)
+    names_by_entity = {}
+    for alias in aliases:
+        if alias['record_kind'] == 'name':
+            names_by_entity.setdefault(alias['entity_id'], []).append(alias)
+    rows_by_id = {row['id']: row for row in rows}
+    selected_region = None
+    if region:
+        selected_region = rows_by_id.get(region)
+        if not selected_region or selected_region['kind'] != 'admin_subdivision' or selected_region['admin_level'] != '1':
+            raise QueryError(f'{region}: expected a GeoNames ADM1 ID such as gn:123456')
+    needle = normalized(text) if text else None
+    results, scanned, matches = [], 0, 0
+    for row in rows:
+        if selected_region and row['id'] != selected_region['id'] and row['state_id'] != selected_region['id']:
+            continue
+        scanned += 1
+        if candidate_only and row['address_candidate'] != '1':
+            continue
+        variants = names_by_entity.get(row['id'], [])
+        searchable = [(row['name'], 'und'), (row['asciiname'], 'und')] + [
+            (variant['name'], variant['language'] or 'und') for variant in variants
+        ]
+        matched_names, seen_labels = [], set()
+        if needle:
+            for name, language in searchable:
+                identity = (name, language)
+                if needle in normalized(name) and identity not in seen_labels:
+                    seen_labels.add(identity)
+                    matched_names.append({'name': name, 'language': language})
+        if needle and not matched_names:
+            continue
+        matches += 1
+        if len(results) >= limit:
+            continue
+        results.append({
+            'id': row['id'], 'source_code': row['geonameid'], 'name': row['name'],
+            'asciiname': row['asciiname'], 'language': 'und',
+            'alternate_names': [{
+                'name': alias['name'], 'language': alias['language'],
+                'preferred': alias['is_preferred'] == '1', 'short': alias['is_short'] == '1',
+                'colloquial': alias['is_colloquial'] == '1', 'historic': alias['is_historic'] == '1',
+                'from': alias['from'], 'to': alias['to']
+            } for alias in variants[:20]],
+            'alternate_names_truncated': len(variants) > 20,
+            'matched_names': matched_names,
+            'feature_class': row['feature_class'], 'feature_code': row['feature_code'],
+            'admin_level': row['admin_level'], 'parent_id': row['parent_id'],
+            'parent_relation': row['parent_relation'],
+            'parent_candidates': json.loads(row['parent_candidates_json']),
+            'state_id': row['state_id'], 'state_relation': row['state_relation'],
+            'source_admin1_code': row['admin1_code'],
+            'address_candidate_flag': row['address_candidate'] == '1',
+            'postal_assignment_verified': False, 'delivery_verified': False
+        })
+    seed_rows, seed_count = administrative_seeds(registry, country, text, limit)
+    return {
+        'country': country, 'm49_region': '021', 'status': 'source_gazetteer_available',
+        'source_layer': f'north-america-registry/countries/{country}',
+        'source': metadata['source'], 'license': metadata['license'],
+        'source_retrieved_on': metadata['source_file']['retrieved_on'],
+        'source_modified_min': metadata['source_modified_min'],
+        'source_modified_max': metadata['source_modified_max'],
+        'source_locality_rows': metadata['counts']['locality_rows'],
+        'source_entity_rows': entity_info['rows'],
+        'source_address_candidates': metadata['counts']['address_candidates'],
+        'selected_region_id': selected_region['id'] if selected_region else None,
+        'selected_region_name': selected_region['name'] if selected_region else None,
+        'rows_scanned': scanned, 'matches_found': matches,
+        'results_truncated': matches > limit, 'results': results,
+        'administrative_seeds': seed_rows, 'administrative_seed_matches': seed_count,
+        'administrative_seeds_truncated': seed_count > limit,
+        'integrity': {'status': 'passed', 'scope': 'source manifest, metadata, entities, aliases and replay',
+                      'source_archive_sha256': metadata['source_file']['sha256'],
+                      'entities_sha256': entity_info['sha256']},
+        'limitations': [
+            'GeoNames feature roles and parent codes are source observations, not official administrative or municipal certification.',
+            'Primary names have no language tag; language-tagged variants remain source observations, not verified official translations.',
+            'Source address-candidate flags do not verify postal assignments, streets, house numbers or delivery coverage.',
+            'Administrative seed names are returned separately and are not merged into the GeoNames locality rows.'
+        ]
+    }
 
 
 def load_json(path):
@@ -36,6 +135,13 @@ def _metadata(registry):
         if row['status'] == 'preserved_official_snapshot':
             validation.require(cc in ('US', 'CA') and row['source_index'] == f'official-registry/{cc}/index.json',
                                'unexpected official source path')
+        elif row['status'] == 'published_geonames_source':
+            validation.require(cc in ('BM', 'GL', 'PM') and
+                               row.get('source_layer') == f'north-america-registry/countries/{cc}',
+                               'unexpected GeoNames source path')
+        else:
+            validation.require(row['status'] == 'pending_locality_source',
+                               'unexpected Northern source status')
         exclusions = row.get('excluded_state_codes_for_m49', [])
         validation.require(exclusions == (['US-PR'] if cc == 'US' else []), 'invalid M49 exclusion')
     overrides = {}
@@ -106,6 +212,10 @@ def search(country, *, region=None, text=None, limit=20, candidate_only=False,
             'administrative_seeds_truncated': count > limit,
             'limitations': ['Administrative seeds are not a full locality source or verified addresses.']
         }
+    if profile['status'] == 'published_geonames_source':
+        return geonames_search(country, profile, region=region, text=text, limit=limit,
+                               candidate_only=candidate_only,
+                               registry=root / 'north-america-registry')
     validation.require(profile['status'] == 'preserved_official_snapshot', 'unknown source status')
     index, manifest, anchors, manifest_hash = validation.official_index(root, country)
     regions = {r['code']: r for r in index['regions']}

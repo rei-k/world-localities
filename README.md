@@ -218,20 +218,21 @@ python -m addressing profile --country JP --language ja
 別扱いにします。カナダNova Scotia州名の出典付き表示補正と、
 BM/GL/PMの**18件の行政区画名シード**も追加しました。
 シードは完全な地名台帳や住所・郵便番号の検証結果ではありません。
+2026-10-18にBM・GL・PMのGeoNames部分地名ソースを追加しました（行政・地名エンティティ340件、地名候補299件、GL未解決親36件）。18件の行政名シードとは別レイヤーです。カリブ海はCUを追加し、GeoNames地名候補16,083件を含め28/28となりました。
 
 検証: `python americas-registry/audit.py --mode audit`
  / `python americas-registry/audit.py --mode plan`
  / `python americas-registry/audit.py --mode cycle --rounds 3`
 
-アメリカ大陸の地域別の**出典付き国・地域レイヤーは53/57**です。
-この数値は全住所・自治体・全公用語の網羅を意味しません。
+アメリカ大陸の地域別の**出典付き国・地域ソースパックは57/57**です。
+これは全住所・自治体・道路・番地・郵便番号・全公用語の網羅を意味しません。BM・GL・PMは部分GeoNamesパック、CUはONEI公式データではなくGeoNamesの代替レイヤーです。
 
 ## 中央アメリカの追加強化（2026-10-15）
 
 [中央アメリカ強化記録](central-america-registry/ENRICHMENT_20261015.md)に、
 コスタリカ6,465地名・行政地物と6,182言語付き名称の追加、政府公開84カントンコード表、
-8か国共通検索、全ペイロード検査を整理した。国別出典レイヤーは中央アメリカ8/8、
-アメリカ大陸53/57。住所・郵便番号・全自治体の完全網羅ではない。
+8か国共通検索、全ペイロード検査を整理した。2026-10-15時点では国別出典レイヤーは中央アメリカ8/8、
+アメリカ大陸53/57だった。2026-10-18の追加後は57/57。住所・郵便番号・全自治体の完全網羅ではない。
 
 新しい入口は `python central-america-registry/query_enriched.py --country CR --text 'San Jose' --language es`、
 実データ検査は `python central-america-registry/quality.py`。
