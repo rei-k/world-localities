@@ -12,13 +12,15 @@
       "id": "02-south-america",
       "scope": "南米12か国と4補足地域の階層処理",
       "status": "integrated",
-      "commit_pending": true,
-      "verification": "releases/hierarchy/south-america/verification.json"
+      "verification": "releases/hierarchy/south-america/verification.json",
+      "commit": "8724cb2dd971b21270ac5809959cd3b323c2dae6"
     },
     {
       "id": "03-north-america",
       "scope": "北米の階層処理",
-      "status": "pending"
+      "status": "integrated",
+      "commit_pending": true,
+      "verification": "releases/hierarchy/north-america/verification.json"
     },
     {
       "id": "04-central-america",

@@ -6,6 +6,7 @@
 | 地域 | 対象範囲 | 実装・復元手順 |
 | --- | ---: | --- |
 | south-america | 16 | [south-america](../releases/hierarchy/south-america/README.md) |
+| north-america | 6 | [north-america](../releases/hierarchy/north-america/README.md) |
 
 `releases/hierarchy/catalog.json` が反映済みの入口を示す。
 地域の大容量原典・索引は別書庫から復元し、Gitコードの共通CLIへ `--data-root` を指定する。

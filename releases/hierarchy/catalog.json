@@ -25,6 +25,21 @@
       ],
       "archive_manifest": "releases/hierarchy/south-america/archive.json",
       "data_payloads_in_git": false
+    },
+    "north-america": {
+      "module": "northamerica",
+      "configuration_dir": "address-points",
+      "scope_file": "NORTH_AMERICA_SCOPE.json",
+      "scope_codes": [
+        "US",
+        "CA",
+        "MX",
+        "BM",
+        "GL",
+        "PM"
+      ],
+      "archive_manifest": "releases/hierarchy/north-america/archive.json",
+      "data_payloads_in_git": false
     }
   }
 }
