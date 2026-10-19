@@ -5,3 +5,16 @@ __pycache__/
 .venv/
 build/
 dist/
+
+# Source-qualified hierarchy snapshots: large inputs and local indexes.
+/address-points/sources/
+/address-points/generated/
+/global-coverage/generated/
+/global-addresses/generated/
+/global-addresses/source-parts/
+/global-addresses/normalized/**/*.parquet
+/global-addresses/sources/**/*.zip
+/global-addresses/sources/**/*.gz
+/global-addresses/sources/**/*.pdf
+*.part
+*.building

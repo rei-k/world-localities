@@ -239,4 +239,7 @@ BM/GL/PMの**18件の行政区画名シード**も追加しました。
 
 新しい入口は `python central-america-registry/query_enriched.py --country CR --text 'San Jose' --language es`、
 実データ検査は `python central-america-registry/quality.py`。
+<!-- source-qualified-hierarchy -->
 
+[出典付き階層・公式住所の実装と復元手順](address-points/README.md)を地域ごとのコミットで追加しています。
+反映済みの範囲と検証記録はリンク先を参照してください。

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "regions": {
+    "south-america": {
+      "module": "southamerica_hierarchy",
+      "configuration_dir": "address-points",
+      "scope_file": "SOUTH_AMERICA_SCOPE.json",
+      "scope_codes": [
+        "AR",
+        "BO",
+        "BR",
+        "CL",
+        "CO",
+        "EC",
+        "GY",
+        "PY",
+        "PE",
+        "SR",
+        "UY",
+        "VE",
+        "GF",
+        "FK",
+        "GS",
+        "BV"
+      ],
+      "archive_manifest": "releases/hierarchy/south-america/archive.json",
+      "data_payloads_in_git": false
+    }
+  }
+}

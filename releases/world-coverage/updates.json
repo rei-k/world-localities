@@ -5,12 +5,15 @@
     {
       "id": "01-world-coverage",
       "scope": "対象250地域・4項目の不足状況",
-      "status": "included_in_this_commit"
+      "status": "integrated",
+      "commit": "bdb72896f9b7fe3d1ce792bc3ddad5004d8dcc03"
     },
     {
       "id": "02-south-america",
       "scope": "南米12か国と4補足地域の階層処理",
-      "status": "pending"
+      "status": "integrated",
+      "commit_pending": true,
+      "verification": "releases/hierarchy/south-america/verification.json"
     },
     {
       "id": "03-north-america",
