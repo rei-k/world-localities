@@ -34,7 +34,12 @@
     {
       "id": "05-caribbean",
       "scope": "カリブ海の階層処理",
-      "status": "pending"
+      "status": "integrated",
+      "verification": "releases/hierarchy/caribbean/verification.json",
+      "coverage": "releases/hierarchy/caribbean/coverage-status.json",
+      "completeness_status": "incomplete",
+      "source_policy": "official_and_open_data",
+      "commit_pending": true
     },
     {
       "id": "06-asia",

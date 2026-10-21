@@ -56,6 +56,43 @@
       ],
       "archive_manifest": "releases/hierarchy/central-america/archive.json",
       "data_payloads_in_git": false
+    },
+    "caribbean": {
+      "module": "caribbean_hierarchy",
+      "configuration_dir": "address-points",
+      "scope_file": "CARIBBEAN_SCOPE.json",
+      "scope_codes": [
+        "AG",
+        "BS",
+        "BB",
+        "CU",
+        "DM",
+        "DO",
+        "GD",
+        "HT",
+        "JM",
+        "KN",
+        "LC",
+        "VC",
+        "TT",
+        "AI",
+        "AW",
+        "BQ",
+        "VG",
+        "KY",
+        "CW",
+        "GP",
+        "MQ",
+        "MS",
+        "PR",
+        "BL",
+        "MF",
+        "SX",
+        "TC",
+        "VI"
+      ],
+      "archive_manifest": "releases/hierarchy/caribbean/archive.json",
+      "data_payloads_in_git": false
     }
   }
 }

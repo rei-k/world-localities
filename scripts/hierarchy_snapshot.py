@@ -84,14 +84,19 @@ def restore(manifest, archives, target):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('command', choices=['verify', 'restore'])
-    p.add_argument('--region', required=True)
+    selection = p.add_mutually_exclusive_group(required=True)
+    selection.add_argument('--region')
+    selection.add_argument('--manifest', type=Path, help='Explicit data-only archive manifest')
     p.add_argument('--archives', type=Path, required=True)
     p.add_argument('--target', type=Path)
     args = p.parse_args()
     try:
-        catalog = json.loads((ROOT / 'releases/hierarchy/catalog.json').read_text())
-        entry = catalog['regions'][args.region]
-        manifest = json.loads((ROOT / entry['archive_manifest']).read_text())
+        if args.manifest is not None:
+            manifest = json.loads(args.manifest.read_text())
+        else:
+            catalog = json.loads((ROOT / 'releases/hierarchy/catalog.json').read_text())
+            entry = catalog['regions'][args.region]
+            manifest = json.loads((ROOT / entry['archive_manifest']).read_text())
         if args.command == 'restore':
             if args.target is None:
                 raise ValueError('--target is required for restore')
