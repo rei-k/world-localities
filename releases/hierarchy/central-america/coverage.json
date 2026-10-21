@@ -1,0 +1,379 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-10-17",
+  "reviewed_on": "2026-10-22",
+  "m49_subregion": "central_america",
+  "m49_scope_codes": [
+    "BZ",
+    "CR",
+    "GT",
+    "HN",
+    "MX",
+    "NI",
+    "PA",
+    "SV"
+  ],
+  "batch_scope_codes": [
+    "BZ",
+    "GT",
+    "SV",
+    "HN",
+    "NI",
+    "CR",
+    "PA"
+  ],
+  "world_complete": false,
+  "regional_complete": false,
+  "deliverability_in_scope": false,
+  "completion_criteria": {
+    "administrative_units": "Dated official all-tier inventory reconciled by original IDs, parent links, legal scope and changes.",
+    "addressed_streets": "Official named streets and address-bearing local areas reconciled by issuing country and municipality.",
+    "physical_road_network": "Independent road inventory including unnamed and unnumbered roads; completeness is separate from addressed streets.",
+    "assigned_address_numbers": "Actual issuing-authority assignments, original number and suffix, status, locality and street references; do not expand potential numeric ranges."
+  },
+  "metrics_policy": {
+    "unknown_denominators": null,
+    "zero_source_rows_do_not_mean_zero_country_objects": true,
+    "functional_PASS_is_not_completeness": true,
+    "cross_source_records_are_not_summed_as_unique_places": true
+  },
+  "remaining_domain_checks": 32,
+  "countries": [
+    {
+      "code": "BZ",
+      "integration_region": "central-america",
+      "domains": {
+        "administrative_units": {
+          "status": "snapshot_loaded_current_completeness_unverified",
+          "namespace": "codab-bz-v01",
+          "source_id": "bz-codab-gazetteer",
+          "counts_by_source_kind": {
+            "district": 6
+          },
+          "national_expected_count": null,
+          "complete": false
+        },
+        "addressed_streets": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "physical_road_network": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "assigned_address_numbers": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        }
+      },
+      "source_review_nodes": 1,
+      "coverage_notes_ja": "COD-ABの6地区。市・村を全国行政レベル2として網羅した資料ではない。GeoNamesの地名と独立管理。",
+      "next_steps": [
+        "基準日付きの公式全行政階層とID・親参照・改編を照合する。",
+        "住所用の通りと物理的道路網を別々に取得し、国・自治体別の対象範囲と欠損を照合する。",
+        "割当番地の原番号・接尾辞・状態・街路参照を取得する。未採番は未採番のまま保持する。"
+      ]
+    },
+    {
+      "code": "GT",
+      "integration_region": "central-america",
+      "domains": {
+        "administrative_units": {
+          "status": "snapshot_loaded_current_completeness_unverified",
+          "namespace": "codab-gt-v01",
+          "source_id": "gt-codab-gazetteer",
+          "counts_by_source_kind": {
+            "department": 22,
+            "municipality": 340
+          },
+          "national_expected_count": null,
+          "complete": false
+        },
+        "addressed_streets": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "physical_road_network": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "assigned_address_numbers": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        }
+      },
+      "source_review_nodes": 8,
+      "coverage_notes_ja": "COD-ABの22県・340市町村。2湖を市町村から分離。原区分は2019年版、2025年の確認日を新設・廃止の施行日とは扱わない。",
+      "next_steps": [
+        "基準日付きの公式全行政階層とID・親参照・改編を照合する。",
+        "住所用の通りと物理的道路網を別々に取得し、国・自治体別の対象範囲と欠損を照合する。",
+        "割当番地の原番号・接尾辞・状態・街路参照を取得する。未採番は未採番のまま保持する。"
+      ]
+    },
+    {
+      "code": "SV",
+      "integration_region": "central-america",
+      "domains": {
+        "administrative_units": {
+          "status": "snapshot_loaded_current_completeness_unverified",
+          "namespace": "codab-sv-v02",
+          "source_id": "sv-codab-gazetteer",
+          "counts_by_source_kind": {
+            "department": 14,
+            "municipality": 44,
+            "district": 262
+          },
+          "national_expected_count": null,
+          "complete": false
+        },
+        "addressed_streets": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "physical_road_network": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "assigned_address_numbers": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        }
+      },
+      "source_review_nodes": 9,
+      "coverage_notes_ja": "2024年の県・市町村・地区の3階層。44市町村・262地区に加え、地図を埋めるための湖・貯水池各4行があり、行政区分とは分離する。",
+      "next_steps": [
+        "基準日付きの公式全行政階層とID・親参照・改編を照合する。",
+        "住所用の通りと物理的道路網を別々に取得し、国・自治体別の対象範囲と欠損を照合する。",
+        "割当番地の原番号・接尾辞・状態・街路参照を取得する。未採番は未採番のまま保持する。"
+      ]
+    },
+    {
+      "code": "HN",
+      "integration_region": "central-america",
+      "domains": {
+        "administrative_units": {
+          "status": "snapshot_loaded_current_completeness_unverified",
+          "namespace": "codab-hn-v01",
+          "source_id": "hn-codab-gazetteer",
+          "counts_by_source_kind": {
+            "department": 18,
+            "municipality": 298,
+            "populated_place": 27969
+          },
+          "national_expected_count": null,
+          "complete": false
+        },
+        "addressed_streets": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "physical_road_network": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "assigned_address_numbers": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        }
+      },
+      "source_review_nodes": 40,
+      "coverage_notes_ja": "COD-ABは18県・298市町村と27,969の集落参照行。地理原典2015年、集落参照2016年。現時点の住所実在や人口を保証しない。",
+      "next_steps": [
+        "基準日付きの公式全行政階層とID・親参照・改編を照合する。",
+        "住所用の通りと物理的道路網を別々に取得し、国・自治体別の対象範囲と欠損を照合する。",
+        "割当番地の原番号・接尾辞・状態・街路参照を取得する。未採番は未採番のまま保持する。"
+      ]
+    },
+    {
+      "code": "NI",
+      "integration_region": "central-america",
+      "domains": {
+        "administrative_units": {
+          "status": "snapshot_loaded_current_completeness_unverified",
+          "namespace": "codab-ni-v02",
+          "source_id": "ni-codab-gazetteer",
+          "counts_by_source_kind": {
+            "department_or_autonomous_region": 17,
+            "municipality": 153
+          },
+          "national_expected_count": null,
+          "complete": false
+        },
+        "addressed_streets": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "physical_road_network": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "assigned_address_numbers": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        }
+      },
+      "source_review_nodes": 2,
+      "coverage_notes_ja": "COD-ABは15県・2自治地域を含む17の上位区分、153市町村。原地理データ2017年、valid_onは2023年。",
+      "next_steps": [
+        "基準日付きの公式全行政階層とID・親参照・改編を照合する。",
+        "住所用の通りと物理的道路網を別々に取得し、国・自治体別の対象範囲と欠損を照合する。",
+        "割当番地の原番号・接尾辞・状態・街路参照を取得する。未採番は未採番のまま保持する。"
+      ]
+    },
+    {
+      "code": "CR",
+      "integration_region": "central-america",
+      "domains": {
+        "administrative_units": {
+          "status": "snapshot_loaded_current_completeness_unverified",
+          "namespace": "codab-cr-v01",
+          "source_id": "cr-codab-gazetteer",
+          "counts_by_source_kind": {
+            "province": 7,
+            "canton": 84,
+            "district": 492
+          },
+          "national_expected_count": null,
+          "complete": false
+        },
+        "addressed_streets": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "physical_road_network": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "assigned_address_numbers": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        }
+      },
+      "source_review_nodes": 7,
+      "coverage_notes_ja": "COD-ABは7州・84カントン・492地区。GeoNamesは82カントン相当・474地区で不足がある。COD-ABとGeoNamesのコード体系を混同しない。",
+      "next_steps": [
+        "基準日付きの公式全行政階層とID・親参照・改編を照合する。",
+        "住所用の通りと物理的道路網を別々に取得し、国・自治体別の対象範囲と欠損を照合する。",
+        "割当番地の原番号・接尾辞・状態・街路参照を取得する。未採番は未採番のまま保持する。"
+      ]
+    },
+    {
+      "code": "PA",
+      "integration_region": "central-america",
+      "domains": {
+        "administrative_units": {
+          "status": "known_outdated_snapshot",
+          "namespace": "codab-pa-v01",
+          "source_id": "pa-codab-gazetteer",
+          "counts_by_source_kind": {
+            "province_or_comarca": 13,
+            "district_or_comarca": 76,
+            "corregimiento": 594
+          },
+          "national_expected_count": null,
+          "complete": false
+        },
+        "addressed_streets": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "physical_road_network": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "assigned_address_numbers": {
+          "status": "not_acquired_in_this_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        }
+      },
+      "source_review_nodes": 14,
+      "coverage_notes_ja": "COD-ABは2020年の原地理データを基にした旧版で13上位区分・76地区相当・594コレヒミエント。2025年IGN公表の82地区・699コレヒミエントより不足。GeoNamesは14 ADM1・82 ADM2・679 ADM3だがNaso Tjër Diの階層がIGN説明と異なる。両系統とも現行全国行政区分の完成扱いにしない。",
+      "next_steps": [
+        "基準日付きの公式全行政階層とID・親参照・改編を照合する。",
+        "住所用の通りと物理的道路網を別々に取得し、国・自治体別の対象範囲と欠損を照合する。",
+        "割当番地の原番号・接尾辞・状態・街路参照を取得する。未採番は未採番のまま保持する。"
+      ]
+    },
+    {
+      "code": "MX",
+      "integration_region": "north-america",
+      "scope_file": "address-points/NORTH_AMERICA_SCOPE.json",
+      "integration_commit": "ea08aabb0abf6b72397130bad0bcd5b72ca42f12",
+      "verification": "releases/hierarchy/north-america/verification.json",
+      "included_in_this_batch_counts": false,
+      "domains": {
+        "administrative_units": {
+          "status": "snapshot_loaded_current_completeness_unverified",
+          "namespace": "mx-inegi-catalogue",
+          "counts_by_source_kind": {
+            "state": 32,
+            "municipality": 2478,
+            "locality": 296649
+          },
+          "national_expected_count": null,
+          "complete": false
+        },
+        "addressed_streets": {
+          "status": "not_acquired_in_referenced_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "physical_road_network": {
+          "status": "not_acquired_in_referenced_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        },
+        "assigned_address_numbers": {
+          "status": "not_acquired_in_referenced_snapshot",
+          "records_in_snapshot": 0,
+          "national_expected_count": null,
+          "complete": false
+        }
+      }
+    }
+  ]
+}

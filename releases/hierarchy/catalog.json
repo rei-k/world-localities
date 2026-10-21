@@ -40,6 +40,22 @@
       ],
       "archive_manifest": "releases/hierarchy/north-america/archive.json",
       "data_payloads_in_git": false
+    },
+    "central-america": {
+      "module": "centralamerica",
+      "configuration_dir": "address-points",
+      "scope_file": "CENTRAL_AMERICA_SCOPE.json",
+      "scope_codes": [
+        "BZ",
+        "GT",
+        "SV",
+        "HN",
+        "NI",
+        "CR",
+        "PA"
+      ],
+      "archive_manifest": "releases/hierarchy/central-america/archive.json",
+      "data_payloads_in_git": false
     }
   }
 }

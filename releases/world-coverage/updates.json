@@ -25,7 +25,11 @@
     {
       "id": "04-central-america",
       "scope": "中米の階層処理",
-      "status": "pending"
+      "status": "integrated",
+      "commit_pending": true,
+      "verification": "releases/hierarchy/central-america/verification.json",
+      "coverage": "releases/hierarchy/central-america/coverage.json",
+      "completeness_status": "incomplete"
     },
     {
       "id": "05-caribbean",
