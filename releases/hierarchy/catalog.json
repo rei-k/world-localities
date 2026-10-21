@@ -93,6 +93,27 @@
       ],
       "archive_manifest": "releases/hierarchy/caribbean/archive.json",
       "data_payloads_in_git": false
+    },
+    "western-europe": {
+      "module": "westerneurope",
+      "configuration_dir": "address-points",
+      "scope_file": "WESTERN_EUROPE_SCOPE.json",
+      "scope_codes": [
+        "AT",
+        "BE",
+        "CH",
+        "DE",
+        "FR",
+        "GB",
+        "IE",
+        "LI",
+        "LU",
+        "MC",
+        "NL"
+      ],
+      "archive_manifest": "releases/hierarchy/western-europe/archive.json",
+      "data_payloads_in_git": false,
+      "interface": "source-qualified register audit/search; existing Europe hierarchy remains separate"
     }
   }
 }

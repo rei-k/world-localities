@@ -1,0 +1,29 @@
+{
+  "reviewed_on": "2026-10-22",
+  "pending_countries": {
+    "DE": {
+      "url": "https://www.ldbv.bayern.de/vermessung/zshh/zshh_faq.html",
+      "finding": "Nationwide HK-DE supplied under paid licence; investigate open state-level alternatives. No agreement or purchase made."
+    },
+    "GB": {
+      "urls": [
+        "https://www.gov.uk/government/publications/open-standards-for-government/identifying-property-and-street-information",
+        "https://www.data.gov.uk/collections/land-and-property/addresses"
+      ],
+      "finding": "Open UPRN/USRN identifiers do not replace full address attributes. GB/NI and licence coverage must be reviewed separately."
+    },
+    "IE": {
+      "url": "https://www.eircode.ie/business/products-and-services",
+      "finding": "ECAF/ECAD are licensed data products; public administrative/road data remain separate. No agreement or purchase made."
+    },
+    "NL": {
+      "urls": [
+        "https://www.pdok.nl/atom-downloadservices/-/article/adress-1",
+        "https://service.pdok.nl/kadaster/bag-adressen/atom/index.xml",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2"
+      ],
+      "finding": "Official free address routes identified. Full national import and verification are not performed in this increment."
+    }
+  },
+  "excluded": "Deliverability, resident/person names, carrier routing and any invented expansion of address-number ranges."
+}
