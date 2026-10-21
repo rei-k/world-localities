@@ -39,7 +39,7 @@
       "coverage": "releases/hierarchy/caribbean/coverage-status.json",
       "completeness_status": "incomplete",
       "source_policy": "official_and_open_data",
-      "commit_pending": true
+      "commit": "eed65bed39ca0414b56be769dcc1607a672e035d"
     },
     {
       "id": "06-asia",
