@@ -19,7 +19,7 @@
       "id": "03-north-america",
       "scope": "北米の階層処理",
       "status": "integrated",
-      "commit_pending": true,
+      "commit": "ea08aabb0abf6b72397130bad0bcd5b72ca42f12",
       "verification": "releases/hierarchy/north-america/verification.json"
     },
     {
