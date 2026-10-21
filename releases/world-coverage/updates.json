@@ -29,7 +29,28 @@
       "verification": "releases/hierarchy/central-america/verification.json",
       "coverage": "releases/hierarchy/central-america/coverage.json",
       "completeness_status": "incomplete",
-      "commit": "c322a0974794cb5efc2d5823e1affc1e325ad5af"
+      "commit": "c322a0974794cb5efc2d5823e1affc1e325ad5af",
+      "source_policy": "official_and_open_data",
+      "enrichments": [
+        {
+          "id": "20261022-open-geodata",
+          "scope": "中米8か国のOSM道路・住所観測、MXのINEGI由来番号資料、CRの現行地区参照",
+          "scope_codes": [
+            "BZ",
+            "CR",
+            "GT",
+            "HN",
+            "MX",
+            "NI",
+            "PA",
+            "SV"
+          ],
+          "commit": "8f57adf831910487d8291c0a433caa23eed4513d",
+          "verification": "releases/hierarchy/central-america/enrichment-20261022/verification.json",
+          "coverage": "releases/hierarchy/central-america/coverage.json",
+          "completeness_status": "incomplete"
+        }
+      ]
     },
     {
       "id": "05-caribbean",
