@@ -18,6 +18,10 @@
 
 住所のない公共空間名も含めた照合は `reference-validation.json`。対象条件に合うOPR 290,616件・WPL 2,503件から342自治体への参照に未解決はなかった。GWRの終了日なしの対応には、対象条件に合うWPLがない120コードも含まれるため、これを現行地名として追加しない。
 
+NUM主台帳は13,377,160版、異なるIDは10,793,745。限定した登録・有効期間条件に合う観測は10,076,588行で、同一IDの複数該当は0。これを全現存住所数とは扱わない。全9原典の件数・正規化行ハッシュ・参照結果は独立した2回の全件読込で一致した。
+
+同じ限定条件では、152行の番地が結合できるOPRを持たず、地名に結合できない番地は153行あった。`reference-gap-review.json` は152件すべてに対して有効期間上のOPR候補を特定し、将来の変更版と登録期間の違いを記録する。残る1行は、2015年に廃止されたWPLコードを明示参照する。元の参照IDを修正せず、候補と原典を分けて保持する。この候補照合は現実の住所・使用・配達の認定ではない。
+
 ## 復元と検索
 
 分割ZIPは既存の復元コマンドで元のデータ書庫に戻せる。各部分と復元後の全体をSHA-256で検証し、既存出力を上書きしない。
@@ -28,6 +32,7 @@ python3 scripts/hierarchy_snapshot.py restore --manifest releases/hierarchy/west
 python3 scripts/hierarchy_cli.py --region western-europe --data-root /new/restored/western-europe-nl/raw -- search --country NL --kind address --number 7 --current-only --limit 5
 python3 scripts/netherlands_bag.py replay --data-root /new/restored/western-europe-nl/raw --accepted releases/hierarchy/western-europe/netherlands/validation.json --work-dir /path/with/free/space
 python3 scripts/netherlands_reference_review.py --data-root /new/restored/western-europe-nl/raw
+python3 scripts/netherlands_gap_review.py --data-root /new/restored/western-europe-nl/raw --accepted releases/hierarchy/western-europe/netherlands/validation.json
 ```
 
 検索の `--number` は元の番地文字列に完全一致する。接尾文字・番号付加は別フィールド。`--postcode` も原典文字列に一致させる。`--current-only` の意味は上記の限定条件で、住所の実在・配達判定ではない。監査時の一時SQLiteはIDの重複と件数確認に使用し、終了時に削除する。大きな原典を展開せず順に読む。

@@ -153,5 +153,7 @@
   "status": "PACKAGED_RECONSTRUCTED_AND_SOURCE_BYTE_VERIFIED",
   "implementation_base_commit_sha": "6bdc85d8b8dc963f8408c23037fd3c79956ded6e",
   "code_review_record": "releases/hierarchy/western-europe/netherlands/acquisition-review.json",
-  "reference_validation_report": "releases/hierarchy/western-europe/netherlands/reference-validation.json"
+  "reference_validation_report": "releases/hierarchy/western-europe/netherlands/reference-validation.json",
+  "implementation_commit_sha": "7429be033433d03e713b3e982b9e87c99c5911a1",
+  "reference_gap_review": "releases/hierarchy/western-europe/netherlands/reference-gap-review.json"
 }

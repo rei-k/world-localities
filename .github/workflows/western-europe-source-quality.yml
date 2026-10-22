@@ -7,6 +7,7 @@ on:
       - 'scripts/osm_pbf_lite.py'
       - 'scripts/netherlands_bag.py'
       - 'scripts/netherlands_reference_review.py'
+      - 'scripts/netherlands_gap_review.py'
       - 'address-points/adapters/westerneurope.py'
       - 'address-points/*WESTERN_EUROPE*'
       - 'releases/hierarchy/western-europe/**'
@@ -19,6 +20,7 @@ on:
       - 'scripts/osm_pbf_lite.py'
       - 'scripts/netherlands_bag.py'
       - 'scripts/netherlands_reference_review.py'
+      - 'scripts/netherlands_gap_review.py'
       - 'address-points/adapters/westerneurope.py'
       - 'address-points/*WESTERN_EUROPE*'
       - 'releases/hierarchy/western-europe/**'
@@ -49,5 +51,6 @@ jobs:
           python3 scripts/hierarchy_cli.py --region western-europe -- inventory
           python3 scripts/hierarchy_cli.py --region western-europe -- inventory --country NL
           python3 scripts/netherlands_reference_review.py --help
+          python3 scripts/netherlands_gap_review.py --help
           python3 scripts/hierarchy_cli.py --region western-europe -- --help
           python3 -m localities layout
