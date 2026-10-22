@@ -687,5 +687,8 @@
     "files": 126,
     "archive_hashes_and_crc": "PASS",
     "original_payload_files_byte_verified": 109
-  }
+  },
+  "related_source_archive_manifests": [
+    "releases/hierarchy/western-europe/netherlands/archive.json"
+  ]
 }

@@ -69,7 +69,7 @@
       "all_assigned_numbers_complete": false,
       "independent_national_denominator": null,
       "deliverability_in_scope": false,
-      "next_action_ja": "HK-DE全国版は提供元が有償契約と説明。州ごとの公開ALKIS/住所・道路資料とOSMを取得し、16州の欠落を照合する。"
+      "next_action_ja": "全国集約版の提供条件と州別公開を分けて確認。NRWの公開建物参照には郵便住所本文がない。州別INSPIRE/ALKISの必須属性・ID・取得条件を確認し、16州の欠落台帳を作る。"
     },
     {
       "country": "FR",
@@ -178,24 +178,52 @@
       "name_ja": "オランダ",
       "m49_subregion": "Western Europe",
       "geonames_baseline_rows": 8277,
-      "official_source_files": 0,
-      "official_address_observations": 0,
-      "numbered_address_observations": 0,
-      "official_street_observations": 0,
-      "official_named_area_observations": 0,
+      "official_source_files": 9,
+      "official_address_observations": 13377160,
+      "numbered_address_observations": 13377160,
+      "official_street_observations": 333946,
+      "official_named_area_observations": 21561,
       "all_administrative_levels_complete": false,
       "all_physical_roads_complete": false,
       "all_assigned_numbers_complete": false,
       "independent_national_denominator": null,
       "deliverability_in_scope": false,
-      "next_action_ja": "PDOKのBAG/Adressenの取得先を確認済み。全国原典の取得・全件検証は未実施。主住所・副住所、huisletter・番号付加、全道路を照合する。"
+      "next_action_ja": "全国BAGのNUM全1,338 XML・OPR・WPLと補助書庫、CBSの342自治体・12州を取得・全件再照合済み。限定参照条件から外れる153行は別表で理由・候補を記録。主副住所の役割、物理道路、独立付番総数、細分区画・境界の照合が残る。",
+      "registry_open_number_observations": 10076588,
+      "registry_open_street_observations": 274763,
+      "registry_open_named_area_observations": 15853,
+      "official_locality_observations": 4293,
+      "independent_administrative_reference": {
+        "reference_date": "2026-01-01",
+        "bag_snapshot_date": "2026-10-08",
+        "municipalities": 342,
+        "provinces": 12,
+        "municipalities_with_open_number_rows": 342,
+        "missing_municipalities": [],
+        "unlisted_municipalities": []
+      },
+      "number_identity_counts": {
+        "distinct_main_number_ids": 10793745,
+        "ids_with_open_record": 10076588,
+        "ids_with_multiple_open_records": 0
+      },
+      "source_manifest": "netherlands/official-sources.json",
+      "validation_report": "netherlands/validation.json",
+      "snapshot_date": "2026-10-08",
+      "reference_gap_review": "netherlands/reference-gap-review.json"
     }
   ],
   "france_departments_expected": 96,
   "france_departments_acquired_and_replayed": 96,
-  "official_address_observations": 38564186,
+  "official_address_observations": 51941346,
   "national_completeness_verified": false,
   "deliverability_in_scope": false,
   "street_count_semantics": "Source records, not unique physical roads. BE lists can repeat street IDs for postcode associations. FR has street names within address rows but no independent full street-register import in this increment.",
-  "historical_baseline": "Existing 2026-10-17 Western Europe file is retained; this release is a supplementary source import, not a declaration of complete coverage."
+  "historical_baseline": "Existing 2026-10-17 Western Europe file is retained; this release is a supplementary source import, not a declaration of complete coverage.",
+  "official_source_files": 116,
+  "source_manifest_files": [
+    "official-sources.json",
+    "netherlands/official-sources.json"
+  ],
+  "counts_semantics": "Source observations, not unique real-world or active addresses. NL main NUM counts include ended versions; Not-BAG, inactive and investigation records are separate. NL OPR Weg rows are street-name versions, not all physical roads."
 }

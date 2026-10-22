@@ -113,7 +113,15 @@
       ],
       "archive_manifest": "releases/hierarchy/western-europe/archive.json",
       "data_payloads_in_git": false,
-      "interface": "source-qualified register audit/search; existing Europe hierarchy remains separate"
+      "interface": "source-qualified register audit/search; existing Europe hierarchy remains separate",
+      "source_manifests": [
+        "releases/hierarchy/western-europe/official-sources.json",
+        "releases/hierarchy/western-europe/netherlands/official-sources.json"
+      ],
+      "archive_manifests": [
+        "releases/hierarchy/western-europe/archive.json",
+        "releases/hierarchy/western-europe/netherlands/archive.json"
+      ]
     }
   }
 }
