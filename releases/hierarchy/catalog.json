@@ -116,11 +116,15 @@
       "interface": "source-qualified register audit/search; existing Europe hierarchy remains separate",
       "source_manifests": [
         "releases/hierarchy/western-europe/official-sources.json",
-        "releases/hierarchy/western-europe/netherlands/official-sources.json"
+        "releases/hierarchy/western-europe/netherlands/official-sources.json",
+        "releases/hierarchy/western-europe/germany/sources.json"
       ],
       "archive_manifests": [
         "releases/hierarchy/western-europe/archive.json",
         "releases/hierarchy/western-europe/netherlands/archive.json"
+      ],
+      "data_payload_manifests": [
+        "releases/hierarchy/western-europe/germany/payloads.json"
       ]
     }
   }

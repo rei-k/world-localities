@@ -8,6 +8,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts'))
 import western_europe_sources
 import netherlands_bag
+import germany_sources
 
 
 def main():
@@ -19,20 +20,24 @@ def main():
     selector.add_argument('--manifest')
     selector.add_argument('--output', type=Path)
     known, _ = selector.parse_known_args()
-    if known.country == 'NL':
+    if known.country == 'DE':
+        germany_sources.main()
+    elif known.country == 'NL':
         netherlands_bag.main()
     elif '--help' in sys.argv or '-h' in sys.argv:
         western_europe_sources.main()
     elif known.command == 'inventory' and known.manifest is None:
         legacy = western_europe_sources.load_manifest(western_europe_sources.DEFAULT_MANIFEST)
         dutch = netherlands_bag.load_manifest()
+        german = germany_sources.load_manifest()
         result = {'scope_codes': list(western_europe_sources.SCOPE),
                   'm49_western_europe': list(western_europe_sources.M49),
                   'legacy_group_additions': ['GB', 'IE'],
                   'sources': (western_europe_sources.selected_sources(legacy, known.country)
-                              if known.country else legacy['sources'] + dutch['sources']),
+                              if known.country else legacy['sources'] + dutch['sources'] + german['sources']),
                   'source_sets': {'legacy': str(western_europe_sources.DEFAULT_MANIFEST.relative_to(western_europe_sources.ROOT)),
-                                  'NL': str(netherlands_bag.DEFAULT_MANIFEST.relative_to(netherlands_bag.ROOT))},
+                                  'NL': str(netherlands_bag.DEFAULT_MANIFEST.relative_to(netherlands_bag.ROOT)),
+                                  'DE': str(germany_sources.DEFAULT_MANIFEST.relative_to(germany_sources.ROOT))},
                   'national_completeness_verified': False, 'deliverability_in_scope': False}
         rendered = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
         if known.output is not None:
@@ -40,7 +45,7 @@ def main():
         else:
             print(rendered, end='')
     elif known.country is None and known.manifest is None and known.command in ('audit', 'replay', 'acquire'):
-        selector.error('Select --country for regional operations. NL has its own pinned source manifest; '
+        selector.error('Select --country for regional operations. DE and NL have their own pinned source manifests; '
                        'the legacy scripts/western_europe_sources.py interface is unchanged.')
     else:
         western_europe_sources.main()

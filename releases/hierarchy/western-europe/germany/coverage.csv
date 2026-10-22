@@ -1,0 +1,17 @@
+﻿state,name,gv_municipalities,gv_municipality_free_areas,address_status,address_observations,official_direct,official_archive,official_mirror,third_party_derived,independent_named_street_register_observations,municipality_code_coverage_assessable,municipalities_with_code_qualified_address_rows,gv_municipalities_without_code_qualified_address_rows,all_administrative_levels_complete,all_physical_roads_complete,all_assigned_numbers_complete,deliverability_in_scope
+SH,Schleswig-Holstein,1104,0,IMPORTED_SOURCE_OBSERVATIONS,953360,0,0,953360,0,0,True,1104,0,False,False,False,False
+HH,Hamburg,1,0,IMPORTED_SOURCE_OBSERVATIONS,284575,0,284575,0,0,0,True,1,0,False,False,False,False
+NI,Niedersachsen,939,25,IMPORTED_SOURCE_OBSERVATIONS,2562473,0,0,0,2562473,0,False,0,939,False,False,False,False
+HB,Bremen,2,0,IMPORTED_SOURCE_OBSERVATIONS,176374,176374,0,0,0,0,True,2,0,False,False,False,False
+NW,Nordrhein-Westfalen,396,0,IMPORTED_SOURCE_OBSERVATIONS,4509543,4509543,0,0,0,0,True,396,0,False,False,False,False
+HE,Hessen,421,4,IMPORTED_SOURCE_OBSERVATIONS,1630801,1630801,0,0,0,0,True,421,0,False,False,False,False
+RP,Rheinland-Pfalz,2300,1,IMPORTED_SOURCE_OBSERVATIONS,1406086,1406086,0,0,0,0,True,2300,0,False,False,False,False
+BW,Baden-Württemberg,1101,2,NOT_ACQUIRED_ORIGIN_FAILED,0,0,0,0,0,0,False,0,1101,False,False,False,False
+BY,Bayern,2056,161,NOT_ACQUIRED_AGREEMENT_AND_CREDENTIALS_REQUIRED,0,0,0,0,0,0,False,0,2056,False,False,False,False
+SL,Saarland,52,1,IMPORTED_SOURCE_OBSERVATIONS,335623,0,0,0,335623,0,True,52,0,False,False,False,False
+BE,Berlin,1,0,IMPORTED_SOURCE_OBSERVATIONS,394933,394933,0,0,0,11547,True,1,0,False,False,False,False
+BB,Brandenburg,413,0,IMPORTED_SOURCE_OBSERVATIONS,867290,0,0,867290,0,42192,True,413,0,False,False,False,False
+MV,Mecklenburg-Vorpommern,724,2,IMPORTED_SOURCE_OBSERVATIONS,516150,0,0,0,516150,0,False,0,724,False,False,False,False
+SN,Sachsen,418,0,NOT_ACQUIRED_ORIGIN_FAILED,0,0,0,0,0,0,False,0,418,False,False,False,False
+ST,Sachsen-Anhalt,218,0,NOT_ACQUIRED_ORIGIN_FAILED,0,0,0,0,0,0,False,0,218,False,False,False,False
+TH,Thüringen,601,0,IMPORTED_SOURCE_OBSERVATIONS,611051,611051,0,0,0,35970,True,575,26,False,False,False,False

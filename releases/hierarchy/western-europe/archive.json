@@ -690,5 +690,8 @@
   },
   "related_source_archive_manifests": [
     "releases/hierarchy/western-europe/netherlands/archive.json"
+  ],
+  "related_source_payload_manifests": [
+    "releases/hierarchy/western-europe/germany/payloads.json"
   ]
 }

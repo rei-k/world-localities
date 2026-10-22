@@ -253,7 +253,8 @@ class BagContractTests(unittest.TestCase):
         output=self.root/'inventory.json'
         with patch.object(sys,'argv',['westerneurope.py','inventory','--output='+str(output)]): adapter.main()
         value=json.loads(output.read_text())
-        self.assertEqual(len(value['sources']),116)
+        german = adapter.germany_sources.load_manifest()
+        self.assertEqual(len(value['sources']),116 + len(german['sources']))
         self.assertEqual(len([s for s in value['sources'] if s['country']=='NL']),9)
         self.assertFalse(value['national_completeness_verified'])
         with patch.object(sys,'argv',['westerneurope.py','inventory','--country','AT','--output',str(output)]): adapter.main()
