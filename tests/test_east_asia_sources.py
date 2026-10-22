@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 import east_asia_sources as e
 import east_asia_projection as p
 import east_asia_query as q
+import east_asia_fast as f
 import tw_nlsc_reference as n
 
 
@@ -169,6 +170,37 @@ class SourceTests(unittest.TestCase):
         source={'id':'OSM-JP','country':'JP','format':'osm_pbf','role':'supplementary','path':path.name,'url':'https://example.invalid/source','bytes':path.stat().st_size,'sha256':e.file_hash(path)}
         accepted=e.audit_one(source,self.root);accepted['ordered_rows_sha256']='0'*64
         with self.assertRaisesRegex(ValueError,'ordered_rows'):p.export(source,self.root,self.root/'bad.osm.pbf',accepted)
+
+    def test_native_prefilter_is_exhaustive_for_custom_address_keys_and_lifecycle(self):
+        import osmium
+        path=self.root/'original.osm.pbf'
+        with osmium.SimpleWriter(str(path)) as writer:
+            writer.add_node(osmium.osm.mutable.Node(id=1,location=(139,35),tags={'addr:unusual:source':'raw'}))
+            writer.add_node(osmium.osm.mutable.Node(id=2,location=(139,35),tags={'place':'village'}))
+            writer.add_way(osmium.osm.mutable.Way(id=3,nodes=[1,2],tags={'abandoned:highway':'track'}))
+            writer.add_way(osmium.osm.mutable.Way(id=4,nodes=[1,2],tags={'building':'yes'}))
+            writer.add_relation(osmium.osm.mutable.Relation(id=5,members=[('w',3,'outer')],tags={'boundary':'administrative','admin_level':'8'}))
+        source={'id':'OSM-JP','country':'JP','format':'osm_pbf','role':'supplementary','path':path.name,
+                'url':'https://example.invalid/source','bytes':path.stat().st_size,'sha256':e.file_hash(path),
+                'licence':'ODbL-1.0','licence_url':'https://www.openstreetmap.org/copyright','attribution':'OpenStreetMap contributors'}
+        expected=e.audit_one(source,self.root)
+        actual,proof,projection=f.audit_native(source,self.root,self.root/'native.osm.pbf',expected)
+        self.assertEqual(actual,expected)
+        self.assertEqual(proof['status'],'PASS')
+        self.assertIn('addr:unusual:source',proof['candidate_keys'])
+        self.assertFalse(proof['independent_parser_implementation'])
+        self.assertEqual(projection['counts']['observations'],3)
+        actual,_,projection=f.audit_native(source,self.root)
+        self.assertEqual(actual,expected)
+        self.assertIsNone(projection)
+        bad=copy.deepcopy(expected);bad['counts']['observations']=4
+        with self.assertRaisesRegex(ValueError,'differs'):f.audit_native(source,self.root,accepted=bad)
+
+    def test_native_key_inventory_rejects_truncated_or_oversized_blocks(self):
+        import struct
+        for content in [b'\0\0\0',struct.pack('>I',65537),b'\0\0\0\0']:
+            path=self.root/'invalid.pbf';path.write_bytes(content)
+            with self.assertRaises(ValueError):f.candidate_keys(path)
 
 
 class NLSCTests(unittest.TestCase):
