@@ -65,7 +65,33 @@
     {
       "id": "06-asia",
       "scope": "アジアの階層処理",
-      "status": "pending"
+      "status": "partially_integrated",
+      "completeness_status": "incomplete",
+      "source_policy": "official_and_open_data",
+      "subregions": [
+        {
+          "id": "east-asia",
+          "scope": "東アジア8地域の行政区・住所用の通り・物理道路・番地の原典取込と検索",
+          "scope_codes": [
+            "CN",
+            "HK",
+            "JP",
+            "KP",
+            "KR",
+            "MN",
+            "MO",
+            "TW"
+          ],
+          "status": "integrated",
+          "commit": "ed6af9255cc20d8326a7e37a6aa8f508a74c99ed",
+          "verification": "releases/hierarchy/east-asia/verification.json",
+          "coverage": "releases/hierarchy/east-asia/coverage.json",
+          "archive": "releases/hierarchy/east-asia/archive.json",
+          "completeness_status": "incomplete",
+          "national_completeness_verified": false,
+          "deliverability_in_scope": false
+        }
+      ]
     },
     {
       "id": "07-africa",

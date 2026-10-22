@@ -44,3 +44,5 @@ CSVの `new_` 列と `physical_road_records_added` は、今回の公式住所�
 今回の監査表追加時に再実行したという意味ではない。
 
 後続の更新は `updates.json` の順で、対象ごとに検証し、独立したコミットで反映する。
+
+2026-10-22追記：東アジア8地域（CN・HK・JP・KP・KR・MN・MO・TW）の原典取込・全件再照合・検索を [ed6af925](https://github.com/rei-k/world-localities/commit/ed6af9255cc20d8326a7e37a6aa8f508a74c99ed) に反映した。[取得資料と検証](../hierarchy/east-asia/README.md)を参照。全国網羅は4区分・32項目すべて未確認で、アジア全体の統合も継続中。配達可能性は対象外。
