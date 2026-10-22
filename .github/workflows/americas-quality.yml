@@ -10,9 +10,13 @@ on:
       - 'caribbean-registry/**'
       - 'south-america-registry/**'
       - 'localities/**'
+      - 'addressing/northern_america_profiles.json'
+      - 'addressing/caribbean_profiles.json'
       - 'scripts/verify_americas_snapshots.py'
       - 'tests/test_americas_*.py'
       - 'tests/test_repository_layout.py'
+      - 'tests/test_northern_america_addressing.py'
+      - 'tests/test_caribbean_addressing.py'
       - '.github/workflows/americas-quality.yml'
   pull_request:
     paths:
@@ -23,9 +27,13 @@ on:
       - 'caribbean-registry/**'
       - 'south-america-registry/**'
       - 'localities/**'
+      - 'addressing/northern_america_profiles.json'
+      - 'addressing/caribbean_profiles.json'
       - 'scripts/verify_americas_snapshots.py'
       - 'tests/test_americas_*.py'
       - 'tests/test_repository_layout.py'
+      - 'tests/test_northern_america_addressing.py'
+      - 'tests/test_caribbean_addressing.py'
       - '.github/workflows/americas-quality.yml'
   workflow_dispatch:
 
@@ -54,8 +62,15 @@ jobs:
         run: |
           mkdir -p qa-reports
           python -m unittest discover -s tests -p 'test_repository_layout.py' -v 2>&1 | tee qa-reports/layout-tests.log
-          python -m unittest discover -s tests -p 'test_americas_*.py' -v 2>&1 | tee qa-reports/tests.log
           python -m unittest discover -s tests -p 'test_split_materialization.py' -v 2>&1 | tee qa-reports/split-materialization.log
+          python -m localities materialize --registry caribbean --country DO
+          python -m unittest discover -s tests -p 'test_americas_*.py' -v 2>&1 | tee qa-reports/tests.log
+          python -m unittest discover -s tests -p 'test_northern_america_addressing.py' -v 2>&1 | tee qa-reports/northern-addressing-tests.log
+          python -m unittest discover -s tests -p 'test_caribbean_addressing.py' -v 2>&1 | tee qa-reports/caribbean-addressing-tests.log
+          python north-america-registry/build.py verify 2>&1 | tee qa-reports/northern-geonames.log
+          python -m unittest discover -s north-america-registry -p 'test_*.py' -v 2>&1 | tee qa-reports/northern-country-tests.log
+          python caribbean-registry/build.py verify 2>&1 | tee qa-reports/caribbean-geonames.log
+          python -m unittest discover -s caribbean-registry -p 'test_caribbean.py' -v 2>&1 | tee qa-reports/caribbean-country-tests.log
       - name: Source-aware cycle and query reports
         if: ${{ always() }}
         shell: bash

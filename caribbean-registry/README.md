@@ -1,17 +1,17 @@
-# Caribbean locality and administrative gazetteer: partial 27-area publication
+# Caribbean locality and administrative gazetteer: 28-area source coverage
 
-27 of the 28 countries and areas in the UN M49 Caribbean grouping, using GeoNames country extracts acquired on 2026-10-01. Cuba (CU) is omitted in full while its country upload is pending approval. This is a source-preserving gazetteer baseline, not a certified register of every current municipality.
+All 28 countries and areas in the UN M49 Caribbean grouping now have a GeoNames country source pack. The original 27 country extracts were acquired on 2026-10-01; Cuba (CU) was added from the 2026-10-18 extract. Each country metadata file records its own source date and archive checksums. This is a source-preserving gazetteer baseline, not a certified register of every current municipality. Cuba's official ONEI source is not represented by this GeoNames fallback.
 
-- 50,581 entities: 18,256 administrative subdivisions, 31,942 populated-place features, 383 other administrative/country features
-- 31,630 source settlement features included in the default address-candidate filter; this does not certify postal deliverability
-- 55,255 source-linked alternate-name and reference records; non-language tags such as links, Wikidata IDs, UN/LOCODE and postal codes remain distinguishable
+- 66,851 entities: 18,441 administrative subdivisions, 48,025 populated-place features, 385 other administrative/country features
+- 47,691 source place features included in the default address-candidate filter; this does not certify postal deliverability
+- 74,835 source-linked alternate-name and reference records; non-language tags such as links, Wikidata IDs, UN/LOCODE and postal codes remain distinguishable
 - 196 direct GeoNames ID postal observations, supplied separately as a projection; they are not postal-authority verification
-- 764 unresolved parent references and 2,544 country-only locality references remain explicit
+- 822 unresolved parent references and 2,545 country-only locality references remain explicit
 - No Address1, street, building, personal-address or polygon data
 
 ## Scope and overlap
 
-The 27 included M49 Caribbean areas are listed in `scope.json`; the same file explicitly records Cuba as omitted: AG, AI, AW, BB, BL, BQ, BS, CW, DM, DO, GD, GP, HT, JM, KN, KY, LC, MF, MQ, MS, PR, SX, TC, TT, VC, VG, VI.
+The 28 included M49 Caribbean areas are listed in `scope.json`: AG, AI, AW, BB, BL, BQ, BS, CU, CW, DM, DO, GD, GP, HT, JM, KN, KY, LC, MF, MQ, MS, PR, SX, TC, TT, VC, VG, VI.
 
 Bermuda is in M49 Northern America and is not in this scope. Puerto Rico and the US Virgin Islands are separate source-country scopes here. Puerto Rico's existing US official municipality snapshot is a separate layer: do not sum overlapping layers or infer links by name. GeoNames administrative levels are source levels, not an assertion that all rows are municipalities. For example, the Dominican Republic source has many lower-level administrative features.
 
@@ -68,4 +68,4 @@ Before the full validator, or before querying DO, run from the repository root:
 
 `split_manifest.json` records the original relative path, full byte count and SHA-256, and each ordered part's path, byte count and SHA-256. The shared `localities.materialize` implementation uses only local files, verifies the parts and reconstructed output, and recreates the canonical gzip bytes exactly. It rejects unsafe/traversal paths, symlink paths, corrupt parts and a mismatched existing destination rather than overwriting it. Repeating the command with an already matching destination is safe. Other countries need no reconstruction. The compressed original must not be counted or uploaded in addition to its transport parts.
 
-The partial publication-only clean-copy reconstruction, all 27 country replays and 13 regressions with the partial-scope assertion were tested; see `publication-verification.json`.
+The 28-country payload replay is recorded in `verification.json`; the materialization-only record in `publication-verification.json` documents the earlier 27-country publication and is retained as historical evidence.

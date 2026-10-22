@@ -1,0 +1,40 @@
+{
+  "alternate_rows": 3038,
+  "countries": 3,
+  "entity_rows": 340,
+  "errors": 0,
+  "limits": [
+    "Integrity and source-code replay are verified; official hierarchy and source accuracy are not.",
+    "Postal tags are direct GeoNames observations, not address deliverability."
+  ],
+  "reports": [
+    {
+      "alternate_rows": 370,
+      "country": "BM",
+      "entities": 43,
+      "entity_replay": "exact",
+      "integrity": "passed",
+      "localities": 31,
+      "postal_rows": 0
+    },
+    {
+      "alternate_rows": 2468,
+      "country": "GL",
+      "entities": 281,
+      "entity_replay": "exact",
+      "integrity": "passed",
+      "localities": 255,
+      "postal_rows": 2
+    },
+    {
+      "alternate_rows": 200,
+      "country": "PM",
+      "entities": 16,
+      "entity_replay": "exact",
+      "integrity": "passed",
+      "localities": 13,
+      "postal_rows": 2
+    }
+  ],
+  "schema_version": 1
+}

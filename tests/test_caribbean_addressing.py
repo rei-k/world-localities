@@ -80,7 +80,7 @@ class CaribbeanProfileCoverage(unittest.TestCase):
             self.caribbean.report(),
             {
                 "status": "passed",
-                "reviewed_at": "2026-10-17",
+                "reviewed_at": "2026-10-18",
                 "countries": 28,
                 "native_language_variants": 36,
                 "english_profiles": 28,
@@ -99,7 +99,7 @@ class CaribbeanProfileCoverage(unittest.TestCase):
                 self.assertTrue(policy["romanization_policy"])
                 self.assertTrue(policy["sources"])
 
-    def test_locality_linkage_keeps_cuba_pending_and_counts_reproducible(self):
+    def test_locality_linkage_includes_cuba_source_and_counts_reproducible(self):
         linkage = self.caribbean.locality_registry
         scope = json.loads((ROOT / linkage["scope_file"]).read_text(encoding="utf-8"))
         with (ROOT / "caribbean-registry/coverage.csv").open(
@@ -108,30 +108,32 @@ class CaribbeanProfileCoverage(unittest.TestCase):
             coverage = list(csv.DictReader(handle))
 
         self.assertEqual(scope["m49_scope_count"], 28)
-        self.assertEqual(scope["published_scope_count"], 27)
-        self.assertEqual(
-            {item["country"] for item in scope["omitted_countries"]}, {"CU"}
-        )
-        self.assertEqual(linkage["pending_locality_source_countries"], ["CU"])
-        self.assertNotIn("CU", linkage["published_country_layers"])
-        self.assertEqual(len(linkage["published_country_layers"]), 27)
+        self.assertEqual(scope["published_scope_count"], 28)
+        self.assertEqual(scope["omitted_countries"], [])
+        self.assertEqual(linkage["pending_locality_source_countries"], [])
+        self.assertIn("CU", linkage["published_country_layers"])
+        self.assertEqual(len(linkage["published_country_layers"]), 28)
         self.assertEqual(linkage["split_materialization_required"], ["DO"])
         self.assertEqual(
             sum(int(row["entities"]) for row in coverage),
             linkage["source_entity_rows"],
         )
+        self.assertEqual(linkage["source_entity_rows"], 66851)
         self.assertEqual(
             sum(int(row["locality_rows"]) for row in coverage),
             linkage["source_locality_rows"],
         )
+        self.assertEqual(linkage["source_locality_rows"], 48025)
         self.assertEqual(
             sum(int(row["address_candidates"]) for row in coverage),
             linkage["address_candidate_rows"],
         )
+        self.assertEqual(linkage["address_candidate_rows"], 47691)
         self.assertEqual(
             sum(int(row["alternate_rows"]) for row in coverage),
             linkage["alternate_rows"],
         )
+        self.assertEqual(linkage["alternate_rows"], 74835)
         self.assertEqual(
             sum(int(row["postal_rows"]) for row in coverage),
             linkage["direct_id_postal_observations"],

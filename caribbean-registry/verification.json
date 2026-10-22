@@ -1,14 +1,10 @@
 {
-  "alternate_rows": 55255,
-  "countries": 27,
+  "alternate_rows": 74835,
+  "countries": 28,
   "errors": 0,
   "limits": [
     "Integrity and source-code replay are verified; legal hierarchy and source accuracy are not.",
     "Postal rows are direct-ID GeoNames observations, not authoritative address deliverability."
-  ],
-  "m49_scope_count": 28,
-  "omitted_countries": [
-    "CU"
   ],
   "reports": [
     {
@@ -66,6 +62,14 @@
       "postal_rows": 0,
       "replay": "exact",
       "rows": 396
+    },
+    {
+      "alternate_rows": 19580,
+      "country": "CU",
+      "integrity": "passed",
+      "postal_rows": 0,
+      "replay": "exact",
+      "rows": 16270
     },
     {
       "alternate_rows": 269,
@@ -228,6 +232,6 @@
       "rows": 572
     }
   ],
-  "rows": 50581,
+  "rows": 66851,
   "schema_version": 1
 }

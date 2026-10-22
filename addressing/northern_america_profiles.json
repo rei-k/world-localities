@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
   "region": "Northern America",
-  "reviewed_at": "2026-10-17",
+  "reviewed_at": "2026-10-18",
   "purpose": "Domestic-language and English address display profiles for all five UN M49 Northern America countries or areas, with explicit postcode, Address2, street, rural-route and P.O. Box policies; not an address-existence, postal-assignment, geocoding or deliverability claim.",
   "locality_registry": {
     "path": "north-america-registry",
     "scope_file": "north-america-registry/scope.json",
     "administrative_seed_file": "north-america-registry/admin-seeds.json",
-    "materialized_source_layers": {"CA": "official-registry/CA", "US": "official-registry/US"},
-    "materialized_countries": ["CA", "US"],
-    "pending_locality_source_countries": ["BM", "GL", "PM"],
-    "source_locality_rows_in_m49_area": 72567,
+    "materialized_source_layers": {"BM": "north-america-registry/countries/BM", "CA": "official-registry/CA", "GL": "north-america-registry/countries/GL", "PM": "north-america-registry/countries/PM", "US": "official-registry/US"},
+    "materialized_countries": ["BM", "CA", "GL", "PM", "US"],
+    "pending_locality_source_countries": [],
+    "source_locality_rows_in_m49_area": 72866,
     "administrative_seed_counts": {"BM": 11, "GL": 5, "PM": 2},
-    "role": "Official preserved locality/statistical snapshots for Canada and the United States, excluding Puerto Rico from the M49 Northern America view, plus clearly separated administrative-name seeds for Bermuda, Greenland and Saint Pierre and Miquelon. None proves a street, house number, postcode assignment, geocode or deliverable address."
+    "role": "Official preserved locality/statistical snapshots for Canada and the United States, excluding Puerto Rico from the M49 Northern America view, plus partial CC BY 4.0 GeoNames source packs for Bermuda, Greenland and Saint Pierre and Miquelon. The 18 government-attested administrative-name seeds remain separate. None proves a complete official locality set, street, house number, postcode assignment, geocode or deliverable address."
   },
   "overrides": ["BM", "CA", "CA_en", "CA_fr", "GL", "PM", "US"],
   "countries": {

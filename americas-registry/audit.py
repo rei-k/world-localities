@@ -147,12 +147,45 @@ def _northern(root):
     roster = {c["country"] for c in countries}
     require(roster == {"BM", "CA", "GL", "PM", "US"}, "Northern roster mismatch")
     require(len({c["m49"] for c in countries}) == 5, "Northern M49 country code duplicate")
+    manifest = load_json(root, "north-america-registry/manifest.json")
+    coverage = read_coverage(root, "north-america-registry", manifest)
+    geonames = {c["country"] for c in countries if c["status"] == "published_geonames_source"}
+    require(geonames == set(manifest["prepared_countries"]) == set(coverage),
+            "Northern GeoNames scope/manifest/coverage mismatch")
+    require(sum(x["source_locality_rows"] for x in coverage.values()) ==
+            manifest["totals"]["locality_rows"], "Northern GeoNames total mismatch")
+    builder_path = root / "north-america-registry/build.py"
+    spec = importlib.util.spec_from_file_location("northern_geonames_source", builder_path)
+    builder = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(builder)
+    builder.verify_manifest(root / "north-america-registry")
     sources = {}
     for entry in countries:
         cc = entry["country"]
         if entry["status"] == "preserved_official_snapshot":
             exclusions = entry.get("excluded_state_codes_for_m49", [])
             sources[cc] = official_snapshot(root, cc, exclusions)
+        elif entry["status"] == "published_geonames_source":
+            metadata = load_json(root, f"north-america-registry/countries/{cc}/metadata.json")
+            info = coverage[cc]
+            fields = {
+                "locality_rows": "source_locality_rows",
+                "address_candidates": "source_address_candidates",
+                "unresolved_parents": "unresolved_parents"
+            }
+            for field, coverage_field in fields.items():
+                require(info[coverage_field] == metadata["counts"][field],
+                        f"{cc}: coverage/metadata mismatch for {field}")
+            sources[cc] = regional_source(cc, "north-america-registry", coverage)
+            sources[cc].update({
+                "layer": entry["source_layer"],
+                "source_entity_rows": metadata["files"]["entities.csv.gz"]["rows"],
+                "alternate_name_rows": metadata["alternate_names_source"]["retained_direct_id_rows"],
+                "source_retrieved_on": metadata["source_file"]["retrieved_on"],
+                "source_archive_sha256": metadata["source_file"]["sha256"],
+                "license": metadata["license"],
+                "quality": "partial_geonames_source_gazetteer_not_official_postal_coverage"
+            })
         elif entry["status"] == "pending_locality_source":
             sources[cc] = pending(cc)
         else:
@@ -167,7 +200,7 @@ def _northern(root):
                 for x in corrections["entries"]), "Canada's Nova Scotia presentation fix is missing")
     return sources, [
         "CA-NS: Nova Scotia verified display correction; source snapshots remain immutable",
-        "BM/GL/PM: 18 government-attested administrative names recorded separately, not a locality source"
+        "BM/GL/PM: partial GeoNames packs remain separate from the 18-name government-attested seed catalogue; official and postal completeness remain unverified"
     ]
 
 
@@ -221,8 +254,8 @@ def _caribbean(root):
     roster = published | omitted
     require(scope["region_m49"] == "029" and len(roster) == 28,
             "Caribbean M49 roster mismatch")
-    require(omitted == {"CU"} and published.isdisjoint(omitted),
-            "Caribbean pending country scope changed")
+    require(omitted == set() and published == roster,
+            "Caribbean source-pack scope is incomplete")
     require(published == {x["country"] for x in manifest["countries"]},
             "Caribbean manifest/scope mismatch")
     coverage = read_coverage(root, "caribbean-registry", manifest)
@@ -231,8 +264,10 @@ def _caribbean(root):
             manifest["totals"]["locality_rows"], "Caribbean source total mismatch")
     sources = {cc: regional_source(cc, "caribbean-registry", coverage)
                for cc in published}
-    sources["CU"] = pending("CU")
-    return sources, ["PR: Caribbean GeoNames scope; do not add the overlapping US Census US-PR source rows"]
+    return sources, [
+        "CU: GeoNames is the available CC BY gazetteer layer; an authoritative ONEI national dataset is not represented by this snapshot",
+        "PR: Caribbean GeoNames scope; do not add the overlapping US Census US-PR source rows"
+    ]
 
 
 def _south(root):
@@ -304,6 +339,12 @@ def quality_queue(report):
                 "task": "Acquire and legally verify a country-specific locality source; pin license, vintage, IDs and hashes; do not synthesize missing localities."
             })
         if area["key"] == "northern-america":
+            for cc, issue in (
+                ("BM", "Confirm redistribution terms for Bermuda's official GIS and crosswalk approved parish/municipality names to the GeoNames layer."),
+                ("GL", "Obtain reuse terms for NunaGIS's official Greenland Place Names Register and crosswalk official Kalaallisut names and municipal IDs to source IDs."),
+                ("PM", "Seek a reusable official locality/commune gazetteer and verify the GeoNames hierarchy against INSEE COG codes 97501/97502."),
+            ):
+                queue.append({"area": area["key"], "country": cc, "priority": 2, "task": issue})
             queue.append({
                 "area": area["key"], "country": "CA", "priority": 2,
                 "task": "Audit province names including Nova Scotia, bilingual name evidence, and Indigenous/statistical CSD distinctions without altering preserved source files."
@@ -311,6 +352,11 @@ def quality_queue(report):
             queue.append({
                 "area": area["key"], "country": "US", "priority": 2,
                 "task": "Review address candidate roles, Puerto Rico cross-region routing, and USPS-vs-Census postal limitations."
+            })
+        if area["key"] == "caribbean":
+            queue.append({
+                "area": area["key"], "country": "CU", "priority": 2,
+                "task": "Acquire an openly reusable ONEI national locality dataset when available; keep it separate from the partial GeoNames source until IDs and license are verified."
             })
         unresolved = sum(x.get("unresolved_parents", 0) for x in area["countries"])
         if unresolved:

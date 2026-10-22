@@ -8,21 +8,24 @@ or change third-party licences.
 
 | Order | Area | UN M49 | Countries/areas with a locality source | Missing sources in current publication |
 |---|---|---|---:|---|
-| 1 | [Northern America](../north-america-registry/README.md) | 021 | 2 / 5 (US, CA) | BM, GL, PM |
+| 1 | [Northern America](../north-america-registry/README.md) | 021 | 5 / 5: US/CA source snapshots + BM/GL/PM GeoNames packs | None for source-pack coverage |
 | 2 | [Central America](../central-america-registry/ENRICHMENT_20261015.md) | 013 | 8 / 8: six preserved GeoNames packs + Costa Rica supplement + separate INEGI Mexico | None for source country layers |
-| 3 | [Caribbean](../caribbean-registry/README.md) | 029 | 27 / 28 | CU |
+| 3 | [Caribbean](../caribbean-registry/README.md) | 029 | 28 / 28 GeoNames country-area packs | None for source-pack coverage |
 | 4 | [South America](../south-america-registry/README.md) | 005 | 16 / 16 GeoNames country-area source packs | None for source packs |
 
-The Northern quality layer also contains **18 attributed administrative names**
-for BM/GL/PM (not counted as locality source coverage) and a sourced,
-non-destructive Canadian Nova Scotia presentation correction.
+The Northern layer adds three **partial GeoNames source packs** (BM, GL, PM).
+Its separate **18-name government-attested administrative seed catalogue** is
+not counted as locality coverage and is never merged with gazetteer rows. The
+Caribbean layer now includes Cuba's GeoNames country extract; this does not
+mean an official ONEI dataset was acquired.
 
-Across these four M49 areas, **53 / 57 country-area sources** are included,
-but no claim of full official municipal, address, postcode or translation
-completeness follows. In particular, South America's 16/16 is source-pack
-coverage, **not** official locality/municipal coverage. An area with zero source
-locality rows may still contain territory anchors; zero source rows does not
-prove no settlements.
+Across these four M49 areas, **57 / 57 country-area source packs** are now
+included. This records a usable source layer for each M49 area; it does not
+claim full official municipal, locality, address, postcode, street, or
+translation completeness. Bermuda, Greenland, Saint Pierre and Miquelon and
+Cuba use GeoNames source gazetteers. South America's 16/16 is also source-pack
+coverage, not official municipal coverage. Missing or unresolved source rows
+remain explicit and are not synthesized.
 
 UN M49 calls Northern America (021), Central America (013) and the Caribbean
 (029) parts of the larger North America (003). Mexico is in M49 Central
@@ -42,15 +45,17 @@ Run at the repository root, with Python 3.11+ standard library:
     python scripts/verify_americas_snapshots.py
 
 The audit checks: unique M49 placement, source country membership,
-expected source totals, central/Caribbean published coverage CSV hashes,
-official US/CA/MX index totals, source completeness flags, pending scope,
-and explicit PR/MX cross-region accounting. It does **not** re-download
-official sources, run authoritative name QA, or verify delivery addresses.
+expected source totals, northern/central/Caribbean coverage hashes and
+GeoNames payload replay, official US/CA/MX index totals, source completeness
+flags, pending scope, and explicit PR/MX cross-region accounting. It does
+**not** re-download official sources, run authoritative name QA, or verify
+delivery addresses.
 For preserved US/CA/MX/BR snapshot-bytes and parent-chain validation use
 the independent `scripts/verify_americas_snapshots.py` command.
 
 `--mode plan` produces a deterministic queue ordered by area, starting with
-missing authoritative sources before language/postal and Address1 gaps.
+official-source and reuse-rights follow-ups before language/postal and
+Address1 gaps.
 `--mode cycle` rechecks the areas sequentially, stops on no input changes,
 and **does not pretend that repeated audits add records**. Ingestion,
 legal source review, QA and commits must occur between enrichment rounds;
@@ -75,7 +80,11 @@ re-run these checks after any such change.
 
 Source licences still apply: preserved US/CA/MX/BR snapshots include
 ODbL-linked material; GeoNames packages are CC BY 4.0. Retain original
-notices. Base layers must not be silently replaced by cross-source
-merge results.
+notices. Official-source candidates without a verified redistribution licence
+remain research references, not copied datasets. Base layers must not be
+silently replaced by cross-source merge results.
+
+See [the 2026-10-18 review of the four formerly missing sources](MISSING_SOURCES_REVIEW_20261018.md)
+for source choices, licences, row counts and remaining official-data gaps.
 
 Central America now validates actual gazetteer payloads and the pinned Costa Rica raw archives through `quality_cycle.py`; the legacy six-country raw ZIP replay is still a separate task. The government 84-canton CodeSystem remains separate from the 82 ADM2 records in the Costa Rica GeoNames snapshot.

@@ -6,6 +6,7 @@ address_candidates,admin_rows,ambiguous_parents,country,country_scope_only,local
 29,0,0,BL,29,29,29,Saint Barthélemy,1,Caribbean,0,30,308,1,9
 119,3,0,BQ,0,0,119,"Bonaire, Sint Eustatius and Saba",1,Caribbean,0,123,385,0,7
 352,32,0,BS,6,8,354,Bahamas,10,Caribbean,2,396,2891,0,84
+16061,185,0,CU,1,1,16083,Cuba,2,Caribbean,58,16270,19580,0,97
 100,0,0,CW,100,100,100,Curaçao,2,Caribbean,0,102,269,0,5
 132,10,0,DM,7,7,132,Dominica,1,Caribbean,0,143,1447,0,33
 7938,14703,0,DO,0,0,7938,Dominican Republic,1,Caribbean,0,22642,10638,0,138

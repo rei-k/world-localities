@@ -90,18 +90,39 @@ class NameProvenance(unittest.TestCase):
         self.assertEqual(rows[0]['entity_id'],'gn:123')
         self.assertEqual(rows[0]['language'],'en')
 
-    def test_partial_frozen_scope(self):
+    def test_full_m49_source_pack_scope(self):
         import json
         from build import ROOT, CODES
         sc=json.loads((ROOT/'scope.json').read_text())
         self.assertEqual(sorted(c['country'] for c in sc['countries']), CODES)
-        self.assertEqual(len(CODES),27)
-        self.assertNotIn('CU',CODES)
+        self.assertEqual(len(CODES),28)
+        self.assertIn('CU',CODES)
         self.assertEqual(sc['m49_scope_count'],28)
-        self.assertEqual([x['country'] for x in sc['omitted_countries']],['CU'])
+        self.assertEqual(sc['published_scope_count'],28)
+        self.assertEqual(sc['omitted_countries'],[])
+        cuba=next(c for c in sc['countries'] if c['country']=='CU')
+        self.assertEqual(cuba['id'],'country:CU')
+        self.assertEqual(cuba['alpha3'],'CUB')
+        self.assertEqual(cuba['m49'],'192')
+        self.assertIn('es-CU',cuba['source_language_codes'])
         self.assertIn('PR',CODES)
         self.assertIn('VI',CODES)
         self.assertNotIn('BM',CODES)
+
+    def test_cuba_source_snapshot_uses_stable_ids_and_unverified_languages(self):
+        from build import ROOT, verify_one
+        import json
+        report=verify_one('CU',ROOT)
+        self.assertEqual(report['country'],'CU')
+        self.assertEqual(report['rows'],16270)
+        self.assertGreater(report['alternate_rows'],0)
+        self.assertEqual(report['integrity'],'passed')
+        self.assertEqual(report['replay'],'exact')
+        metadata=json.loads((ROOT/'countries/CU/metadata.json').read_text())
+        self.assertEqual(metadata['license'],'CC-BY-4.0')
+        self.assertFalse(metadata['current_official_hierarchy_verified'])
+        self.assertFalse(metadata['label_coverage']['complete_native_and_english_coverage'])
+        self.assertGreater(metadata['counts']['unresolved_parents'],0)
 
 if __name__ == '__main__':
     unittest.main()

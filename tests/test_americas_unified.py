@@ -27,23 +27,29 @@ class AmericasAreaQualityTests(unittest.TestCase):
         self.assertEqual([x["key"] for x in self.report["areas"]],
                          ["northern-america", "central-america", "caribbean", "south-america"])
         self.assertEqual(self.report["m49_country_area_count"], 57)
-        self.assertEqual(self.report["source_country_area_count"], 53)
+        self.assertEqual(self.report["source_country_area_count"], 57)
         self.assertEqual([x["m49_country_area_count"] for x in self.report["areas"]],
                          [5, 8, 28, 16])
         self.assertEqual([x["source_country_area_count"] for x in self.report["areas"]],
-                         [2, 8, 27, 16])
+                         [5, 8, 28, 16])
         self.assertEqual([x["pending_country_area_codes"] for x in self.report["areas"]],
-                         [["BM", "GL", "PM"], [], ["CU"], []])
+                         [[], [], [], []])
         self.assertIs(self.report["postal_street_delivery_verified"], False)
 
     def test_northern_coverage_excludes_puerto_rico_from_us_source_count(self):
         area = self.areas["northern-america"]
-        self.assertEqual(area["source_locality_rows_in_m49_area"], 72567)
+        self.assertEqual(area["source_locality_rows_in_m49_area"], 72866)
         by_code = {x["country"]: x for x in area["countries"]}
         self.assertEqual(by_code["US"]["source_locality_rows"], 68744)
         self.assertEqual(by_code["US"]["excluded_source_locality_rows"], 1231)
         self.assertEqual(by_code["CA"]["source_locality_rows"], 5054)
-        self.assertEqual(by_code["GL"]["status"], "pending_source")
+        self.assertEqual(by_code["BM"]["source_locality_rows"], 31)
+        self.assertEqual(by_code["BM"]["source_entity_rows"], 43)
+        self.assertEqual(by_code["GL"]["source_locality_rows"], 255)
+        self.assertEqual(by_code["GL"]["source_entity_rows"], 281)
+        self.assertEqual(by_code["PM"]["source_locality_rows"], 13)
+        self.assertEqual(by_code["PM"]["source_entity_rows"], 16)
+        self.assertEqual(by_code["GL"]["unresolved_parents"], 36)
 
     def test_central_mexico_layer_is_not_lost_or_wrongly_reclassified(self):
         area = self.areas["central-america"]
@@ -55,7 +61,8 @@ class AmericasAreaQualityTests(unittest.TestCase):
     def test_caribbean_pr_and_us_source_pr_remain_distinct(self):
         by_code = {x["country"]: x for x in self.areas["caribbean"]["countries"]}
         self.assertEqual(by_code["PR"]["layer"], "caribbean-registry")
-        self.assertEqual(by_code["CU"]["status"], "pending_source")
+        self.assertEqual(by_code["CU"]["status"], "published_source_layer")
+        self.assertEqual(by_code["CU"]["source_locality_rows"], 16083)
         with self.assertRaisesRegex(northern.QueryError, "outside M49"):
             northern.search("US", region="US-PR", root=ROOT)
         included = northern.search(
@@ -91,24 +98,27 @@ class AmericasAreaQualityTests(unittest.TestCase):
         self.assertTrue(all(not x["delivery_verified"] for x in result["results"]))
         self.assertTrue(all(not x["postal_assignment_verified"] for x in result["results"]))
 
-    def test_pending_source_returns_administrative_seeds_not_fake_localities(self):
+    def test_geonames_source_and_administrative_seeds_remain_separate(self):
         counts = {"BM": 11, "GL": 5, "PM": 2}
         self.assertEqual(audit.verify_administrative_seeds(ROOT), counts)
         for cc, count in counts.items():
-            result = northern.search(cc, root=ROOT)
-            self.assertEqual(result["status"], "not_loaded")
-            self.assertIsNone(result["source_locality_rows"])
-            self.assertIsNone(result["matches_found"])
-            self.assertEqual(result["results"], [])
+            result = northern.search(cc, limit=500, root=ROOT)
+            self.assertEqual(result["status"], "source_gazetteer_available")
+            self.assertGreater(result["source_locality_rows"], 0)
+            self.assertGreater(result["matches_found"], 0)
             self.assertEqual(len(result["administrative_seeds"]), count)
             self.assertTrue(all(not x["postal_or_street_verified"] for x in result["administrative_seeds"]))
+            self.assertTrue(all(x["id"].startswith("gn:") for x in result["results"]))
+            self.assertTrue(all(x["provisional_id"].startswith("seed:") for x in result["administrative_seeds"]))
         pm = northern.search("PM", text="Miquelon", root=ROOT)
         self.assertEqual(pm["administrative_seed_matches"], 1)
         self.assertEqual(pm["administrative_seeds"][0]["official_code"], "97501")
 
-    def test_plan_starts_with_northern_gaps(self):
+    def test_plan_starts_with_official_source_followups(self):
         queue = audit.quality_queue(self.report)
         self.assertEqual([x["country"] for x in queue[:3]], ["BM", "GL", "PM"])
+        self.assertIn("redistribution terms", queue[0]["task"])
+        self.assertEqual(self.report["source_country_area_count"], 57)
         self.assertFalse(self.report["official_municipality_completeness_verified"])
 
 

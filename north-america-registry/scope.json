@@ -11,7 +11,17 @@
       "alpha3": "BMU",
       "m49": "060",
       "name_en": "Bermuda",
-      "status": "pending_locality_source"
+      "status": "published_geonames_source",
+      "id": "country:BM",
+      "source_layer": "north-america-registry/countries/BM",
+      "region": "Northern America",
+      "region_m49": "021",
+      "geonames_country_name": "Bermuda",
+      "geonames_id": "3573345",
+      "source_language_codes": [
+        "en-BM",
+        "pt"
+      ]
     },
     {
       "country": "CA",
@@ -26,14 +36,34 @@
       "alpha3": "GRL",
       "m49": "304",
       "name_en": "Greenland",
-      "status": "pending_locality_source"
+      "status": "published_geonames_source",
+      "id": "country:GL",
+      "source_layer": "north-america-registry/countries/GL",
+      "region": "Northern America",
+      "region_m49": "021",
+      "geonames_country_name": "Greenland",
+      "geonames_id": "3425505",
+      "source_language_codes": [
+        "kl",
+        "da-GL",
+        "en"
+      ]
     },
     {
       "country": "PM",
       "alpha3": "SPM",
       "m49": "666",
       "name_en": "Saint Pierre and Miquelon",
-      "status": "pending_locality_source"
+      "status": "published_geonames_source",
+      "id": "country:PM",
+      "source_layer": "north-america-registry/countries/PM",
+      "region": "Northern America",
+      "region_m49": "021",
+      "geonames_country_name": "Saint Pierre and Miquelon",
+      "geonames_id": "3424932",
+      "source_language_codes": [
+        "fr-PM"
+      ]
     },
     {
       "country": "US",
@@ -55,5 +85,12 @@
     "translation_complete": false,
     "data_current_as_of_2026_10_15": false
   },
-  "preservation_note": "US and CA snapshots are read without modifying their original CSV, index, manifest, source hashes or legal/source vintage."
+  "preservation_note": "US and CA snapshots are read without modifying their original CSV, index, manifest, source hashes or legal/source vintage.",
+  "source_language_reference": {
+    "source": "GeoNames countryInfo.txt",
+    "url": "https://download.geonames.org/export/dump/countryInfo.txt",
+    "retrieved_on": "2026-10-18",
+    "sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+    "note": "Language-code reference only; it does not establish official-name or translation status."
+  }
 }

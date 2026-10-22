@@ -1,0 +1,4 @@
+address_candidates,admin_rows,ambiguous_parents,country,country_scope_only,localities_without_adm1,locality_rows,name_en,other_admin_rows,region,unresolved_parents,entities,alternate_rows,postal_rows,english_entities
+31,11,0,BM,0,0,31,Bermuda,1,Northern America,0,43,370,0,7
+204,23,0,GL,1,22,255,Greenland,3,Northern America,36,281,2468,2,75
+8,2,0,PM,8,8,13,Saint Pierre and Miquelon,1,Northern America,0,16,200,2,3

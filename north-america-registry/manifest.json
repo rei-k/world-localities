@@ -1,0 +1,46 @@
+{
+  "countries": [
+    {
+      "country": "BM",
+      "metadata_sha256": "60560fe2a040e5918c69f120979d016e384402fb3f2aaf0f33385fc753700cf0"
+    },
+    {
+      "country": "GL",
+      "metadata_sha256": "806be4e1b280b1504d584c8353a1e79590c3fe4457bf3e5125b1697dc693f913"
+    },
+    {
+      "country": "PM",
+      "metadata_sha256": "60a1d210cee70889f2cdda8001f9c9a42bcfc09995535b62e887b0426d754e81"
+    }
+  ],
+  "coverage_claim": "Three partial GeoNames country extracts; official locality, administrative, postal, street and address completeness remain unverified.",
+  "coverage_sha256": "c8b89194ac338b0c667e605eb290d0c4b1ec59bbcc82b16ea8b9aed495dd68c4",
+  "license": "CC-BY-4.0",
+  "missing_countries": [],
+  "prepared_count": 3,
+  "prepared_countries": [
+    "BM",
+    "GL",
+    "PM"
+  ],
+  "prepared_on": "2026-10-18",
+  "region": "Northern America",
+  "region_m49": "021",
+  "schema_version": 1,
+  "scope_count": 3,
+  "scope_sha256": "eff06bfcafd8029603a91d8a726955f9c1691fa526f51921c780710c917b2014",
+  "totals": {
+    "address_candidates": 243,
+    "admin_rows": 36,
+    "alternate_rows": 3038,
+    "ambiguous_parents": 0,
+    "country_scope_only": 9,
+    "english_entities": 85,
+    "entities": 340,
+    "localities_without_adm1": 30,
+    "locality_rows": 299,
+    "other_admin_rows": 5,
+    "postal_rows": 4,
+    "unresolved_parents": 36
+  }
+}
