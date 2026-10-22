@@ -122,6 +122,23 @@
         "releases/hierarchy/western-europe/archive.json",
         "releases/hierarchy/western-europe/netherlands/archive.json"
       ]
+    },
+    "east-asia": {
+      "module": "eastasia",
+      "configuration_dir": "address-points",
+      "scope_file": "EAST_ASIA_SCOPE.json",
+      "scope_codes": [
+        "CN",
+        "HK",
+        "JP",
+        "KP",
+        "KR",
+        "MN",
+        "MO",
+        "TW"
+      ],
+      "archive_manifest": "releases/hierarchy/east-asia/archive.json",
+      "data_payloads_in_git": false
     }
   }
 }
