@@ -127,11 +127,12 @@
   "raw_source_files": 9,
   "evidence_files": 3,
   "implementation_files": {
-    "scripts/netherlands_bag.py": "3da436a9860d7838f67661cee72609f08f2e77b01496c2698d0c1d266bfbf751",
+    "scripts/netherlands_bag.py": "2a054d7302224e82843ab8a77c7a1d999a510deaa51b22de5a0518c21082a31c",
     "scripts/western_europe_sources.py": "db8eee72bef2231c339644fcc73173dc70bdd2c57db5011ee1293322e5a86bf0",
     "scripts/restore_data_parts.py": "25846d9dffe2b3d104ff2988ebd8c78413584d3c86393d3172e6b76255409960",
     "scripts/hierarchy_snapshot.py": "d4214bc54176afc20a07f1e1bd961ada7091310d4e2a3145188bc0577a70d8f1",
-    "address-points/adapters/westerneurope.py": "00593bf1cb99875cedd38e8968315b52d5836224f1c28978fb8a4cf9622fa6e1"
+    "address-points/adapters/westerneurope.py": "00593bf1cb99875cedd38e8968315b52d5836224f1c28978fb8a4cf9622fa6e1",
+    "scripts/netherlands_reference_review.py": "b63434cdedd2a5523e4a715d4e9a1d289c4c74b4c4b3690d7f031a626004e1bc"
   },
   "validation_report": "releases/hierarchy/western-europe/netherlands/validation.json",
   "national_completeness_verified": false,
@@ -149,5 +150,8 @@
     "deliverability_in_scope": false
   },
   "restored_source_pins_verified": 12,
-  "status": "PACKAGED_RECONSTRUCTED_AND_SOURCE_BYTE_VERIFIED"
+  "status": "PACKAGED_RECONSTRUCTED_AND_SOURCE_BYTE_VERIFIED",
+  "implementation_base_commit_sha": "6bdc85d8b8dc963f8408c23037fd3c79956ded6e",
+  "code_review_record": "releases/hierarchy/western-europe/netherlands/acquisition-review.json",
+  "reference_validation_report": "releases/hierarchy/western-europe/netherlands/reference-validation.json"
 }

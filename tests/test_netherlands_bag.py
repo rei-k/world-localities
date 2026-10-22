@@ -165,6 +165,29 @@ class BagContractTests(unittest.TestCase):
             with self.assertRaises(ValueError): n.download_member({}, changed, self.root/'bad.zip')
         self.assertFalse((self.root/'bad.zip').exists())
         self.assertFalse((self.root/'bad.zip.partial').exists())
+        raced=self.root/'raced.zip.partial'
+        def fetch_race(container,start,length):
+            if start==30+len(filename): raced.write_bytes(b'another download owns this')
+            return io.BytesIO(blob[start:start+length])
+        with patch.object(n,'fetch_range',side_effect=fetch_race):
+            with self.assertRaises(FileExistsError): n.download_member({},pin,self.root/'raced.zip')
+        self.assertEqual(raced.read_bytes(),b'another download owns this')
+
+    def test_prior_incomplete_downloads_are_preserved_before_network_access(self):
+        partial=self.root/'source.zip.partial';partial.write_bytes(b'previous incomplete bytes')
+        with patch.object(n,'fetch_range') as network:
+            with self.assertRaisesRegex(ValueError,'explicit review'):
+                n.download_member({}, {}, self.root/'source.zip')
+            network.assert_not_called()
+        self.assertEqual(partial.read_bytes(),b'previous incomplete bytes')
+        pin={'id':'NL-file','country':'NL','path':'CBS.xlsx','requested_url':'https://www.cbs.nl/source',
+             'bytes':1,'sha256':'0'*64}
+        cbs_partial=self.root/'CBS.xlsx.partial';cbs_partial.write_bytes(b'keep this too')
+        with patch.object(n,'urlopen') as network:
+            with self.assertRaisesRegex(ValueError,'explicit review'):
+                n.acquire({'sources':[pin]},self.root)
+            network.assert_not_called()
+        self.assertEqual(cbs_partial.read_bytes(),b'keep this too')
 
     def test_search_keeps_exact_numbers_pagination_and_snapshot_labelled_joins(self):
         source = self.pin(document([number(), number().replace('0001200000000001', '0001200000000002')]))

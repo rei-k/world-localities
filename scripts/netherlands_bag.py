@@ -70,6 +70,9 @@ def download_member(container, pin, path):
     path = Path(path)
     if path.exists() or path.is_symlink():
         raise ValueError('Use a new output for a candidate source')
+    temporary = path.with_name(path.name + '.partial')
+    if temporary.exists() or temporary.is_symlink():
+        raise ValueError('Prior incomplete download needs explicit review')
     with fetch_range(container, pin['offset'], 30) as response:
         header = response.read()
     if len(header) != 30:
@@ -86,12 +89,13 @@ def download_member(container, pin, path):
     if pin['method'] not in (0, 8):
         raise ValueError('Unsupported ZIP compression')
     start = pin['offset'] + 30 + name_size + extra_size
-    temporary = path.with_name(path.name + '.partial')
     path.parent.mkdir(parents=True, exist_ok=True)
     digest, crc, written, received = hashlib.sha256(), 0, 0, 0
     inflater = zlib.decompressobj(-15) if pin['method'] == 8 else None
+    created_partial = False
     try:
         with fetch_range(container, start, pin['compressed_bytes']) as response, temporary.open('xb') as output:
+            created_partial = True
             for block in iter(lambda: response.read(1024 * 1024), b''):
                 received += len(block)
                 decoded = inflater.decompress(block) if inflater is not None else block
@@ -109,7 +113,8 @@ def download_member(container, pin, path):
         path.hardlink_to(temporary)
         return {'bytes': written, 'sha256': digest.hexdigest(), 'outer_crc32': f'{crc:08x}'}
     finally:
-        temporary.unlink(missing_ok=True)
+        if created_partial:
+            temporary.unlink(missing_ok=True)
 
 
 def load_manifest(path=DEFAULT_MANIFEST):
@@ -622,12 +627,16 @@ def acquire(manifest, root):
             if parsed.scheme != 'https' or parsed.hostname not in ('www.cbs.nl', 'service.pdok.nl'):
                 raise ValueError('Unregistered Dutch source host')
             temporary = path.with_name(path.name + '.partial')
+            if temporary.exists() or temporary.is_symlink():
+                raise ValueError('Prior incomplete download needs explicit review')
+            created_partial = False
             try:
                 if 'range_start' in pin:
                     response = fetch_range(manifest['container'], pin['range_start'], pin['bytes'])
                 else:
                     response = urlopen(Request(pin['requested_url'], headers={'User-Agent': 'WorldLocalities-BAG/1.0'}), timeout=50)
                 with response, temporary.open('xb') as output:
+                    created_partial = True
                     if response.geturl() != pin['requested_url']:
                         raise ValueError('Unexpected Dutch source redirect')
                     count = 0
@@ -640,7 +649,8 @@ def acquire(manifest, root):
                     raise ValueError('Pinned Dutch source bytes unavailable')
                 path.hardlink_to(temporary)
             finally:
-                temporary.unlink(missing_ok=True)
+                if created_partial:
+                    temporary.unlink(missing_ok=True)
         recovered.append(pin['id'])
     return {'status': 'PINNED_BYTES_RECOVERED', 'country': 'NL', 'sources': recovered,
             'national_completeness_verified': False, 'deliverability_in_scope': False}

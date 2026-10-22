@@ -16,6 +16,8 @@
 
 住所検索の `reference_at_snapshot` は2026-10-08時点の参照名。過去の住所版に現在の道路名を無条件で書き込まず、過去名称の時間結合が未実施であることを明記する。未解決参照は監査表に残す。
 
+住所のない公共空間名も含めた照合は `reference-validation.json`。対象条件に合うOPR 290,616件・WPL 2,503件から342自治体への参照に未解決はなかった。GWRの終了日なしの対応には、対象条件に合うWPLがない120コードも含まれるため、これを現行地名として追加しない。
+
 ## 復元と検索
 
 分割ZIPは既存の復元コマンドで元のデータ書庫に戻せる。各部分と復元後の全体をSHA-256で検証し、既存出力を上書きしない。
@@ -25,6 +27,7 @@ python3 scripts/restore_data_parts.py --manifest releases/hierarchy/western-euro
 python3 scripts/hierarchy_snapshot.py restore --manifest releases/hierarchy/western-europe/netherlands/archive.json --archives /new/path --target /new/restored
 python3 scripts/hierarchy_cli.py --region western-europe --data-root /new/restored/western-europe-nl/raw -- search --country NL --kind address --number 7 --current-only --limit 5
 python3 scripts/netherlands_bag.py replay --data-root /new/restored/western-europe-nl/raw --accepted releases/hierarchy/western-europe/netherlands/validation.json --work-dir /path/with/free/space
+python3 scripts/netherlands_reference_review.py --data-root /new/restored/western-europe-nl/raw
 ```
 
 検索の `--number` は元の番地文字列に完全一致する。接尾文字・番号付加は別フィールド。`--postcode` も原典文字列に一致させる。`--current-only` の意味は上記の限定条件で、住所の実在・配達判定ではない。監査時の一時SQLiteはIDの重複と件数確認に使用し、終了時に削除する。大きな原典を展開せず順に読む。
