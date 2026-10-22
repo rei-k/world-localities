@@ -9,6 +9,7 @@
 | north-america | 6 | [north-america](../releases/hierarchy/north-america/README.md) |
 | central-america | 7（MXは北米版参照） | [central-america](../releases/hierarchy/central-america/README.md) |
 | caribbean | 28 | [caribbean](../releases/hierarchy/caribbean/README.md) |
+| western-europe | 11（M49西欧9＋従来グループGB・IE） | [western-europe](../releases/hierarchy/western-europe/README.md) |
 
 `releases/hierarchy/catalog.json` が反映済みの入口を示す。
 地域の大容量原典・索引は別書庫から復元し、Gitコードの共通CLIへ `--data-root` を指定する。
