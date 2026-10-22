@@ -3,7 +3,7 @@
   "pending_countries": {
     "DE": {
       "url": "https://www.ldbv.bayern.de/vermessung/zshh/zshh_faq.html",
-      "finding": "Nationwide HK-DE supplied under paid licence; investigate open state-level alternatives. No agreement or purchase made.",
+      "finding": "National centralized paid distribution and open state sources are separate. Pinned partial state imports are now accepted; the remaining gaps are explicit in the 16-state ledger. No purchase, application or agreement made.",
       "central_distribution_review": {
         "reviewed_on": "2026-10-22",
         "url": "https://www.adv-online.de/en/zentrale-vertriebsstellen/hauskoordinaten-und-hausumringe",
@@ -17,11 +17,44 @@
           "download_directory": "https://www.opengeodata.nrw.de/produkte/geobasis/lk/akt/gebref_txt/",
           "source_date": "2026-07-01",
           "licence_as_published": "Datenlizenz Deutschland - Zero - Version 2.0",
-          "status": "IDENTIFIED_NOT_IMPORTED",
-          "limitation": "The provider explicitly says postal address attributes are not included; coordinate/reference rows must not be counted as complete postal addresses without the missing joins."
+          "status": "IMPORTED_AND_REPLAYED",
+          "limitation": "The original Gebref rows contain administrative codes/names, street name, house number/addition and coordinates. Omission of postal enrichment does not exclude these address observations; deliverability is out of scope."
         }
       ],
-      "next_action": "Inspect state INSPIRE address / ALKIS attributes, identifiers, update dates and bulk access; build an explicit 16-state acquisition and missing-field ledger. Keep source observations separate from any national completeness claim."
+      "next_action": "Resolve remaining authorized public acquisition routes for BW/SN/ST; BY requires a separate agreement/credentials step. Independently enumerate all submunicipal administrative units, physical roads and assigned-number denominators.",
+      "state_coverage_ledger": "germany/coverage.json",
+      "remaining_states": {
+        "BW": {
+          "status": "NOT_ACQUIRED_ORIGIN_FAILED",
+          "urls": [
+            "https://opengeodata.lgl-bw.de/data/hk/hk_bw.zip",
+            "https://owsproxy.lgl-bw.de/owsproxy/wfs/WFS_INSP_BW_Adr_Hauskoord_ALKIS"
+          ],
+          "finding_ja": "公開HK ZIPと別の公式INSPIRE WFSがこのセッションでHTTP 503。Open Dataの存在を否定するものではない。"
+        },
+        "BY": {
+          "status": "NOT_ACQUIRED_AGREEMENT_AND_CREDENTIALS_REQUIRED",
+          "urls": [
+            "https://geodatenonline.bayern.de/geodatenonline/seiten/wfs_hauskoor"
+          ],
+          "finding_ja": "公式HK WFSは利用契約と認証情報が必要。契約・購入・申請は行っていない。"
+        },
+        "SN": {
+          "status": "NOT_ACQUIRED_ORIGIN_FAILED",
+          "urls": [
+            "https://www.geodaten.sachsen.de/downloadbereich-hauskoordinaten-4172.html",
+            "https://geocloud.landesvermessung.sachsen.de/public.php/dav/files/B3HnXbDDgAkw69a/hk_sn_ascii.zip"
+          ],
+          "finding_ja": "公式州全体HK ZIPの配布先がこのセッションでBad Gateway。公開ページは無償の四半期更新と説明。"
+        },
+        "ST": {
+          "status": "NOT_ACQUIRED_ORIGIN_FAILED",
+          "urls": [
+            "https://www.lvermgeo.sachsen-anhalt.de/datei/anzeigen/id/258997,501/gebaeudereferenzen.zip"
+          ],
+          "finding_ja": "公式Gebäudereferenzen ZIPがこのセッションでHTTP 503。公開データの不存在を意味しない。"
+        }
+      }
     },
     "GB": {
       "urls": [
@@ -59,6 +92,30 @@
       },
       "remaining": "全国BAGのNUM全1,338 XML・OPR・WPLと補助書庫、CBSの342自治体・12州を取得・全件再照合済み。限定参照条件から外れる153行は別表で理由・候補を記録。主副住所の役割、物理道路、独立付番総数、細分区画・境界の照合が残る。",
       "reference_gap_review": "netherlands/reference-gap-review.json"
+    }
+  },
+  "partial_source_imports": {
+    "DE": {
+      "source_manifest": "germany/sources.json",
+      "validation_report": "germany/validation.json",
+      "state_coverage_ledger": "germany/coverage.json",
+      "payload_manifest": "germany/payloads.json",
+      "address_observations": 14248259,
+      "address_observations_by_provenance": {
+        "official_direct": 8728788,
+        "official_archive": 284575,
+        "official_mirror": 1820650,
+        "third_party_derived": 3414246
+      },
+      "states_without_address_observations": [
+        "BW",
+        "BY",
+        "SN",
+        "ST"
+      ],
+      "finding": "All pinned accepted source rows parsed twice with matching canonical hashes and original-byte pins. This is a partial national import; mixed snapshot dates, mirror provenance, derived-field gaps and source-qualified code-reference gaps are retained.",
+      "national_completeness_verified": false,
+      "deliverability_in_scope": false
     }
   }
 }

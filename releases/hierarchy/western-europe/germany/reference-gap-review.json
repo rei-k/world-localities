@@ -1,0 +1,1640 @@
+{
+  "schema_version": 1,
+  "country": "DE",
+  "source_id": "DE-TH-INSPIRE-addresses",
+  "gv_reference_date": "2026-09-30",
+  "source_snapshot_date": null,
+  "source_qualified_administrative_names": true,
+  "addresses_with_unknown_current_gv_code": 105602,
+  "distinct_unknown_address_codes": 253,
+  "unknown_address_codes": [
+    {
+      "code": "16056000",
+      "source_name": "Eisenach",
+      "address_observations": 9179,
+      "street_observations": 440
+    },
+    {
+      "code": "16061004",
+      "source_name": "Bernterode (bei Heilbad Heiligenstadt)",
+      "address_observations": 98,
+      "street_observations": 6
+    },
+    {
+      "code": "16061007",
+      "source_name": "Birkenfelde",
+      "address_observations": 168,
+      "street_observations": 17
+    },
+    {
+      "code": "16061022",
+      "source_name": "Deuna",
+      "address_observations": 368,
+      "street_observations": 17
+    },
+    {
+      "code": "16061025",
+      "source_name": "Dingelstädt",
+      "address_observations": 1333,
+      "street_observations": 70
+    },
+    {
+      "code": "16061028",
+      "source_name": "Eichstruth",
+      "address_observations": 25,
+      "street_observations": 1
+    },
+    {
+      "code": "16061038",
+      "source_name": "Gerterode",
+      "address_observations": 149,
+      "street_observations": 9
+    },
+    {
+      "code": "16061039",
+      "source_name": "Glasehausen",
+      "address_observations": 58,
+      "street_observations": 1
+    },
+    {
+      "code": "16061043",
+      "source_name": "Hausen",
+      "address_observations": 127,
+      "street_observations": 10
+    },
+    {
+      "code": "16061046",
+      "source_name": "Helmsdorf",
+      "address_observations": 200,
+      "street_observations": 13
+    },
+    {
+      "code": "16061049",
+      "source_name": "Hohes Kreuz",
+      "address_observations": 423,
+      "street_observations": 22
+    },
+    {
+      "code": "16061054",
+      "source_name": "Kallmerode",
+      "address_observations": 214,
+      "street_observations": 17
+    },
+    {
+      "code": "16061055",
+      "source_name": "Kefferhausen",
+      "address_observations": 269,
+      "street_observations": 19
+    },
+    {
+      "code": "16061059",
+      "source_name": "Kleinbartloff",
+      "address_observations": 145,
+      "street_observations": 16
+    },
+    {
+      "code": "16061061",
+      "source_name": "Kreuzebra",
+      "address_observations": 240,
+      "street_observations": 17
+    },
+    {
+      "code": "16061065",
+      "source_name": "Lenterode",
+      "address_observations": 121,
+      "street_observations": 10
+    },
+    {
+      "code": "16061067",
+      "source_name": "Lutter",
+      "address_observations": 238,
+      "street_observations": 16
+    },
+    {
+      "code": "16061068",
+      "source_name": "Mackenrode",
+      "address_observations": 107,
+      "street_observations": 10
+    },
+    {
+      "code": "16061077",
+      "source_name": "Röhrig",
+      "address_observations": 75,
+      "street_observations": 6
+    },
+    {
+      "code": "16061084",
+      "source_name": "Schönhagen",
+      "address_observations": 43,
+      "street_observations": 3
+    },
+    {
+      "code": "16061087",
+      "source_name": "Silberhausen",
+      "address_observations": 244,
+      "street_observations": 18
+    },
+    {
+      "code": "16061091",
+      "source_name": "Steinheuterode",
+      "address_observations": 90,
+      "street_observations": 9
+    },
+    {
+      "code": "16061096",
+      "source_name": "Thalwenden",
+      "address_observations": 117,
+      "street_observations": 10
+    },
+    {
+      "code": "16061097",
+      "source_name": "Uder",
+      "address_observations": 778,
+      "street_observations": 51
+    },
+    {
+      "code": "16061111",
+      "source_name": "Wüstheuterode",
+      "address_observations": 196,
+      "street_observations": 19
+    },
+    {
+      "code": "16062002",
+      "source_name": "Bleicherode",
+      "address_observations": 2193,
+      "street_observations": 102
+    },
+    {
+      "code": "16062006",
+      "source_name": "Etzelsrode",
+      "address_observations": 41,
+      "street_observations": 1
+    },
+    {
+      "code": "16062007",
+      "source_name": "Friedrichsthal",
+      "address_observations": 108,
+      "street_observations": 4
+    },
+    {
+      "code": "16062014",
+      "source_name": "Hainrode/Hainleite",
+      "address_observations": 176,
+      "street_observations": 11
+    },
+    {
+      "code": "16062025",
+      "source_name": "Kleinbodungen",
+      "address_observations": 143,
+      "street_observations": 12
+    },
+    {
+      "code": "16062029",
+      "source_name": "Kraja",
+      "address_observations": 115,
+      "street_observations": 8
+    },
+    {
+      "code": "16062039",
+      "source_name": "Nohra",
+      "address_observations": 344,
+      "street_observations": 10
+    },
+    {
+      "code": "16062058",
+      "source_name": "Wipperdorf",
+      "address_observations": 536,
+      "street_observations": 32
+    },
+    {
+      "code": "16062059",
+      "source_name": "Wolkramshausen",
+      "address_observations": 372,
+      "street_observations": 28
+    },
+    {
+      "code": "16063007",
+      "source_name": "Berka/Werra",
+      "address_observations": 1557,
+      "street_observations": 120
+    },
+    {
+      "code": "16063009",
+      "source_name": "Brunnhartshausen",
+      "address_observations": 124,
+      "street_observations": 5
+    },
+    {
+      "code": "16063013",
+      "source_name": "Creuzburg",
+      "address_observations": 801,
+      "street_observations": 61
+    },
+    {
+      "code": "16063014",
+      "source_name": "Dankmarshausen",
+      "address_observations": 402,
+      "street_observations": 32
+    },
+    {
+      "code": "16063016",
+      "source_name": "Diedorf/Rhön",
+      "address_observations": 153,
+      "street_observations": 17
+    },
+    {
+      "code": "16063017",
+      "source_name": "Dippach",
+      "address_observations": 383,
+      "street_observations": 21
+    },
+    {
+      "code": "16063019",
+      "source_name": "Ebenshausen",
+      "address_observations": 127,
+      "street_observations": 12
+    },
+    {
+      "code": "16063028",
+      "source_name": "Frankenroda",
+      "address_observations": 168,
+      "street_observations": 11
+    },
+    {
+      "code": "16063036",
+      "source_name": "Großensee",
+      "address_observations": 87,
+      "street_observations": 7
+    },
+    {
+      "code": "16063037",
+      "source_name": "Hallungen",
+      "address_observations": 80,
+      "street_observations": 4
+    },
+    {
+      "code": "16063039",
+      "source_name": "Ifta",
+      "address_observations": 380,
+      "street_observations": 29
+    },
+    {
+      "code": "16063055",
+      "source_name": "Mihla",
+      "address_observations": 812,
+      "street_observations": 67
+    },
+    {
+      "code": "16063059",
+      "source_name": "Neidhartshausen",
+      "address_observations": 107,
+      "street_observations": 12
+    },
+    {
+      "code": "16063072",
+      "source_name": "Stadtlengsfeld",
+      "address_observations": 915,
+      "street_observations": 60
+    },
+    {
+      "code": "16063081",
+      "source_name": "Urnshausen",
+      "address_observations": 265,
+      "street_observations": 13
+    },
+    {
+      "code": "16063093",
+      "source_name": "Zella/Rhön",
+      "address_observations": 147,
+      "street_observations": 10
+    },
+    {
+      "code": "16063094",
+      "source_name": "Moorgrund",
+      "address_observations": 1316,
+      "street_observations": 84
+    },
+    {
+      "code": "16063102",
+      "source_name": "Kaltennordheim",
+      "address_observations": 1177,
+      "street_observations": 116
+    },
+    {
+      "code": "16064001",
+      "source_name": "Altengottern",
+      "address_observations": 438,
+      "street_observations": 34
+    },
+    {
+      "code": "16064008",
+      "source_name": "Bothenheilingen",
+      "address_observations": 155,
+      "street_observations": 9
+    },
+    {
+      "code": "16064014",
+      "source_name": "Dünwald",
+      "address_observations": 765,
+      "street_observations": 48
+    },
+    {
+      "code": "16064017",
+      "source_name": "Flarchheim",
+      "address_observations": 159,
+      "street_observations": 16
+    },
+    {
+      "code": "16064018",
+      "source_name": "Großengottern",
+      "address_observations": 769,
+      "street_observations": 46
+    },
+    {
+      "code": "16064023",
+      "source_name": "Heroldishausen",
+      "address_observations": 70,
+      "street_observations": 1
+    },
+    {
+      "code": "16064029",
+      "source_name": "Issersheilingen",
+      "address_observations": 54,
+      "street_observations": 7
+    },
+    {
+      "code": "16064035",
+      "source_name": "Kleinwelsbach",
+      "address_observations": 51,
+      "street_observations": 8
+    },
+    {
+      "code": "16064036",
+      "source_name": "Klettstedt",
+      "address_observations": 86,
+      "street_observations": 9
+    },
+    {
+      "code": "16064047",
+      "source_name": "Mülverstedt",
+      "address_observations": 284,
+      "street_observations": 23
+    },
+    {
+      "code": "16064048",
+      "source_name": "Neunheilingen",
+      "address_observations": 185,
+      "street_observations": 10
+    },
+    {
+      "code": "16064052",
+      "source_name": "Obermehler",
+      "address_observations": 375,
+      "street_observations": 32
+    },
+    {
+      "code": "16064055",
+      "source_name": "Rodeberg",
+      "address_observations": 696,
+      "street_observations": 48
+    },
+    {
+      "code": "16064057",
+      "source_name": "Schlotheim",
+      "address_observations": 1339,
+      "street_observations": 67
+    },
+    {
+      "code": "16064058",
+      "source_name": "Schönstedt",
+      "address_observations": 503,
+      "street_observations": 38
+    },
+    {
+      "code": "16064065",
+      "source_name": "Weberstedt",
+      "address_observations": 247,
+      "street_observations": 19
+    },
+    {
+      "code": "16064066",
+      "source_name": "Weinbergen",
+      "address_observations": 1230,
+      "street_observations": 88
+    },
+    {
+      "code": "16064072",
+      "source_name": "Menteroda",
+      "address_observations": 815,
+      "street_observations": 46
+    },
+    {
+      "code": "16064073",
+      "source_name": "Anrode",
+      "address_observations": 1189,
+      "street_observations": 107
+    },
+    {
+      "code": "16065002",
+      "source_name": "Artern/Unstrut",
+      "address_observations": 1756,
+      "street_observations": 116
+    },
+    {
+      "code": "16065011",
+      "source_name": "Bretleben",
+      "address_observations": 247,
+      "street_observations": 10
+    },
+    {
+      "code": "16065013",
+      "source_name": "Donndorf",
+      "address_observations": 334,
+      "street_observations": 19
+    },
+    {
+      "code": "16065022",
+      "source_name": "Gorsleben",
+      "address_observations": 238,
+      "street_observations": 17
+    },
+    {
+      "code": "16065023",
+      "source_name": "Greußen",
+      "address_observations": 1156,
+      "street_observations": 58
+    },
+    {
+      "code": "16065031",
+      "source_name": "Hauteroda",
+      "address_observations": 217,
+      "street_observations": 7
+    },
+    {
+      "code": "16065033",
+      "source_name": "Heldrungen",
+      "address_observations": 981,
+      "street_observations": 37
+    },
+    {
+      "code": "16065034",
+      "source_name": "Hemleben",
+      "address_observations": 119,
+      "street_observations": 6
+    },
+    {
+      "code": "16065035",
+      "source_name": "Heygendorf",
+      "address_observations": 266,
+      "street_observations": 7
+    },
+    {
+      "code": "16065039",
+      "source_name": "Ichstedt",
+      "address_observations": 300,
+      "street_observations": 14
+    },
+    {
+      "code": "16065047",
+      "source_name": "Nausitz",
+      "address_observations": 72,
+      "street_observations": 1
+    },
+    {
+      "code": "16065054",
+      "source_name": "Oldisleben",
+      "address_observations": 910,
+      "street_observations": 45
+    },
+    {
+      "code": "16065057",
+      "source_name": "Ringleben",
+      "address_observations": 422,
+      "street_observations": 31
+    },
+    {
+      "code": "16065061",
+      "source_name": "Roßleben",
+      "address_observations": 1914,
+      "street_observations": 119
+    },
+    {
+      "code": "16065072",
+      "source_name": "Thüringenhausen",
+      "address_observations": 50,
+      "street_observations": 5
+    },
+    {
+      "code": "16065076",
+      "source_name": "Voigtstedt",
+      "address_observations": 400,
+      "street_observations": 23
+    },
+    {
+      "code": "16065081",
+      "source_name": "Wiehe",
+      "address_observations": 786,
+      "street_observations": 44
+    },
+    {
+      "code": "16065082",
+      "source_name": "Wolferschwenda",
+      "address_observations": 55,
+      "street_observations": 3
+    },
+    {
+      "code": "16065084",
+      "source_name": "Großenehrich",
+      "address_observations": 1144,
+      "street_observations": 88
+    },
+    {
+      "code": "16066001",
+      "source_name": "Altersbach",
+      "address_observations": 199,
+      "street_observations": 16
+    },
+    {
+      "code": "16066002",
+      "source_name": "Aschenhausen",
+      "address_observations": 66,
+      "street_observations": 4
+    },
+    {
+      "code": "16066006",
+      "source_name": "Benshausen",
+      "address_observations": 940,
+      "street_observations": 51
+    },
+    {
+      "code": "16066008",
+      "source_name": "Bermbach",
+      "address_observations": 218,
+      "street_observations": 11
+    },
+    {
+      "code": "16066028",
+      "source_name": "Henneberg",
+      "address_observations": 237,
+      "street_observations": 18
+    },
+    {
+      "code": "16066033",
+      "source_name": "Hümpfershausen",
+      "address_observations": 195,
+      "street_observations": 15
+    },
+    {
+      "code": "16066035",
+      "source_name": "Kaltensundheim",
+      "address_observations": 396,
+      "street_observations": 33
+    },
+    {
+      "code": "16066036",
+      "source_name": "Kaltenwestheim",
+      "address_observations": 354,
+      "street_observations": 41
+    },
+    {
+      "code": "16066043",
+      "source_name": "Melpers",
+      "address_observations": 42,
+      "street_observations": 6
+    },
+    {
+      "code": "16066044",
+      "source_name": "Metzels",
+      "address_observations": 229,
+      "street_observations": 12
+    },
+    {
+      "code": "16066048",
+      "source_name": "Oberkatz",
+      "address_observations": 116,
+      "street_observations": 10
+    },
+    {
+      "code": "16066051",
+      "source_name": "Oberschönau, Kurort",
+      "address_observations": 348,
+      "street_observations": 14
+    },
+    {
+      "code": "16066053",
+      "source_name": "Oepfershausen",
+      "address_observations": 190,
+      "street_observations": 13
+    },
+    {
+      "code": "16066062",
+      "source_name": "Rotterode",
+      "address_observations": 290,
+      "street_observations": 28
+    },
+    {
+      "code": "16066071",
+      "source_name": "Stepfershausen",
+      "address_observations": 262,
+      "street_observations": 28
+    },
+    {
+      "code": "16066073",
+      "source_name": "Sülzfeld",
+      "address_observations": 309,
+      "street_observations": 25
+    },
+    {
+      "code": "16066075",
+      "source_name": "Unterkatz",
+      "address_observations": 203,
+      "street_observations": 14
+    },
+    {
+      "code": "16066077",
+      "source_name": "Unterschönau",
+      "address_observations": 238,
+      "street_observations": 12
+    },
+    {
+      "code": "16066078",
+      "source_name": "Unterweid",
+      "address_observations": 164,
+      "street_observations": 10
+    },
+    {
+      "code": "16066082",
+      "source_name": "Viernau",
+      "address_observations": 783,
+      "street_observations": 57
+    },
+    {
+      "code": "16066083",
+      "source_name": "Wahns",
+      "address_observations": 155,
+      "street_observations": 16
+    },
+    {
+      "code": "16066084",
+      "source_name": "Wallbach",
+      "address_observations": 137,
+      "street_observations": 16
+    },
+    {
+      "code": "16066085",
+      "source_name": "Walldorf",
+      "address_observations": 722,
+      "street_observations": 47
+    },
+    {
+      "code": "16066088",
+      "source_name": "Wölfershausen",
+      "address_observations": 131,
+      "street_observations": 10
+    },
+    {
+      "code": "16067003",
+      "source_name": "Ballstädt",
+      "address_observations": 310,
+      "street_observations": 20
+    },
+    {
+      "code": "16067005",
+      "source_name": "Brüheim",
+      "address_observations": 165,
+      "street_observations": 17
+    },
+    {
+      "code": "16067006",
+      "source_name": "Bufleben",
+      "address_observations": 395,
+      "street_observations": 28
+    },
+    {
+      "code": "16067008",
+      "source_name": "Crawinkel",
+      "address_observations": 549,
+      "street_observations": 25
+    },
+    {
+      "code": "16067021",
+      "source_name": "Friedrichswerth",
+      "address_observations": 164,
+      "street_observations": 13
+    },
+    {
+      "code": "16067025",
+      "source_name": "Georgenthal/Thür. Wald",
+      "address_observations": 809,
+      "street_observations": 49
+    },
+    {
+      "code": "16067027",
+      "source_name": "Goldbach",
+      "address_observations": 586,
+      "street_observations": 35
+    },
+    {
+      "code": "16067032",
+      "source_name": "Gräfenhain",
+      "address_observations": 552,
+      "street_observations": 35
+    },
+    {
+      "code": "16067035",
+      "source_name": "Haina",
+      "address_observations": 163,
+      "street_observations": 13
+    },
+    {
+      "code": "16067036",
+      "source_name": "Herrenhof",
+      "address_observations": 325,
+      "street_observations": 20
+    },
+    {
+      "code": "16067037",
+      "source_name": "Hochheim",
+      "address_observations": 175,
+      "street_observations": 13
+    },
+    {
+      "code": "16067039",
+      "source_name": "Hohenkirchen",
+      "address_observations": 270,
+      "street_observations": 16
+    },
+    {
+      "code": "16067054",
+      "source_name": "Petriroda",
+      "address_observations": 117,
+      "street_observations": 10
+    },
+    {
+      "code": "16067056",
+      "source_name": "Remstädt",
+      "address_observations": 363,
+      "street_observations": 27
+    },
+    {
+      "code": "16067074",
+      "source_name": "Wangenheim",
+      "address_observations": 234,
+      "street_observations": 24
+    },
+    {
+      "code": "16067075",
+      "source_name": "Warza",
+      "address_observations": 258,
+      "street_observations": 25
+    },
+    {
+      "code": "16067078",
+      "source_name": "Westhausen",
+      "address_observations": 205,
+      "street_observations": 11
+    },
+    {
+      "code": "16067081",
+      "source_name": "Wölfis",
+      "address_observations": 575,
+      "street_observations": 32
+    },
+    {
+      "code": "16067083",
+      "source_name": "Leinatal",
+      "address_observations": 1452,
+      "street_observations": 93
+    },
+    {
+      "code": "16068003",
+      "source_name": "Beichlingen",
+      "address_observations": 229,
+      "street_observations": 18
+    },
+    {
+      "code": "16068004",
+      "source_name": "Bilzingsleben",
+      "address_observations": 298,
+      "street_observations": 13
+    },
+    {
+      "code": "16068006",
+      "source_name": "Buttstädt",
+      "address_observations": 891,
+      "street_observations": 57
+    },
+    {
+      "code": "16068008",
+      "source_name": "Ellersleben",
+      "address_observations": 119,
+      "street_observations": 3
+    },
+    {
+      "code": "16068011",
+      "source_name": "Eßleben-Teutleben",
+      "address_observations": 124,
+      "street_observations": 17
+    },
+    {
+      "code": "16068012",
+      "source_name": "Frömmstedt",
+      "address_observations": 214,
+      "street_observations": 21
+    },
+    {
+      "code": "16068016",
+      "source_name": "Großbrembach",
+      "address_observations": 295,
+      "street_observations": 21
+    },
+    {
+      "code": "16068023",
+      "source_name": "Guthmannshausen",
+      "address_observations": 306,
+      "street_observations": 19
+    },
+    {
+      "code": "16068024",
+      "source_name": "Hardisleben",
+      "address_observations": 235,
+      "street_observations": 20
+    },
+    {
+      "code": "16068026",
+      "source_name": "Henschleben",
+      "address_observations": 142,
+      "street_observations": 10
+    },
+    {
+      "code": "16068027",
+      "source_name": "Herrnschwende",
+      "address_observations": 130,
+      "street_observations": 3
+    },
+    {
+      "code": "16068028",
+      "source_name": "Kannawurf",
+      "address_observations": 382,
+      "street_observations": 28
+    },
+    {
+      "code": "16068029",
+      "source_name": "Kindelbrück",
+      "address_observations": 633,
+      "street_observations": 43
+    },
+    {
+      "code": "16068031",
+      "source_name": "Kleinbrembach",
+      "address_observations": 147,
+      "street_observations": 8
+    },
+    {
+      "code": "16068035",
+      "source_name": "Mannstedt",
+      "address_observations": 155,
+      "street_observations": 18
+    },
+    {
+      "code": "16068038",
+      "source_name": "Olbersleben",
+      "address_observations": 297,
+      "street_observations": 23
+    },
+    {
+      "code": "16068043",
+      "source_name": "Riethgen",
+      "address_observations": 99,
+      "street_observations": 3
+    },
+    {
+      "code": "16068046",
+      "source_name": "Rudersdorf",
+      "address_observations": 119,
+      "street_observations": 13
+    },
+    {
+      "code": "16069002",
+      "source_name": "Bad Colberg-Heldburg",
+      "address_observations": 769,
+      "street_observations": 70
+    },
+    {
+      "code": "16069015",
+      "source_name": "Gompertshausen",
+      "address_observations": 150,
+      "street_observations": 14
+    },
+    {
+      "code": "16069019",
+      "source_name": "Hellingen",
+      "address_observations": 410,
+      "street_observations": 35
+    },
+    {
+      "code": "16069039",
+      "source_name": "Sachsenbrunn",
+      "address_observations": 735,
+      "street_observations": 38
+    },
+    {
+      "code": "16069048",
+      "source_name": "St.Kilian",
+      "address_observations": 993,
+      "street_observations": 72
+    },
+    {
+      "code": "16069059",
+      "source_name": "Nahetal-Waldau",
+      "address_observations": 1140,
+      "street_observations": 81
+    },
+    {
+      "code": "16070002",
+      "source_name": "Altenfeld",
+      "address_observations": 425,
+      "street_observations": 22
+    },
+    {
+      "code": "16070003",
+      "source_name": "Angelroda",
+      "address_observations": 173,
+      "street_observations": 12
+    },
+    {
+      "code": "16070005",
+      "source_name": "Böhlen",
+      "address_observations": 234,
+      "street_observations": 10
+    },
+    {
+      "code": "16070014",
+      "source_name": "Frankenhain",
+      "address_observations": 355,
+      "street_observations": 30
+    },
+    {
+      "code": "16070015",
+      "source_name": "Frauenwald",
+      "address_observations": 423,
+      "street_observations": 22
+    },
+    {
+      "code": "16070016",
+      "source_name": "Friedersdorf",
+      "address_observations": 88,
+      "street_observations": 4
+    },
+    {
+      "code": "16070017",
+      "source_name": "Gehlberg",
+      "address_observations": 295,
+      "street_observations": 21
+    },
+    {
+      "code": "16070018",
+      "source_name": "Gehren",
+      "address_observations": 1063,
+      "street_observations": 56
+    },
+    {
+      "code": "16070019",
+      "source_name": "Geraberg",
+      "address_observations": 869,
+      "street_observations": 42
+    },
+    {
+      "code": "16070021",
+      "source_name": "Geschwenda",
+      "address_observations": 729,
+      "street_observations": 37
+    },
+    {
+      "code": "16070022",
+      "source_name": "Gillersdorf",
+      "address_observations": 127,
+      "street_observations": 6
+    },
+    {
+      "code": "16070023",
+      "source_name": "Gossel",
+      "address_observations": 210,
+      "street_observations": 18
+    },
+    {
+      "code": "16070024",
+      "source_name": "Gräfenroda",
+      "address_observations": 1051,
+      "street_observations": 39
+    },
+    {
+      "code": "16070025",
+      "source_name": "Großbreitenbach",
+      "address_observations": 960,
+      "street_observations": 55
+    },
+    {
+      "code": "16070027",
+      "source_name": "Herschdorf",
+      "address_observations": 405,
+      "street_observations": 15
+    },
+    {
+      "code": "16070031",
+      "source_name": "Kirchheim",
+      "address_observations": 575,
+      "street_observations": 56
+    },
+    {
+      "code": "16070033",
+      "source_name": "Liebenstein",
+      "address_observations": 155,
+      "street_observations": 7
+    },
+    {
+      "code": "16070037",
+      "source_name": "Neusiß",
+      "address_observations": 78,
+      "street_observations": 2
+    },
+    {
+      "code": "16070038",
+      "source_name": "Neustadt am Rennsteig",
+      "address_observations": 372,
+      "street_observations": 21
+    },
+    {
+      "code": "16070044",
+      "source_name": "Rockhausen",
+      "address_observations": 107,
+      "street_observations": 8
+    },
+    {
+      "code": "16070046",
+      "source_name": "Schmiedefeld am Rennsteig",
+      "address_observations": 713,
+      "street_observations": 44
+    },
+    {
+      "code": "16070049",
+      "source_name": "Stützerbach",
+      "address_observations": 571,
+      "street_observations": 28
+    },
+    {
+      "code": "16070052",
+      "source_name": "Wildenspring",
+      "address_observations": 88,
+      "street_observations": 2
+    },
+    {
+      "code": "16070053",
+      "source_name": "Wipfratal",
+      "address_observations": 1132,
+      "street_observations": 58
+    },
+    {
+      "code": "16070056",
+      "source_name": "Ilmtal",
+      "address_observations": 70,
+      "street_observations": 3
+    },
+    {
+      "code": "16071006",
+      "source_name": "Bechstedtstraß",
+      "address_observations": 98,
+      "street_observations": 12
+    },
+    {
+      "code": "16071007",
+      "source_name": "Berlstedt",
+      "address_observations": 607,
+      "street_observations": 38
+    },
+    {
+      "code": "16071011",
+      "source_name": "Buttelstedt",
+      "address_observations": 502,
+      "street_observations": 32
+    },
+    {
+      "code": "16071012",
+      "source_name": "Daasdorf a. Berge",
+      "address_observations": 106,
+      "street_observations": 6
+    },
+    {
+      "code": "16071023",
+      "source_name": "Großobringen",
+      "address_observations": 333,
+      "street_observations": 22
+    },
+    {
+      "code": "16071028",
+      "source_name": "Heichelheim",
+      "address_observations": 146,
+      "street_observations": 9
+    },
+    {
+      "code": "16071034",
+      "source_name": "Hopfgarten",
+      "address_observations": 282,
+      "street_observations": 25
+    },
+    {
+      "code": "16071036",
+      "source_name": "Isseroda",
+      "address_observations": 215,
+      "street_observations": 19
+    },
+    {
+      "code": "16071038",
+      "source_name": "Kiliansroda",
+      "address_observations": 82,
+      "street_observations": 2
+    },
+    {
+      "code": "16071039",
+      "source_name": "Kleinobringen",
+      "address_observations": 118,
+      "street_observations": 9
+    },
+    {
+      "code": "16071042",
+      "source_name": "Kleinschwabhausen",
+      "address_observations": 85,
+      "street_observations": 5
+    },
+    {
+      "code": "16071044",
+      "source_name": "Ködderitzsch",
+      "address_observations": 45,
+      "street_observations": 1
+    },
+    {
+      "code": "16071047",
+      "source_name": "Krautheim",
+      "address_observations": 188,
+      "street_observations": 13
+    },
+    {
+      "code": "16071048",
+      "source_name": "Kromsdorf",
+      "address_observations": 520,
+      "street_observations": 30
+    },
+    {
+      "code": "16071051",
+      "source_name": "Leutenthal",
+      "address_observations": 90,
+      "street_observations": 2
+    },
+    {
+      "code": "16071055",
+      "source_name": "Mechelroda",
+      "address_observations": 106,
+      "street_observations": 3
+    },
+    {
+      "code": "16071057",
+      "source_name": "Mönchenholzhausen",
+      "address_observations": 564,
+      "street_observations": 29
+    },
+    {
+      "code": "16071065",
+      "source_name": "Niederzimmern",
+      "address_observations": 363,
+      "street_observations": 25
+    },
+    {
+      "code": "16071067",
+      "source_name": "Nohra",
+      "address_observations": 580,
+      "street_observations": 36
+    },
+    {
+      "code": "16071073",
+      "source_name": "Ottstedt a. Berge",
+      "address_observations": 102,
+      "street_observations": 7
+    },
+    {
+      "code": "16071076",
+      "source_name": "Ramsla",
+      "address_observations": 122,
+      "street_observations": 15
+    },
+    {
+      "code": "16071077",
+      "source_name": "Rannstedt",
+      "address_observations": 76,
+      "street_observations": 1
+    },
+    {
+      "code": "16071081",
+      "source_name": "Rohrbach",
+      "address_observations": 90,
+      "street_observations": 4
+    },
+    {
+      "code": "16071082",
+      "source_name": "Sachsenhausen",
+      "address_observations": 143,
+      "street_observations": 10
+    },
+    {
+      "code": "16071085",
+      "source_name": "Schwerstedt",
+      "address_observations": 127,
+      "street_observations": 10
+    },
+    {
+      "code": "16071088",
+      "source_name": "Troistedt",
+      "address_observations": 113,
+      "street_observations": 6
+    },
+    {
+      "code": "16071092",
+      "source_name": "Vippachedelhausen",
+      "address_observations": 231,
+      "street_observations": 15
+    },
+    {
+      "code": "16071097",
+      "source_name": "Wohlsborn",
+      "address_observations": 189,
+      "street_observations": 22
+    },
+    {
+      "code": "16071099",
+      "source_name": "Saaleplatte",
+      "address_observations": 1040,
+      "street_observations": 50
+    },
+    {
+      "code": "16072001",
+      "source_name": "Bachfeld",
+      "address_observations": 158,
+      "street_observations": 15
+    },
+    {
+      "code": "16072005",
+      "source_name": "Föritz",
+      "address_observations": 1154,
+      "street_observations": 57
+    },
+    {
+      "code": "16072009",
+      "source_name": "Judenbach",
+      "address_observations": 881,
+      "street_observations": 35
+    },
+    {
+      "code": "16072014",
+      "source_name": "Neuhaus-Schierschnitz",
+      "address_observations": 1119,
+      "street_observations": 49
+    },
+    {
+      "code": "16073021",
+      "source_name": "Dröbischau",
+      "address_observations": 189,
+      "street_observations": 16
+    },
+    {
+      "code": "16073049",
+      "source_name": "Lichte",
+      "address_observations": 645,
+      "street_observations": 29
+    },
+    {
+      "code": "16073054",
+      "source_name": "Mellenbach-Glasbach",
+      "address_observations": 408,
+      "street_observations": 17
+    },
+    {
+      "code": "16073056",
+      "source_name": "Meuselbach-Schwarzmühle",
+      "address_observations": 482,
+      "street_observations": 17
+    },
+    {
+      "code": "16073063",
+      "source_name": "Oberhain",
+      "address_observations": 276,
+      "street_observations": 5
+    },
+    {
+      "code": "16073065",
+      "source_name": "Oberweißbach/Thür. Wald",
+      "address_observations": 763,
+      "street_observations": 36
+    },
+    {
+      "code": "16073066",
+      "source_name": "Piesau",
+      "address_observations": 287,
+      "street_observations": 17
+    },
+    {
+      "code": "16073068",
+      "source_name": "Reichmannsdorf",
+      "address_observations": 361,
+      "street_observations": 18
+    },
+    {
+      "code": "16073079",
+      "source_name": "Schmiedefeld",
+      "address_observations": 379,
+      "street_observations": 25
+    },
+    {
+      "code": "16073105",
+      "source_name": "Remda-Teichel",
+      "address_observations": 1106,
+      "street_observations": 97
+    },
+    {
+      "code": "16073108",
+      "source_name": "Saalfelder Höhe",
+      "address_observations": 1,
+      "street_observations": 1
+    },
+    {
+      "code": "16074006",
+      "source_name": "Bollberg",
+      "address_observations": 125,
+      "street_observations": 12
+    },
+    {
+      "code": "16074069",
+      "source_name": "Quirla",
+      "address_observations": 186,
+      "street_observations": 16
+    },
+    {
+      "code": "16075002",
+      "source_name": "Birkenhügel",
+      "address_observations": 158,
+      "street_observations": 14
+    },
+    {
+      "code": "16075003",
+      "source_name": "Blankenberg",
+      "address_observations": 364,
+      "street_observations": 23
+    },
+    {
+      "code": "16075004",
+      "source_name": "Blankenstein",
+      "address_observations": 234,
+      "street_observations": 17
+    },
+    {
+      "code": "16075008",
+      "source_name": "Bucha",
+      "address_observations": 36,
+      "street_observations": 1
+    },
+    {
+      "code": "16075009",
+      "source_name": "Burgk",
+      "address_observations": 47,
+      "street_observations": 4
+    },
+    {
+      "code": "16075013",
+      "source_name": "Crispendorf",
+      "address_observations": 165,
+      "street_observations": 6
+    },
+    {
+      "code": "16075018",
+      "source_name": "Dreba",
+      "address_observations": 87,
+      "street_observations": 2
+    },
+    {
+      "code": "16075042",
+      "source_name": "Harra",
+      "address_observations": 310,
+      "street_observations": 37
+    },
+    {
+      "code": "16075049",
+      "source_name": "Knau",
+      "address_observations": 217,
+      "street_observations": 19
+    },
+    {
+      "code": "16075061",
+      "source_name": "Linda b. Neustadt an der Orla",
+      "address_observations": 123,
+      "street_observations": 4
+    },
+    {
+      "code": "16075071",
+      "source_name": "Neundorf (bei Lobenstein)",
+      "address_observations": 239,
+      "street_observations": 8
+    },
+    {
+      "code": "16075086",
+      "source_name": "Pottiga",
+      "address_observations": 163,
+      "street_observations": 17
+    },
+    {
+      "code": "16075097",
+      "source_name": "Schlegel",
+      "address_observations": 125,
+      "street_observations": 10
+    },
+    {
+      "code": "16075106",
+      "source_name": "Stanau",
+      "address_observations": 52,
+      "street_observations": 1
+    },
+    {
+      "code": "16076004",
+      "source_name": "Berga/Elster",
+      "address_observations": 1161,
+      "street_observations": 64
+    },
+    {
+      "code": "16076026",
+      "source_name": "Hartmannsdorf",
+      "address_observations": 143,
+      "street_observations": 4
+    },
+    {
+      "code": "16076038",
+      "source_name": "Kühdorf",
+      "address_observations": 25,
+      "street_observations": 1
+    },
+    {
+      "code": "16076052",
+      "source_name": "Neumühle/Elster",
+      "address_observations": 150,
+      "street_observations": 11
+    },
+    {
+      "code": "16076084",
+      "source_name": "Wünschendorf/Elster",
+      "address_observations": 999,
+      "street_observations": 54
+    },
+    {
+      "code": "16077002",
+      "source_name": "Altkirchen",
+      "address_observations": 384,
+      "street_observations": 44
+    },
+    {
+      "code": "16077003",
+      "source_name": "Dobitschen",
+      "address_observations": 208,
+      "street_observations": 16
+    },
+    {
+      "code": "16077004",
+      "source_name": "Drogen",
+      "address_observations": 50,
+      "street_observations": 8
+    },
+    {
+      "code": "16077029",
+      "source_name": "Lumpzig",
+      "address_observations": 219,
+      "street_observations": 15
+    },
+    {
+      "code": "16077037",
+      "source_name": "Nöbdenitz",
+      "address_observations": 355,
+      "street_observations": 21
+    },
+    {
+      "code": "16077051",
+      "source_name": "Wildenbörten",
+      "address_observations": 123,
+      "street_observations": 13
+    }
+  ],
+  "current_gv_municipalities_with_code_qualified_address_rows": 575,
+  "current_gv_municipalities_without_code_qualified_address_rows": [
+    {
+      "code": "16061118",
+      "name": "Dingelstädt, Stadt"
+    },
+    {
+      "code": "16061119",
+      "name": "Uder"
+    },
+    {
+      "code": "16062066",
+      "name": "Bleicherode, Stadt"
+    },
+    {
+      "code": "16063103",
+      "name": "Werra-Suhl-Tal, Stadt"
+    },
+    {
+      "code": "16063104",
+      "name": "Amt Creuzburg, Stadt"
+    },
+    {
+      "code": "16063105",
+      "name": "Eisenach, Stadt"
+    },
+    {
+      "code": "16064076",
+      "name": "Unstrut-Hainich"
+    },
+    {
+      "code": "16064077",
+      "name": "Nottertal-Heilinger Höhen, Stadt"
+    },
+    {
+      "code": "16065086",
+      "name": "Artern, Stadt"
+    },
+    {
+      "code": "16065087",
+      "name": "Roßleben-Wiehe, Stadt"
+    },
+    {
+      "code": "16065088",
+      "name": "An der Schmücke, Stadt"
+    },
+    {
+      "code": "16065089",
+      "name": "Greußen, Stadt"
+    },
+    {
+      "code": "16066095",
+      "name": "Kaltennordheim, Stadt"
+    },
+    {
+      "code": "16067091",
+      "name": "Nessetal"
+    },
+    {
+      "code": "16067092",
+      "name": "Georgenthal"
+    },
+    {
+      "code": "16068063",
+      "name": "Buttstädt"
+    },
+    {
+      "code": "16068064",
+      "name": "Kindelbrück"
+    },
+    {
+      "code": "16069063",
+      "name": "Heldburg, Stadt"
+    },
+    {
+      "code": "16070057",
+      "name": "Geratal"
+    },
+    {
+      "code": "16070058",
+      "name": "Großbreitenbach, Stadt"
+    },
+    {
+      "code": "16071102",
+      "name": "Am Ettersberg"
+    },
+    {
+      "code": "16071103",
+      "name": "Grammetal"
+    },
+    {
+      "code": "16072024",
+      "name": "Föritztal"
+    },
+    {
+      "code": "16073113",
+      "name": "Schwarzatal, Stadt"
+    },
+    {
+      "code": "16075136",
+      "name": "Rosenthal am Rennsteig"
+    },
+    {
+      "code": "16076094",
+      "name": "Berga-Wünschendorf, Stadt"
+    }
+  ],
+  "handling": "Original code/name/reference IDs are retained. No successor municipality or source snapshot date is inferred from a similar name. Street-name and address component codes may reflect different provider revisions; an official dated crosswalk remains necessary. These gaps do not prove absence of actual addresses in the current municipality.",
+  "national_completeness_verified": false,
+  "deliverability_in_scope": false
+}

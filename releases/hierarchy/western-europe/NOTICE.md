@@ -9,6 +9,7 @@
 - LU: Administration du cadastre et de la topographie。CC0。https://data.public.lu/en/datasets/registre-national-des-localites-et-des-rues/ 。CACLRの固定幅はバイト位置を基準とし、cp1252で復号。地理座標はCACLRには含まれない。
 - FR: IGN / Base Adresse Nationale。Licence Ouverte / Open Licence 2.0。https://www.data.gouv.fr/datasets/base-adresse-nationale 。BAN番地は原典の値を保持し、範囲から増殖しない。
 - NL: Kadaster / PDOKのBAG（CC0 1.0）とCBSの自治体・州名簿（出典表示：CBS）。GWRは非真正の処理補助表。詳細は [netherlands/NOTICE.md](netherlands/NOTICE.md)。
+- DE: 全国行政参照と州別の原典・ミラー・派生表、BKG DLM250を追加。各提供元・出典表示・利用条件・経路は [germany/NOTICE.md](germany/NOTICE.md)。
 - 補助MC: OpenStreetMap contributors; extract by Geofabrik。ODbL 1.0。https://www.openstreetmap.org/copyright 。公式台帳と自動統合しない。抽出範囲に含まれることとモナコの正式な所属は別。
 
 過去版URLや latest の内容は変わる可能性があります。保存した原典・SHA-256を照合し、別の内容なら停止します。

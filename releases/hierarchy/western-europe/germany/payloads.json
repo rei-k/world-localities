@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "country": "DE",
+  "format": "pinned-source-files-v1",
+  "release_date": "2026-10-22",
+  "status": "PINNED_BYTES_AND_SOURCE_REPLAY_VERIFIED",
+  "source_manifest": "sources.json",
+  "validation_report": "validation.json",
+  "payloads": [
+    {
+      "name": "GV-2026Q3-retry.zip",
+      "bytes": 406629,
+      "sha256": "23fbb0854c4a141952b161699877de4f00758597136c098f96c5b64f13a1f60a",
+      "role": "source",
+      "source_id": "DE-GV-2026Q3-retry",
+      "provenance": "official_direct"
+    },
+    {
+      "name": "NW-gebref.zip",
+      "bytes": 97015231,
+      "sha256": "8f3cc3398799c2e6358f22e1272e435c8dcc3375de1597da1b3339251d4692a8",
+      "role": "source",
+      "source_id": "DE-NW-gebref",
+      "provenance": "official_direct"
+    },
+    {
+      "name": "RP-hk.zip",
+      "bytes": 26578807,
+      "sha256": "7ec6e57c0b1fbbab282ecf24f99aa963235294ef80bb13be7596c87cc4b58d3a",
+      "role": "source",
+      "source_id": "DE-RP-hk",
+      "provenance": "official_direct"
+    },
+    {
+      "name": "HE-hk-current.zip",
+      "bytes": 28727058,
+      "sha256": "ddbefd1e4826bc26e7ab19dd0c7fb920674cbc93d3e7b4f671bda4832ed1a490",
+      "role": "source",
+      "source_id": "DE-HE-hk-current",
+      "provenance": "official_direct"
+    },
+    {
+      "name": "BE-hk.zip",
+      "bytes": 10034237,
+      "sha256": "461e2e832e7ad5e8e4cd3e5536538dea9f5e704efa939aefb581e128a2953aec",
+      "role": "source",
+      "source_id": "DE-BE-hk",
+      "provenance": "official_direct"
+    },
+    {
+      "name": "HB-addresses.zip",
+      "bytes": 10992217,
+      "sha256": "75a43d809d6f0a21b2c60697e595bdfc30e9c114a825a9f81a202060f17005b4",
+      "role": "source",
+      "source_id": "DE-HB-addresses",
+      "provenance": "official_direct"
+    },
+    {
+      "name": "HH-archive-202604.zip",
+      "bytes": 12228218,
+      "sha256": "e599ac362c88bb945ecc39948b738bc56f99d36915a35961791694b6feb1d783",
+      "role": "source",
+      "source_id": "DE-HH-archive-202604",
+      "provenance": "official_archive"
+    },
+    {
+      "name": "BB-mirror.zip",
+      "bytes": 18136589,
+      "sha256": "fe7787d66fd86412d216ae561b3e4292cda0e1acc9271b246a5f91d47062900c",
+      "role": "source",
+      "source_id": "DE-BB-mirror",
+      "provenance": "official_mirror"
+    },
+    {
+      "name": "SH-mirror.zip",
+      "bytes": 18126721,
+      "sha256": "2fdfe98663642d14599b5898533c23bd5da9ccfbf48a6f8473c36300fa7314bc",
+      "role": "source",
+      "source_id": "DE-SH-mirror",
+      "provenance": "official_mirror"
+    },
+    {
+      "name": "NI-derived.zip",
+      "bytes": 47435096,
+      "sha256": "ff6aa0babcbe4ed9d5db06137160c44d81e2203f6991bbd37f5cf63f14993e82",
+      "role": "source",
+      "source_id": "DE-NI-derived",
+      "provenance": "third_party_derived"
+    },
+    {
+      "name": "MV-derived.zip",
+      "bytes": 39963616,
+      "sha256": "9fc667d2b992514e5b09de3367ec4309d59cba050464e52c6c93835f9339467f",
+      "role": "source",
+      "source_id": "DE-MV-derived",
+      "provenance": "third_party_derived"
+    },
+    {
+      "name": "SL-derived.zip",
+      "bytes": 13144880,
+      "sha256": "2f45f7ae300d9486b780c51a27e365dc3797a807d4c2cb9f452bfddd05c557e0",
+      "role": "source",
+      "source_id": "DE-SL-derived",
+      "provenance": "third_party_derived"
+    },
+    {
+      "name": "BB-streets.json.gz",
+      "bytes": 62546453,
+      "sha256": "cbbb6aff148b27d097447d159e1841b682cd6e71c5b86722bdf81ac902c93df1",
+      "role": "source",
+      "source_id": "DE-BB-streets",
+      "provenance": "official_direct"
+    },
+    {
+      "name": "BKG-road-pages.zip",
+      "bytes": 54181832,
+      "sha256": "35427b771f600318ce6d6017cb586bd8b55b3d96f1a073a193311ee43def342f",
+      "role": "source",
+      "source_id": "DE-BKG-DLM250-roads",
+      "provenance": "official_direct"
+    },
+    {
+      "name": "TH-inspire-pages.zip",
+      "bytes": 38612426,
+      "sha256": "57214d291aa2314d3720553d099a6669d759332e0d6a456570353714f97fee45",
+      "role": "source",
+      "source_id": "DE-TH-INSPIRE-addresses",
+      "provenance": "official_direct"
+    },
+    {
+      "name": "DE-source-evidence.zip",
+      "bytes": 219456,
+      "sha256": "26a9f1bc7dee685e7065b952230e83f54e595d06601317f9ba21250e70cba707",
+      "role": "evidence",
+      "source_id": "DE-source-evidence"
+    },
+    {
+      "name": "DE_Administration_20260930.jsonl.gz",
+      "bytes": 881282,
+      "sha256": "eb08120ba2fc2081654958edc6e8b8155f32c15bc60c46c2f3c7ec6fd476d5a8",
+      "role": "normalized_administrative_reference",
+      "rows": 15984,
+      "derived_from_source_id": "DE-GV-2026Q3-retry",
+      "implementation_files": {
+        "scripts/germany_sources.py": "53b49e0c22a250c0254abb2491ad8f1bb392acc4347e87cccd9400af12805b3d",
+        "scripts/germany_inspire.py": "434b89aade1ba491bbed154306172666abaf31f4601c924819b3ec9ce57c4db9",
+        "scripts/western_europe_sources.py": "db8eee72bef2231c339644fcc73173dc70bdd2c57db5011ee1293322e5a86bf0"
+      }
+    }
+  ],
+  "restore": "Place all source and evidence payloads, unchanged and without extracting them, in the same new data-root directory. The normalized administration file is optional for reader replay. Use germany_sources.py acquire on that directory to verify the supplied pins. Original state ZIPs remain nested as delivered.",
+  "national_completeness_verified": false,
+  "deliverability_in_scope": false
+}
